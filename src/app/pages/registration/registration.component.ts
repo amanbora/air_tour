@@ -5,11 +5,13 @@ import {User} from '../../models/user';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
+
 
 export class RegistrationComponent implements OnInit {
 
@@ -42,6 +44,5 @@ export class RegistrationComponent implements OnInit {
       }
     )
   }
+
 }
-
-
