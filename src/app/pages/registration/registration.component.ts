@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormsModule, Form, NgForm} from '@angular/forms';
+import {FormBuilder, FormGroup,Form, NgForm} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {User} from '../../models/user';
-import { RegisterService } from 'src/app/services/register.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 
 @Component({
@@ -9,21 +10,38 @@ import { RegisterService } from 'src/app/services/register.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
+
 export class RegistrationComponent implements OnInit {
 
-  constructor(public registerservice: RegisterService) { }
+  loginDetails: FormGroup;
 
-  userModel = new User('', '');
+  constructor(public firebaseService: FirebaseService, private _formBuilder: FormBuilder,) { 
+    this.loginDetails = this._formBuilder.group({
+      'name': [''],
+      'phone_number': [''],
+    });;
+  }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.registerservice.signup(this.userModel)
-        .subscribe(
-          data => console.log('success', data),
-          error => console.error('error', error));
-        }
+  onSubmit(){
+    const loginData = new FormData();
+    loginData.append('name' , this.loginDetails.value.name );
+    loginData.append('phone_number', this.loginDetails.value.phone_number);
+    console.log(loginData);
+    // console.log(this.loginDetails.value.name , this.loginDetails.value.phone_number);
+    
+    console.log(this.loginDetails.getRawValue());
+    this.firebaseService.createUser(this.loginDetails.value.name,this.loginDetails.value.phone_number)
+    .then(
+      res => {
+        // this.resetFields();
+        // this.router.navigate(['/home']);
+        console.log("SUCCESSFUL !!!")
+      }
+    )
+  }
 }
 
 
