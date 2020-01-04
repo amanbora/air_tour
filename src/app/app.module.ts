@@ -14,12 +14,14 @@ import { MatCardModule,MatMenu, MatButtonModule,MatTabsModule } from '@angular/m
 
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
