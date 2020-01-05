@@ -1,17 +1,18 @@
-main{
-    width: 80%;
-    margin: auto;
-    text-align: center;
-}
 
-mat-form-field{
-    width: 80%;
-    text-align: center;
-
-}
-form{
-    width: 30%;
-    margin: auto;
-    text-align: center;
-}
-
+​
+:host {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+  }
+​
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+​
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }

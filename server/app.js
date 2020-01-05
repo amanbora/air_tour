@@ -52,20 +52,22 @@ fireadmin.initializeApp({
 
 
 
-app.post("/createUser",(req, res) => {
+// app.post("/createUser",(req, res) => {
   
-  console.log(req.body);
-  res.send(req.body);
-  var username = req.body.name;
-  var phn = req.body.phn;
+//   console.log(req.body);
+//   res.send(req.body);
+//   var username = req.body.name;
+//   var phn = req.body.phn;
 
-  var data = {
-    'name': username,
-    'phn' : phn
-  };
+//   var data = {
+//     'name': username,
+//     'phn' : phn
+//   };
 
-  firebase.database().ref().push(data);
-});
+//   firebase.database().ref().push(data);
+// });
+
+
 
 app.get("/", (req, res) => {
   res.send('hello');
