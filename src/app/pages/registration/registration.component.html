@@ -1,43 +1,34 @@
-  
-<main class="row">
-  <div class="col-12 row middle ml-0 pl-0 pr-0">
-    <div class="col-md-5 d-none d-md-block p-2 laptop">
-    </div>
-    <div class="col-md-7 col-12  mr-0 p-2 sign-up-block">
 
-      <form #userForm = "ngForm" (ngSubmit)="onSubmit()">
+<mat-card>
+      <div [hidden]="user">
+        <mat-card-title>Welcome to Air_Portal</mat-card-title>
+            <mat-card-content>
+              ​ <mat-form-field>
+                     <label for="phone">Phone Number</label><br>
+                     <input  type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="+91"    maxlength="3">
+              <br>
+                <input  type="text" [(ngModel)]="phoneNumber.number"     class="input" placeholder="8271853820"  maxlength="10">
+                
+                    <div id="recaptcha-container"></div>
+              ​
+                <button class="button" mat-raised-button color="primary"(click)="sendLoginCode()">Send Code</button>
+              ​</mat-form-field>
+                
+                        <div *ngIf="windowRef.confirmationResult">
+                          <hr>
+                          <label for="code">Enter your Verification Code Here</label><br>
+                          <input type="text" name="code" [(ngModel)]="verificationCode">
+                      ​
+                          <button  (click)="verifyLoginCode()">Verify</button>
+                        </div>
 
-          <div class="input-group p-2" >
-              <label id="input">LOGIN</label>
-          </div>
-         
-          <div class="input-group p-2" >
-              <input class="form-control" name="name" [(ngModel)]=user.name placeholder = "name">
-          </div>
+                          <div *ngIf="user">
+                            You have successfully logged in with your phone number!
+                          ​
+                            UserId: {{ user?.uid }}
+                          ​
+                          </div>
+              </mat-card-content>
+       </div>
 
-          <div class="input-group p-2" >
-              <input class="form-control" name="phone" matInput [(ngModel)]=user.phn placeholder="phone number">
-          </div>
-
-          <div class="input-group p-2" style="display:flex">
-            <!-- <div style="width: 40%" (click) = "resendOTP()">
-                <a>Resend OTP</a>   
-            </div>  -->
-            <div style="width: 20%" id="timer">
-                 
-            </div> 
-            <!-- <div id="edit" (click) = "EditNumber()" style="width : 40%">
-                <a style="float: right;">Edit Number</a>   
-            </div>  -->
-
-          </div>
-
-
-          
-          <div class="input-group p-2" >
-              <button class="btn btn-user" type = "submit" value = "submit">Login</button>
-          </div>
-    </form>
-    </div>
-  </div>
-</main>
+</mat-card>
