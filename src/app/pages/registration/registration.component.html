@@ -1,34 +1,33 @@
-​
 <mat-card>
-      <div [hidden]="user">
-        <mat-card-title>Welcome to Air_Portal</mat-card-title>
-            <mat-card-content>
-              ​ <mat-form-field>
-                     <label for="phone">Phone Number</label><br>
-                     <input matInput type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="+91"    maxlength="3">
-              <br>
-                <input matInput type="text" [(ngModel)]="phoneNumber.number"     class="input" placeholder="Phone"  maxlength="10">
-                
-                    <div id="recaptcha-container"></div>
-              ​
-                <button class="button" mat-raised-button color="primary"(click)="sendLoginCode()">Send Code</button>
-              ​</mat-form-field>
-                
-                        <div *ngIf="windowRef.confirmationResult">
-                          <hr>
-                          <label for="code">Enter your Verification Code Here</label><br>
-                          <input type="text" name="code" [(ngModel)]="verificationCode">
-                      ​
-                          <button  (click)="verifyLoginCode()">Verify</button>
-                        </div>
+  <div [hidden]="user">
+    <mat-card-title>Welcome to Air_Portal</mat-card-title>
+        <mat-card-content>
+          ​ <mat-form-field>
+                 <label for="phone">Phone Number</label><br>
+                 <input matInput type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="+91"    maxlength="3">
+          <br>
+            <input matInput type="text" [(ngModel)]="phoneNumber.number"     class="input" placeholder="Phone"  maxlength="10">
+            
+                <div id="recaptcha-container"></div>
+          ​
+            <button class="button" mat-raised-button color="primary"(click)="sendLoginCode()">Send Code</button>
+          ​</mat-form-field>
+            
+                    <div *ngIf="windowRef.confirmationResult">
+                      <hr>
+                      <label for="code">Enter your Verification Code Here</label><br>
+                      <input type="text" name="code" [(ngModel)]="verificationCode">
+                  ​
+                      <button  (click)="verifyLoginCode()">Verify</button>
+                    </div>
 ​
-                          <div *ngIf="user">
-                            You have successfully logged in with your phone number!
-                          ​
-                            UserId: {{ user?.uid }}
-                          ​
-                          </div>
-              </mat-card-content>
-       </div>
+                      <div *ngIf="user">
+                        You have successfully logged in with your phone number!
+                      ​
+                        UserId: {{ user?.uid }}
+                      ​
+                      </div>
+          </mat-card-content>
+   </div>
 ​
 </mat-card>
