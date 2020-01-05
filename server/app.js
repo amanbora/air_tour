@@ -1,4 +1,5 @@
 var express = require("express");
+var fireadmin = require("firebase-admin");
 
 var app = express();
 var bodyParser = require('body-parser');
@@ -12,4 +13,10 @@ app.listen(3201, ()=>{
 
 app.get("/", (req, res) => {
     res.send('hello');
-  });
+});
+
+var serviceAccount = require("./serviceAccountKey.json");
+fireadmin.initializeApp({
+  credential : fireadmin.credential.cert(serviceAccount),
+  databaseUrl : "http://sih2020-check.firebase.com"
+});
