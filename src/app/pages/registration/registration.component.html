@@ -4,18 +4,19 @@
     <div class="col-md-5 d-none d-md-block p-2 laptop">
     </div>
     <div class="col-md-7 col-12  mr-0 p-2 sign-up-block">
-      <form [formGroup]="loginDetails">
+
+      <form #userForm = "ngForm" (ngSubmit)="onSubmit()">
 
           <div class="input-group p-2" >
               <label id="input">LOGIN</label>
           </div>
          
           <div class="input-group p-2" >
-              <input class="form-control" formControlName="name" placeholder = "name">
+              <input class="form-control" name="name" [(ngModel)]=user.name placeholder = "name">
           </div>
 
           <div class="input-group p-2" >
-              <input class="form-control" matInput formControlName="phone_number" placeholder="phone number">
+              <input class="form-control" name="phone" matInput [(ngModel)]=user.phn placeholder="phone number">
           </div>
 
           <div class="input-group p-2" style="display:flex">
@@ -34,7 +35,7 @@
 
           
           <div class="input-group p-2" >
-              <button class="btn btn-user" type = "submit" value = "submit" (click) = "onSubmit()">Login</button>
+              <button class="btn btn-user" type = "submit" value = "submit">Login</button>
           </div>
     </form>
     </div>
