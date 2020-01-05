@@ -9,8 +9,8 @@ import * as firebase from 'firebase';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-
-
+​
+​
 export class RegistrationComponent implements OnInit {
   windowRef: any;
   phoneNumber = new PhoneNumber()
