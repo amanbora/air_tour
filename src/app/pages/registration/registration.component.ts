@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup,Form, NgForm} from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {User} from '../../models/user';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { PhoneNumber} from '../../models/phone'
+import { WindowService} from '../../services/window.service'
+import * as firebase from 'firebase';
+import {environment} from '../../../environments/environment'
 
 
 
@@ -14,35 +15,42 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 
 
 export class RegistrationComponent implements OnInit {
+  windowRef: any;
+  phoneNumber = new PhoneNumber()
+  verificationCode: string;
+  user: any;
 
-  loginDetails: FormGroup;
-
-  constructor(public firebaseService: FirebaseService, private _formBuilder: FormBuilder,) { 
-    this.loginDetails = this._formBuilder.group({
-      'name': [''],
-      'phone_number': [''],
-    });;
-  }
-
+  constructor(private win: WindowService, private firebaseService : FirebaseService) { }
   ngOnInit() {
+    // const new_fire = firebase.initializeApp(environment.firebaseConfig)
+    this.windowRef = this.win.windowRef  
+    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
+    this.windowRef.recaptchaVerifier.render()
+    
   }
 
-  onSubmit(){
-    const loginData = new FormData();
-    loginData.append('name' , this.loginDetails.value.name );
-    loginData.append('phone_number', this.loginDetails.value.phone_number);
-    console.log(loginData);
-    // console.log(this.loginDetails.value.name , this.loginDetails.value.phone_number);
-    
-    console.log(this.loginDetails.getRawValue());
-    this.firebaseService.createUser(this.loginDetails.value.name,this.loginDetails.value.phone_number)
-    .then(
-      res => {
-        // this.resetFields();
-        // this.router.navigate(['/home']);
-        console.log("SUCCESSFUL !!!")
-      }
-    )
+// Send Vefification Code
+  sendLoginCode() {
+    const appVerifier = this.windowRef.recaptchaVerifier;    
+    const num = this.phoneNumber.e164;
+    firebase.auth().signInWithPhoneNumber(num, appVerifier)
+            .then(result => {
+                this.windowRef.confirmationResult = result;
+            })
+            .catch( error => console.log(error) );
+  }
+
+  // Sign-In Function
+  verifyLoginCode() {
+    this.windowRef.confirmationResult.confirm(this.verificationCode).then( result => {
+          console.log('Phone number = '+this.phoneNumber.e164);
+          console.log('OTP Sent = '+this.verificationCode);
+          console.log('UserID ='+result.user.uid);
+          this.firebaseService.createUser(this.phoneNumber.e164,this.verificationCode,result.user.uid).then(res => {
+             console.log("SUCCESSFULLY DONE , PLEASE CHECK DATABASE !!!");
+          })
+    })
+    .catch( error => console.log(error, "Incorrect code entered?"));
   }
 
 }

@@ -9,10 +9,10 @@ export class FirebaseService {
 
   constructor(public db: AngularFireDatabase) { }
 
-  createUser(data,value){    
-    return this.db.object('/' + 'user/').set({
-      name : data,
-      number : value
+  createUser(data,value,uid){    
+    return this.db.object('/' + 'user/'+ uid).set({
+      Phone_number : data,
+      Current_OTP : value
     });
   }
 }
