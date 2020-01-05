@@ -1,9 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Phone } from '../../models/Phone';
 import { WindowService} from '../../services/window.service';
 import * as firebase from 'firebase';
 ​
+=======
+import { NgForm } from '@angular/forms';
+import { User } from '../../models/user';
+import { UserService } from 'src/app/services/user.service';
+
+
+
+
+>>>>>>> 3c1b9f5a1e64cab6989c0dbc8860a81443afa9c2
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
