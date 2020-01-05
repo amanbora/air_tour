@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { Phone } from '../../models/Phone';
-import { WindowService} from '../../services/window.service';
+import { Phone} from '../../models/Phone'
+import { WindowService} from '../../services/window.service'
 import * as firebase from 'firebase';
-​
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -13,22 +13,22 @@ import * as firebase from 'firebase';
 ​
 export class RegistrationComponent implements OnInit {
   windowRef: any;
-  phoneNumber = new Phone();
+  phoneNumber = new Phone()
   verificationCode: string;
   user: any;
-​
+
   constructor(private win: WindowService, private firebaseService : FirebaseService) { }
   ngOnInit() {
     // const new_fire = firebase.initializeApp(environment.firebaseConfig)
-    this.windowRef = this.win.windowRef;
-    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    this.windowRef.recaptchaVerifier.render();
-
+    this.windowRef = this.win.windowRef  
+    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
+    this.windowRef.recaptchaVerifier.render()
+    
   }
-​
+
 // Send Vefification Code
   sendLoginCode() {
-    const appVerifier = this.windowRef.recaptchaVerifier;
+    const appVerifier = this.windowRef.recaptchaVerifier;    
     const num = this.phoneNumber.e164;
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
             .then(result => {
@@ -36,8 +36,8 @@ export class RegistrationComponent implements OnInit {
             })
             .catch( error => console.log(error) );
   }
-​
-​
+
+
   // Sign-In Function
   verifyLoginCode() {
     this.windowRef.confirmationResult.confirm(this.verificationCode).then( result => {
@@ -49,6 +49,6 @@ export class RegistrationComponent implements OnInit {
           })
     })
     .catch( error => console.log(error, "Incorrect code entered?"));
-​
+
   }
 }
