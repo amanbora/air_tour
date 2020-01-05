@@ -3,9 +3,6 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { PhoneNumber} from '../../models/phone'
 import { WindowService} from '../../services/window.service'
 import * as firebase from 'firebase';
-import {environment} from '../../../environments/environment'
-
-
 
 @Component({
   selector: 'app-registration',
@@ -40,6 +37,7 @@ export class RegistrationComponent implements OnInit {
             .catch( error => console.log(error) );
   }
 
+
   // Sign-In Function
   verifyLoginCode() {
     this.windowRef.confirmationResult.confirm(this.verificationCode).then( result => {
@@ -51,6 +49,6 @@ export class RegistrationComponent implements OnInit {
           })
     })
     .catch( error => console.log(error, "Incorrect code entered?"));
-  }
 
+  }
 }
