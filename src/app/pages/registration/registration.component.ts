@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { PhoneNumber} from '../../models/phone'
+import { Phone} from '../../models/Phone'
 import { WindowService} from '../../services/window.service'
 import * as firebase from 'firebase';
 
@@ -13,7 +13,7 @@ import * as firebase from 'firebase';
 ​
 export class RegistrationComponent implements OnInit {
   windowRef: any;
-  phoneNumber = new PhoneNumber()
+  phoneNumber = new Phone()
   verificationCode: string;
   user: any;
 
