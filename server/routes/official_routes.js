@@ -34,7 +34,7 @@ router.post("/createOfficialAccount", (req, res) => {
     identities.push(identity);
 });
 
-app.get("/peopleWithService", (req, res) => {
+router.get("/peopleWithService", (req, res) => {
 
 });
 

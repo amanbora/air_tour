@@ -45,11 +45,9 @@ app.get("/", (req, res) => {
   res.send('Server Started!');
 });
 
-app.post("/createUserAccount", user_routes);
+app.use("/user", user_routes);
 
-app.post("/createOfficialAccount", official_routes);
-
-app.get("/myJourneys", user_routes);
+app.use("/official", official_routes);
 
 app.listen(3201, ()=>{
   console.log(`Listening at port 3201`);
