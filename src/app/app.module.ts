@@ -19,13 +19,26 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { OurServiceComponent } from './pages/our-service/our-service.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    UserProfileComponent
+    UserProfileComponent,
+    NavbarComponent,
+    OurServiceComponent,
+    
   ],
   imports: [
     // for connecting firebase 
@@ -45,6 +58,13 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     MatCardModule,
     MatTabsModule,
     MatButtonModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatExpansionModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
