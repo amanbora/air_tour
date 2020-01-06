@@ -41,9 +41,9 @@ export class RegistrationComponent implements OnInit {
   // Sign-In Function
   verifyLoginCode() {
     this.windowRef.confirmationResult.confirm(this.verificationCode).then( result => {
-          console.log('Phone number = '+this.phoneNumber.e164);
-          console.log('OTP Sent = '+this.verificationCode);
-          console.log('UserID ='+result.user.uid);
+          console.log('Phone number = ' + this.phoneNumber.e164);
+          console.log('OTP Sent = ' + this.verificationCode);
+          console.log('UserID =' + result.user.uid);
           this.firebaseService.createUser(this.phoneNumber.e164,this.verificationCode,result.user.uid).then(res => {
              console.log("SUCCESSFULLY DONE , PLEASE CHECK DATABASE !!!");
           })
