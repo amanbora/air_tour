@@ -1,6 +1,12 @@
 var express = require("express");
 var firebase = require("firebase");
 var fireadmin = require("firebase-admin");
+var fireConfig = require("./config/firebase_config");
+var user_routes = require("./routes/user_routes");
+var app = express();
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var fireConfig = {
   apiKey: "AIzaSyDev_90G0M2EbMVEaLq0V6IDhmN_qACfL0",
@@ -21,11 +27,6 @@ fireadmin.initializeApp({
   databaseUrl : "http://sih2020-check.firebase.com"
 });
 
-var app = express();
-var bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -40,95 +41,15 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.post("/createUser",(req, res) => {
-
-//   console.log(req.body);
-//   res.send(req.body);
-//   var username = req.body.name;
-//   var phn = req.body.phn;
-
-//   var data = {
-//     'name': username,
-//     'phn' : phn
-//   };
-
-//   firebase.database().ref().push(data);
-// });
-
 app.get("/", (req, res) => {
   res.send('Server Started!');
 });
 
-app.post("/createUserAccount", (req, res) => {
-  let data = req.body;
-  let name = data.name;
-  let contact = data.contact;
-  let age = data.age;
-  let address = data.address;
+app.post("/createUserAccount", user_routes);
 
-  let user = {
-    'name': name,
-    'contact': contact,
-    'age': age,
-    'address': address
-  };
+app.post("/createOfficialAccount", official_routes);
 
-  let identity = {
-    'uid': 'user'
-  };
-
-  let dbRef = firebase.database().ref();
-
-  let users = dbRef.child('users');
-  let uid = firebase.auth().currentUser.uid;
-
-  let identities = dbRef.child('identities');
-
-  users.child(uid).push(user);
-  identities.push(identity);
-});
-
-app.post("/createOfficialAccount", (req, res) => {
-  let Cu
-
-  let data = req.body;
-  let name = data.name;
-  let contact = data.contact;
-  let age = data.age;
-  let address = data.address;
-  let email = user
-
-  let user = {
-    'name': name,
-    'contact': contact,
-    'age': age,
-    'address': address
-  };
-
-  let identity = {
-    'uid': 'user'
-  };
-
-  let dbRef = firebase.database().ref();
-
-  let users = dbRef.child('users');
-  let uid = firebase.auth().currentUser.uid;
-
-  let identities = dbRef.child('identities');
-
-  users.child(uid).push(user);
-  identities.push(identity);
-});
-
-app.get("/myJourneys", (req, res) => {
-
-});
-
-app.get("/peopleWithService", (re, res) => {
-
-});
-
-
+app.get("/myJourneys", user_routes);
 
 app.listen(3201, ()=>{
   console.log(`Listening at port 3201`);
