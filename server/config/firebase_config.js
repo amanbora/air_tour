@@ -9,4 +9,4 @@ var fireConfig = {
     measurementId: "G-8KFZ3PDGVH"
   };
 
-  exports.module = fireConfig;
+  module.exports = fireConfig;
