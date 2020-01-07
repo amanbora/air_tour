@@ -4,6 +4,7 @@ var fireadmin = require("firebase-admin");
 var fireConfig = require("./config/firebase_config");
 var user_routes = require("./routes/user_routes");
 var official_routes = require("./routes/official_routes");
+
 var app = express();
 var bodyParser = require('body-parser');
 
@@ -46,9 +47,9 @@ app.get("/", (req, res) => {
   res.send('Server Started!');
 });
 
-app.route("/user", user_routes);
+app.use("/user", user_routes);
 
-app.route("/official", official_routes);
+app.use("/official", official_routes);
 
 app.listen(3201, ()=>{
   console.log(`Listening at port 3201`);
