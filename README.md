@@ -11,7 +11,7 @@ This app uses *concurrently*. To simultaneously start Angular (Frontend) and Nod
 2. Clone the forked repository(the repository made in your account after you forked this repo) by running this command
 
        git clone https://github.com/(YOUR_USERNAME)/air_tour.git
-       cd icefeet-2020
+       cd air_tour
        
    This command will take you to the folder containing the code.
    Currently you are on your master branch. Inorder to contribute to my repo, you need to work on another branch in your
@@ -19,7 +19,7 @@ This app uses *concurrently*. To simultaneously start Angular (Frontend) and Nod
 
 3. This command set this repo as your upstream repository in order to make pull requests and get further changed codes.
  
-       git remote add upstream https://github.com/amanbora/icefeet-2020.git
+       git remote add upstream https://github.com/amanbora/air_tour.git
 
 
 4. By performing this you locally have the updated code present in this repo.
