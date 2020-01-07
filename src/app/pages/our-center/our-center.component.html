@@ -1,0 +1,20 @@
+<app-navbar>
+    <h1>In India</h1>
+    <h3>Present in 18+ cities and continuously expanding 
+    </h3>
+    <div *ngFor="let center of centers; let i = index">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+               <mat-panel-title>
+                  {{center.name}}
+               </mat-panel-title>
+               <mat-panel-description>
+                    we are here
+               </mat-panel-description>
+            </mat-expansion-panel-header>
+            {{center.contact}}
+         </mat-expansion-panel>
+          
+           </div>
+
+</app-navbar>>
