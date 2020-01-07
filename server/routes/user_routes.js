@@ -28,7 +28,7 @@ router.post("/createUserAccount", (req, res) => {
   let identities = dbRef.child('identities');
 
   users.child(uid).setValue(user);
-  users.child(uid).setValue('user');
+  identities.child(uid).setValue('user');
 
   res.status(200).json({
     msg : "user added!",
@@ -78,5 +78,5 @@ router.get("/myJourneys", (req, res) => {
 
   res.status(200).json(ans);
 });
-
+  
 module.exports = router;

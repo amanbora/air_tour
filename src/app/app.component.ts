@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder, Form,NgForm} from '@angular/forms';
+import {FormBuilder, Form, NgForm} from '@angular/forms';
 import { User } from './models/User';
 
 
