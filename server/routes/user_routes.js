@@ -8,7 +8,11 @@ router.get("/list", (req, res) => {
 
 
 
+  users.child(uid).setValue(user);
+  identities.child(uid).setValue('user');
+
 router.post("/", (req, res)=> {
+
 
 });
 
@@ -29,6 +33,12 @@ router.post("/", (req, res)=> {
 //   firebase.database().ref().push(data);
 // });
 
+
+
+
+  res.status(200).json(ans);
+});
+  
 
 
 
