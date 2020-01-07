@@ -5,15 +5,19 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { OurServiceComponent } from './pages/our-service/our-service.component';
+import { FlashScreenComponent } from './pages/flash-screen/flash-screen.component';
+import { OurCenterComponent } from './pages/our-center/our-center.component';
 //import { OurServiceComponent } from './pages/our-service/our-service.component';
 
 const routes: Routes = [
-  { path : '', component: HomeComponent },
+  { path : '', component: FlashScreenComponent },
   { path : 'home', component: HomeComponent },
   { path : 'profile', component: ProfileComponent },
   { path : 'register', component: RegistrationComponent},
   { path : 'user-profile', component: UserProfileComponent},
   { path : 'service', component: OurServiceComponent},
+  { path : 'center', component: OurCenterComponent},
+
 
 ];
 
@@ -22,4 +26,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [HomeComponent, ProfileComponent, RegistrationComponent,OurServiceComponent];
+export const routingComponents = 
+          [HomeComponent, ProfileComponent, 
+            RegistrationComponent,OurServiceComponent,
+            FlashScreenComponent,OurCenterComponent];
