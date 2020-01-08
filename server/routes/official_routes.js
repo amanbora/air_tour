@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+var firebase = require("firebase");
 router.post("/createOfficialAccount", (req, res) => {
   let currentUser = firebase.auth().currentUser;
   let data = req.query.search;
