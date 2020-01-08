@@ -3,7 +3,6 @@ var firebase = require("firebase");
 var fireadmin = require("firebase-admin");
 var fireConfig = require("./config/firebase_config");
 var user_routes = require("./routes/user_routes");
-
 var official_routes = require("./routes/official_routes");
 
 var app = express();
@@ -35,6 +34,10 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.get('/',(req,res)=>{
+    res.send("hello");
+})
 
 app.use("/user", user_routes);
 

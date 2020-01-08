@@ -1,82 +1,57 @@
-var express = require('express');
-var router = express.Router();
-​
-router.post("/createUserAccount", (req, res) => {
-  let currentUser = firebase.auth().currentUser;
+var express = require('express')
+var router = express.Router()
+
+
+
+router.get("/numberOfPeopleWithService", (req, res) => {
+  var dbRefObj = firebase.database().ref();
+  var services = dbRefObj.child('services');
   
-  let data = req.body; //req.query.search;
-​
-  let name = data.name;
-  let contact = data.contact;
-  let age = data.age;
-  let address = data.address;
-  let email = data.email;
-​
-  let user = {
+  var ans = {};
+  // the request body contains the services in consideration (an array)
+  var servicesList = req.body.search;
+  servicesList.forEach(service => {
+    ans[service] = services.service.count;
+  });
+  
+  res.status(200).json(ans);
+});
+
+
+router.post("/createOfficialAccount", (req, res) => {
+  var currentUser = firebase.auth().currentUser;
+  var data = req.query.search;
+  var name = data.name;
+  var contact = data.contact;
+  var age = data.age;
+  var address = data.address;
+  var email = data.email;
+  var official = {
     'name': name,
     'contact': contact,
     'email': email,
     'age': age,
     'address': address
-  };
-​
-  let dbRef = firebase.database().ref();
-​
-  let users = dbRef.child('users');
-  let uid = currentUser.uid;
-​
-  let identities = dbRef.child('identities');
-​
-  users.child(uid).setValue(user);
-  identities.child(uid).setValue('user');
-​
+  }
+  var dbRef = firebase.database().ref();
+  var officials = dbRef.child('officials');
+  var uid = currentUser.uid;
+  var identities = dbRef.child('identities');
+  officials.child(uid).setValue(officials);
+  identities.child(uid).setValue('official');
   res.status(200).json({
-    msg : "user added!",
+    msg : "official added!",
   });
 });
-​
-router.post("/addJourney", (req, res) => {
-  let currentUIser = firebase.auth().currentUser;
-  let dbRefObj = firebase.database().ref();
-  let journeys = dbRefObj.child('journeys');
+// router.get("/peopleWithService", (req, res) => {
+//   var dbRefObj = firebase.database().ref();
+//   var services = dbRefObj.child('services');
   
-  let uid = currentUser.uid;
-  let user_journeys = dbRefObj.child('user_journeys').child(uid);
-​
-  let details = req.body; //req.query.details;
-​
-  let journey = {
-    title: details.title,
-    from: details.from,
-    to: details.to,
-    arrival: details.arrival,
-    departure: details.departure,
-    services: details.services
-  };
-​
-  let key = journeys.push(journey).key;
-  user_journeys.push(key);
-​
-  res.status(200).json({
-    msg: "Journey added successfully!"
-  });
-});
-​
-router.get("/myJourneys", (req, res) => {
-  let currentUIser = firebase.auth().currentUser;
-  let dbRefObj = firebase.database().ref();
-  
-  let uid = currentUser.uid;
-​
-  let journeysIDs = dbRefObj.child('user-journeys').child(uid);
-  let journeys = dbRefObj.child('journeys');
-​
-  let ans = [];
-  journeysIDs.forEach(id => {
-    ans.push(journeys[id]);
-  });
-​
-  res.status(200).json(ans);
-});
-  
+//   // the request body contains the services in consideration (an array)
+//   var servicesList = req.body.search;
+//   servicesList.forEach(service => {
+//     var keys = service.keys;
+//     keys.forEach(key)    
+//   });
+// });
 module.exports = router;
