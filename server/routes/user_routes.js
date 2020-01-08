@@ -1,17 +1,13 @@
-var express = require('express');
-var router = express.Router();
-​
+var express = require('express')
+var router = express.Router()
 router.post("/createUserAccount", (req, res) => {
   let currentUser = firebase.auth().currentUser;
-  
   let data = req.body; //req.query.search;
-​
   let name = data.name;
   let contact = data.contact;
   let age = data.age;
   let address = data.address;
   let email = data.email;
-​
   let user = {
     'name': name,
     'contact': contact,
@@ -19,32 +15,23 @@ router.post("/createUserAccount", (req, res) => {
     'age': age,
     'address': address
   };
-​
   let dbRef = firebase.database().ref();
-​
   let users = dbRef.child('users');
   let uid = currentUser.uid;
-​
   let identities = dbRef.child('identities');
-​
   users.child(uid).setValue(user);
   identities.child(uid).setValue('user');
-​
   res.status(200).json({
     msg : "user added!",
   });
 });
-​
 router.post("/addJourney", (req, res) => {
   let currentUIser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
   let journeys = dbRefObj.child('journeys');
-  
   let uid = currentUser.uid;
   let user_journeys = dbRefObj.child('user_journeys').child(uid);
-​
   let details = req.body; //req.query.details;
-​
   let journey = {
     title: details.title,
     from: details.from,
@@ -53,10 +40,8 @@ router.post("/addJourney", (req, res) => {
     departure: details.departure,
     services: details.services
   };
-​
   let key = journeys.push(journey).key;
   user_journeys.push(key);
-​
   res.status(200).json({
     msg: "Journey added successfully!"
   });
@@ -78,5 +63,4 @@ router.get("/myJourneys", (req, res) => {
 ​
   res.status(200).json(ans);
 });
-  
 module.exports = router;
