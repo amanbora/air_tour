@@ -34,11 +34,11 @@ router.post("/createUserAccount", (req, res) => {
 //add journey
 router.post("/addJourney", (req, res) => {
   
-  let currentUIser = firebase.auth().currentUser;
+  // let currentUIser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
   let journeys = dbRefObj.child('journeys');
-  let uid = currentUser.uid;
-  let user_journeys = dbRefObj.child('user_journeys').child(uid);
+  // let uid = currentUser.uid;
+  let user_journey = dbRefObj.child('user_journey').child(123);
 
   let details = req.body; //req.query.details;
 
@@ -52,7 +52,7 @@ router.post("/addJourney", (req, res) => {
   };
 
   let key = journeys.push(journey).key;
-  user_journeys.push(key);
+  user_journey.push(key);
 
   res.status(200).json({
     msg: "Journey added successfully!"

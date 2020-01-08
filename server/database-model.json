@@ -1,63 +1,54 @@
 {
-
-
     "users": [{
             "name" : "",
             "phone": null,
             "email": "",
             "password":"",
-            "photoUrl": ""
+            "photoURL":""
             }],
 
     "journeys": [{
-            "arrival": "",
-            "departure": "",
-            "arrivalDate": "",
-            "arrivalTime": "",
-            "departureDate": "",
-            "depatureTime": "",
-          "airline": "",
+            "arrival date": "",
+            "departure date": "",
+            "arrival time": "",
+            "departure time": "",
+            "airline": "",
             "flightNo": "",
-            "services": ["service"]
+            "services":[]
             }],
 
     "user_journey": [{
             "userid": ["journeyid"]
+    }],
+
+    "service1": [{
+            "userarray": [""],
+            "officialid": ""
             }],
 
-    "services": {
-        "service1": {
-            "count":null,
+    "service2": [{
+            "userarray": [""],
             "officialid": ""
-            },
+            }],
 
-        "service2": {
-                "count":null,
-                "officialid": ""
-                },
+    "service3": [{
+            "userarray": [""],
+            "officialid": ""
+            }],
 
-        "service3": {
-                "count":null,
-                "officialid": ""
-                },
-
-        "service4": {
-                "count":null,
-                "officialid": ""
-                }
-    },
+    "service4": [{
+            "userarray": [""],
+            "officialid": ""
+            }],
 
     "officials": [{
+            "officialid": "",
             "name" : "",
             "phone": null,
             "email": "",
             "password":"",
-            "servicehead": ""
-            }],
-
-    "identities": [{
-            "id": ""
-            }]
+            "servicehead": "" 
+    }]
 
 
 }

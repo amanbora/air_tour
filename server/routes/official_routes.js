@@ -36,4 +36,26 @@ router.get("/numberOfPeopleWithService", (req, res) => {
   res.status(200).json(ans);
 });
 
+
+//searching users by a list of parameters
+router.get("/searchUser", (req, res) => {
+  let users = firebase.database().ref().child('users');
+  let key = users.keys;
+  let search = req.body();
+  let skeys = search.keys;
+
+  let ans = [];
+
+  keys.forEach(key => {
+    let user = users[key];
+    let flag = true;
+    skeys.forEach(skey => {
+      if(!(user[skey] === search[skey])) flag = false;
+    });
+    if(flag === true) ans.push(user);
+  });
+
+  res.status(200).json(ans);
+});
+
 module.exports = router;
