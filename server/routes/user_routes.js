@@ -1,34 +1,28 @@
 var express = require('express');
 var router = express.Router();
-var firebase = require("firebase");
+var firebase = require('firebase');
+var User = require('./../class/UserClass');
+
+
+
 
 router.post("/createUserAccount", (req, res) => {
   let currentUser = firebase.auth().currentUser;
-  
   let data = req.body; //req.query.search;
 
   let name = data.name;
   let contact = data.contact;
   let age = data.age;
-  let address = data.address;
   let email = data.email;
 
-  let user = {
-    'name': name,
-    'contact': contact,
-    'email': email,
-    'age': age,
-    'address': address
-  };
-
+  //new User
+  var newUser = new User(name,contact,age,email);
+  
   let dbRef = firebase.database().ref();
-
   let users = dbRef.child('users');
   let uid = currentUser.uid;
-
   let identities = dbRef.child('identities');
-
-  users.child(uid).setValue(user);
+  users.child(uid).setValue(newUser);
   identities.child(uid).setValue('user');
 
   res.status(200).json({
@@ -36,11 +30,13 @@ router.post("/createUserAccount", (req, res) => {
   });
 });
 
+
+//add journey
 router.post("/addJourney", (req, res) => {
+  
   let currentUIser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
   let journeys = dbRefObj.child('journeys');
-  
   let uid = currentUser.uid;
   let user_journeys = dbRefObj.child('user_journeys').child(uid);
 
@@ -63,6 +59,8 @@ router.post("/addJourney", (req, res) => {
   });
 });
 
+
+//users journeys
 router.get("/myJourneys", (req, res) => {
   let currentUIser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
