@@ -2,56 +2,62 @@
 
 
     "users": [{
-            "userid": "",
-            "name" : "",
-            "phone": null,
-            "email": "",
-            "password":""
-            }],
-
-    "journeys": [{
-            "journeyid": "",
-            "arrival": "",
-            "departure": "",
-            "date": "",
-            "time": "",
-            "airline": "",
-            "flightNo": ""
-            }],
-
-    "user_journey": [{
-            "userid": "",
-            "journeyarray": ["journeyid"]
-    }],
-
-    "service1": [{
-            "userarray": [""],
-            "officialid": ""
-            }],
-
-    "service2": [{
-            "userarray": [""],
-            "officialid": ""
-            }],
-
-    "service3": [{
-            "userarray": [""],
-            "officialid": ""
-            }],
-
-    "service4": [{
-            "userarray": [""],
-            "officialid": ""
-            }],
-
-    "officials": [{
-            "officialid": "",
             "name" : "",
             "phone": null,
             "email": "",
             "password":"",
-            "servicehead": "" 
-    }]
+            "photoUrl": ""
+            }],
+
+    "journeys": [{
+            "arrival": "",
+            "departure": "",
+            "arrivalDate": "",
+            "arrivalTime": "",
+            "departureDate": "",
+            "depatureTime": "",
+          "airline": "",
+            "flightNo": "",
+            "services": ["service"]
+            }],
+
+    "user_journey": [{
+            "userid": ["journeyid"]
+            }],
+
+    "services": {
+        "service1": {
+            "count":null,
+            "officialid": ""
+            },
+
+        "service2": {
+                "count":null,
+                "officialid": ""
+                },
+
+        "service3": {
+                "count":null,
+                "officialid": ""
+                },
+
+        "service4": {
+                "count":null,
+                "officialid": ""
+                }
+    },
+
+    "officials": [{
+            "name" : "",
+            "phone": null,
+            "email": "",
+            "password":"",
+            "servicehead": ""
+            }],
+
+    "identities": [{
+            "id": ""
+            }]
 
 
 }
