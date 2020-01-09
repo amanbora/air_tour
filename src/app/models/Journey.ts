@@ -1,5 +1,5 @@
 import { Time } from '@angular/common';
-import { Services } from './Services';
+import { ServicesOpted } from './ServicesOpted';
 
 export class Journey {
     constructor(
@@ -9,7 +9,7 @@ export class Journey {
         journeyId: string,
         date: Date,
         time: Time,
-        services: Services
+        services: ServicesOpted
 
     ) {}
 }

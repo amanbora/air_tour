@@ -3,6 +3,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { Phone} from '../../models/Phone'
 import { WindowService} from '../../services/window.service'
 import * as firebase from 'firebase';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registration',
@@ -13,29 +14,27 @@ import * as firebase from 'firebase';
 ​
 export class RegistrationComponent implements OnInit {
   windowRef: any;
-  phoneNumber = new Phone()
+  phoneNumber = new Phone();
   verificationCode: string;
   user: any;
-  items :any;
-  userId : 0;
+  items: any;
+  userId: 0;
 
-  constructor(private win: WindowService, private firebaseService : FirebaseService) { }
+  constructor(private win: WindowService, private firebaseService: FirebaseService,private http: HttpClient ) { }
   ngOnInit() {
     // const new_fire = firebase.initializeApp(environment.firebaseConfig)
-    this.windowRef = this.win.windowRef  
-    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
+    this.windowRef = this.win.windowRef;
+    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     this.windowRef.recaptchaVerifier.render();
 
 
-    
- 
-    
+
   }
 
 // Send Vefification Code
   sendLoginCode() {
+
     
-    //before sending verification code check whether the phone number is already in the database
 
     // if(isAlreadyPresent())
     // {
@@ -65,8 +64,16 @@ export class RegistrationComponent implements OnInit {
           console.log('UserID =' + result.user.uid);
 
           
-          this.user = result.user.uid;
+          // this.user = result.user.uid;
 
+          // let uid = this.existingUser(this.phoneNumber);
+          // before sending verification code check whether the phone number is already in the database
+
+          // if (uid != null) {
+          //   return this.userId = uid;
+          // }
+          
+          // new user
           this.firebaseService.createUser(this.phoneNumber.e164,this.verificationCode,result.user.uid).then(res => {
              console.log("SUCCESSFULLY DONE , PLEASE CHECK DATABASE !!!");
           })

@@ -5,9 +5,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { OurServiceComponent } from './pages/our-service/our-service.component';
-import { FlashScreenComponent } from './pages/flash-screen/flash-screen.component';
+import { FlashScreenComponent } from './common/flash-screen/flash-screen.component';
 import { OurCenterComponent } from './pages/our-center/our-center.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { ServiceBoxComponent } from './common/service-box/service-box.component';
+
 //import { OurServiceComponent } from './pages/our-service/our-service.component';
 
 const routes: Routes = [
@@ -20,7 +22,8 @@ const routes: Routes = [
   { path : 'profile', component: ProfileComponent},
   { path : 'service', component: OurServiceComponent},
   { path : 'center', component: OurCenterComponent},
-
+  { path : 'service-box', component: ServiceBoxComponent},
+  
 
 ];
 
