@@ -4,23 +4,29 @@ var firebase = require("firebase");
 var Official = require('./../class/OfficialClass');
 
 router.post("/createOfficialAccount", (req, res) => {
-
-  //change method of authentication
   let currentUser = firebase.auth().currentUser;
-  var official = new Official(data.name,data.contact,data.age,data.email,data.service);
+  let data = req.body;
+
+  var official = {
+    'name':data.name,
+    'phone': data.contact,
+    'email': data.email,
+    'password': data.password,
+    'photoURL': data.photoURL,
+    'serviceHead': data.serviceHead
+  }
   
   let dbRef = firebase.database().ref();
   let officials = dbRef.child('officials');
   let uid = currentUser.uid;
   let identities = dbRef.child('identities');
-  officials.child(uid).setValue(officials);
+  officials.child(uid).setValue(official);
   identities.child(uid).setValue('official');
 
   res.status(200).json({
     msg : "official added!",
   });
 });
-
 
 router.get("/numberOfPeopleWithService", (req, res) => {
   let dbRefObj = firebase.database().ref();

@@ -5,7 +5,16 @@
             "email": "",
             "password":"",
             "photoURL":""
-            }],
+        }],
+
+    "officials": [{
+            "name" : "",
+            "phone": null,
+            "email": "",
+            "password":"",
+            "photoURL":"",
+            "serviceHead": "" 
+        }],
 
     "journeys": [{
             "arrival date": "",
@@ -15,40 +24,31 @@
             "airline": "",
             "flightNo": "",
             "services":[]
-            }],
+        }],
 
     "user_journey": [{
             "userid": ["journeyid"]
-    }],
+        }],
 
-    "service1": [{
-            "userarray": [""],
-            "officialid": ""
-            }],
+    "services": {
+        "service1": [{
+                "userarray": [""],
+                "officialid": ""
+                }],
 
-    "service2": [{
-            "userarray": [""],
-            "officialid": ""
-            }],
+        "service2": [{
+                "userarray": [""],
+                "officialid": ""
+                }],
 
-    "service3": [{
-            "userarray": [""],
-            "officialid": ""
-            }],
+        "service3": [{
+                "userarray": [""],
+                "officialid": ""
+                }],
 
-    "service4": [{
-            "userarray": [""],
-            "officialid": ""
-            }],
-
-    "officials": [{
-            "officialid": "",
-            "name" : "",
-            "phone": null,
-            "email": "",
-            "password":"",
-            "servicehead": "" 
-    }]
-
-
+        "service4": [{
+                "userarray": [""],
+                "officialid": ""
+                }]
+        }
 }
