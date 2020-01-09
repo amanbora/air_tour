@@ -1,0 +1,54 @@
+{
+    "users": [{
+            "name" : "",
+            "phone": null,
+            "email": "",
+            "password":"",
+            "photoURL":""
+            }],
+
+    "journeys": [{
+            "arrival date": "",
+            "departure date": "",
+            "arrival time": "",
+            "departure time": "",
+            "airline": "",
+            "flightNo": "",
+            "services":[]
+            }],
+
+    "user_journey": [{
+            "userid": ["journeyid"]
+    }],
+
+    "service1": [{
+            "userarray": [""],
+            "officialid": ""
+            }],
+
+    "service2": [{
+            "userarray": [""],
+            "officialid": ""
+            }],
+
+    "service3": [{
+            "userarray": [""],
+            "officialid": ""
+            }],
+
+    "service4": [{
+            "userarray": [""],
+            "officialid": ""
+            }],
+
+    "officials": [{
+            "officialid": "",
+            "name" : "",
+            "phone": null,
+            "email": "",
+            "password":"",
+            "servicehead": "" 
+    }]
+
+
+}
