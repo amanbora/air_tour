@@ -7,14 +7,17 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { OurServiceComponent } from './pages/our-service/our-service.component';
 import { FlashScreenComponent } from './pages/flash-screen/flash-screen.component';
 import { OurCenterComponent } from './pages/our-center/our-center.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 //import { OurServiceComponent } from './pages/our-service/our-service.component';
 
 const routes: Routes = [
   { path : '', component: FlashScreenComponent },
   { path : 'home', component: HomeComponent },
-  { path : 'profile', component: ProfileComponent },
+  { path : 'userProfile', component: UserProfileComponent },
+  { path : 'editProfile', component: EditProfileComponent },
+
   { path : 'register', component: RegistrationComponent},
-  { path : 'user-profile', component: UserProfileComponent},
+  { path : 'profile', component: ProfileComponent},
   { path : 'service', component: OurServiceComponent},
   { path : 'center', component: OurCenterComponent},
 
@@ -27,6 +30,7 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = 
-          [HomeComponent, ProfileComponent, 
+          [HomeComponent, UserProfileComponent, 
             RegistrationComponent,OurServiceComponent,
-            FlashScreenComponent,OurCenterComponent];
+            FlashScreenComponent,OurCenterComponent,
+            EditProfileComponent];

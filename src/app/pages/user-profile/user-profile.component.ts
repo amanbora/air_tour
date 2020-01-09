@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {UserProfile} from '../../models/UserProfile'
+import { User } from 'src/app/models/User';
+import {UserService} from '../../services/user.service'
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userservice : UserService) { }
+   
+  userProfile = new UserProfile('','',0,'',0);
 
   ngOnInit() {
+  }
+  onSubmit()
+  {
+    this.userservice.signup(this.userProfile)
+        .subscribe(
+          data => console.log('success',data),
+          error => console.error('error',error)
+        )
   }
 
 }

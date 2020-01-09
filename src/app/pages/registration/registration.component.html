@@ -15,7 +15,7 @@
                  </div>
           ​
                 <button class="button" mat-raised-button color="primary"(click)="sendLoginCode()">Send Code</button>
-          ​</mat-form-field>
+          ​ </mat-form-field>
             
                     <div *ngIf="windowRef.confirmationResult">
                       <hr>
@@ -25,14 +25,17 @@
                       <button  (click)="verifyLoginCode()">Verify</button>
                     </div>
 ​
-                      <div *ngIf="user">
-                        You have successfully logged in with your phone number!
-                      ​
-                        UserId: {{ user?.uid }}
-                      ​
-                      </div>
+                   
+                      
           </mat-card-content>
    </div>
 ​
 </mat-card>
+<div *ngIf="user">
+  You have successfully logged in with your phone number!
+​
+  UserId: {{user}}
+  
+​
+</div>
 </app-navbar>

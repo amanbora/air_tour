@@ -31,6 +31,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { OurServiceComponent } from './pages/our-service/our-service.component';
 import { FlashScreenComponent } from './pages/flash-screen/flash-screen.component';
 import { OurCenterComponent } from './pages/our-center/our-center.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 
@@ -39,11 +41,13 @@ import { OurCenterComponent } from './pages/our-center/our-center.component';
   declarations: [
     AppComponent,
     routingComponents,
-    UserProfileComponent,
+    ProfileComponent,
     NavbarComponent,
     OurServiceComponent,
     FlashScreenComponent,
     OurCenterComponent,
+    UserProfileComponent,
+    EditProfileComponent,
 
   ],
   imports: [
