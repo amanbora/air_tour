@@ -4,28 +4,33 @@ var firebase = require("firebase");
 var Official = require('./../class/OfficialClass');
 
 router.post("/createOfficialAccount", (req, res) => {
-  let currentUser = firebase.auth().currentUser;
   let data = req.body;
-
   var official = {
-    'name':data.name,
-    'phone': data.contact,
-    'email': data.email,
-    'password': data.password,
-    'photoURL': data.photoURL,
-    'serviceHead': data.serviceHead
-  }
+    "name":data.name,
+    "phone": data.phone,
+    "email": data.email,
+    "password": data.password,
+    "photoURL": data.photoURL,
+    "serviceHead": data.serviceHead
+  };
   
-  let dbRef = firebase.database().ref();
-  let officials = dbRef.child('officials');
-  let uid = currentUser.uid;
-  let identities = dbRef.child('identities');
-  officials.child(uid).setValue(official);
-  identities.child(uid).setValue('official');
+  try{
+    let dbRef = firebase.database().ref();
+    let officials = dbRef.child('officials');
+    let uid = currentUser.uid;
+    let identities = dbRef.child('identities');
+    officials.child(uid).set(official);
+    identities.child(uid).set('official');
 
-  res.status(200).json({
-    msg : "official added!",
-  });
+    res.status(200).json({
+      "msg" : "official added!",
+    });
+  }
+  catch(err){
+    res.status(300).json({
+      "msg" : "official could not be added!",
+    });
+  }
 });
 
 router.get("/numberOfPeopleWithService", (req, res) => {
@@ -35,33 +40,56 @@ router.get("/numberOfPeopleWithService", (req, res) => {
   let ans = {};
   // the request body contains the services in consideration (an array)
   let servicesList = req.body.search;
-  servicesList.forEach(service => {
-    ans[service] = services.service.count;
+  services.on('value', snap=> {
+    snap = snap.val();
+    if(snap === null){
+      res.status(300).json({
+        "msg": "no services taken !"
+      });
+    }
+    else{
+      servicesList.forEach(service => {
+        ans[service] = snap.service.count;
+      });
+      res.status(200).json(ans);
+    }
   });
-  
-  res.status(200).json(ans);
 });
 
 
 //searching users by a list of parameters
 router.get("/searchUser", (req, res) => {
-  let users = firebase.database().ref().child('users');
-  let key = users.keys;
-  let search = req.body();
-  let skeys = search.keys;
+  let dbRefObj = firebase.database().ref().child('users');
+  let search = req.body;
+  let skeys = Object.keys(search);
 
   let ans = [];
 
-  keys.forEach(key => {
-    let user = users[key];
-    let flag = true;
-    skeys.forEach(skey => {
-      if(!(user[skey] === search[skey])) flag = false;
-    });
-    if(flag === true) ans.push(user);
+  dbRefObj.on('value', snap => {
+    let users = snap.val();
+    if(users === null){
+      res.status(300).json({
+        "msg": "No users present!"
+      });
+    }
+    else {
+      let keys = Object.keys(users);
+      keys.forEach(key => {
+        let user = users[key];
+        let flag = true;
+        skeys.forEach(skey => {
+          if(!(user[skey] == search[skey])) flag = false;
+        });
+        if(flag == true) ans.push(user);
+      });
+      if(ans.length == 0){
+        res.status(300).json({
+          "msg": "no users matches the description!"
+        });
+      }
+      else res.status(200).json(ans);
+    }
   });
-
-  res.status(200).json(ans);
 });
 
 //user-journey tracking
@@ -72,7 +100,14 @@ router.get("/track", (req, res) => {
   let tracks = firebase.database().ref().child('location_track');
   let track = tracks.child(user).child(journey);
 
-  res.status(200).json(track);
+  track.on('value', snap => {
+    if(snap.val() === null){
+      res.status(300).json({
+        "msg": "no track record present!"
+      });
+    }
+    res.status(200).json(snap.val());
+  });
 });
 
 module.exports = router;

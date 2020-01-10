@@ -5,86 +5,127 @@ var User = require('./../class/UserClass');
 
 router.post("/createUserAccount", (req, res) => {
   let currentUser = firebase.auth().currentUser;
-  let data = req.body; //req.query.search;
+  let data = req.body;
 
   let newUser = {
-    'name':data.name,
-    'phone': data.contact,
-    'email': data.email,
-    'password': data.password,
-    'photoURL': data.photoURL
+    "name": data.name,
+    "phone": data.phone,
+    "email": data.email,
+    "password": data.password,
+    "photoURL": data.photoURL
   };
 
-  let dbRef = firebase.database().ref();
-  let users = dbRef.child('users');
-  let uid = currentUser.uid;
-  let identities = dbRef.child('identities');
-  users.child(uid).setValue(newUser);
-  identities.child(uid).setValue('user');
+  try{  
+    let dbRef = firebase.database().ref();
+    let users = dbRef.child('users');
+    let uid = currentUser.uid;
+    let identities = dbRef.child('identities');
+    users.child(uid).set(newUser);
+    identities.child(uid).set('user');
 
-  res.status(200).json({
-    msg : "user added!",
-  });
+    res.status(200).json({
+      msg : "user added!",
+    });
+  }
+  catch(err){
+    res.status(300).json({
+      "msg" : "user could not be added!",
+    });
+  }
 });
 
 
 //add journey
 router.post("/addJourney", (req, res) => {
-  
-  let currentUser = firebase.auth().currentUser;
-  let dbRefObj = firebase.database().ref();
-  let journeys = dbRefObj.child('journeys');
-  let uid = currentUser.uid;
-  let user_journey = dbRefObj.child('user_journey').child(uid);
-
   let details = req.body; //req.query.details;
-
   let journey = {
-    title: details.title,
-    from: details.from,
-    to: details.to,
-    arrival: details.arrival,
-    departure: details.departure,
-    services: details.services
+    "title": details.title,
+    "source": details.source,
+    "destination": details.destination,
+    "arrival_date": details.arrival_date,
+    "departure_date": details.departure_date,
+    "arrival_time": details.arrival_time,
+    "departure_time": details.departure_time,
+    "airline": details.airline,
+    "flightNo": details.flightNo,
+    "services": details.services
   };
 
-  let key = journeys.push(journey).key;
-  user_journey.push(key);
+  try{
+    let currentUser = firebase.auth().currentUser;
+    let dbRefObj = firebase.database().ref();
+    let journeys = dbRefObj.child('journeys');
+    let uid = currentUser.uid;
+    let user_journey = dbRefObj.child('user_journey').child(uid);
 
-  res.status(200).json({
-    msg: "Journey added successfully!"
-  });
+    let key = journeys.push(journey).key;
+    user_journey.push(key);
+
+    res.status(200).json({
+      msg: "Journey added successfully!"
+    });
+  }
+  catch(err){
+    res.status(300).json({
+      msg: "Journey could not be added!"
+    });
+  }
 });
-
 
 //users journeys
 router.get("/myJourneys", (req, res) => {
   let currentUser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
-  
+  let journeyIDRef = dbRefObj.child('user-journeys').child(uid);
+  let journeyRef = dbRefObj.child('journeys');
+
   let uid = currentUser.uid;
-
-  let journeysIDs = dbRefObj.child('user-journeys').child(uid);
-  let journeys = dbRefObj.child('journeys');
-
   let ans = [];
-  journeysIDs.forEach(id => {
-    ans.push(journeys[id]);
-  });
 
-  res.status(200).json(ans);
+  journeyIDRef.on('value', snap =>{
+    let journetIDs = snap.val();
+    if(ans.length == 0){
+      res.status(200).json({
+        "msg": "user has no journeys!"
+      });
+    }
+    else{
+      journeyRef.on('value', snap => {
+        let journeys = snap.val();
+        journeysIDs.forEach(id => {
+          ans.push(journeys[id]);
+        });
+  
+        if(ans.length == 0){
+          res.status(300).json({
+            "msg": "journey data is not present!"
+          });
+        }
+        else res.status(200).json(ans);
+      });
+    }
+  });
 });
 
 //the journey about to start with all details
 router.get("/thisJourney", (req, res) => {
   let currentUser = firebase.auth().currentUser;
-  let dbRefObj = firebase.database(). ref();
+  let dbRefObj = firebase.database().ref().child('journeys').child(journeyId);
 
   let uid = currentUser.uid;
   let journeyId = req.body.journeyId;
-  let journey = dbRefObj.child('journeys').child(journeyId);
 
-  res.status(200).json(journey);
+  try{
+    dbRefObj.on('value', snap => {
+      let journey = snap.val();
+      res.status(200).json(journey);
+    });
+  }
+  catch(err){
+    res.status(300).json({
+      "msg": "journey could not be fetched!"
+    });
+  }
 });
 
 module.exports = router;
