@@ -16,6 +16,36 @@
             "serviceHead": "" 
         }],
 
+    "porters": [{
+        "name" : "",
+        "phone": null,
+        "email": "",
+        "password":"",
+        "photoURL":""
+    }],
+
+    "drivers": [{
+        "name" : "",
+        "phone": null,
+        "email": "",
+        "password":"",
+        "photoURL":""
+    }],
+
+    "available_porters": ["porterId"],
+
+    "available_drivers": ["driverId"],
+
+    "ongoing_journeys": ["journeyId"],
+
+    "location_track": {
+            "userId": {
+                "journeyId": [{
+                        "timestamp": "position"
+                }]
+            }
+    },
+
     "journeys": [{
             "arrival date": "",
             "departure date": "",
@@ -23,6 +53,10 @@
             "departure time": "",
             "airline": "",
             "flightNo": "",
+            "porterId_arrival": "",
+            "porterId_departure": "",
+            "driverId_arrival": "",
+            "driverId_departure": "",
             "services":[]
         }],
 

@@ -64,4 +64,15 @@ router.get("/searchUser", (req, res) => {
   res.status(200).json(ans);
 });
 
+//user-journey tracking
+router.get("/track", (req, res) => {
+  let user = req.body.userId;
+  let journey = req.body.journeyId;
+
+  let tracks = firebase.database().ref().child('location_track');
+  let track = tracks.child(user).child(journey);
+
+  res.status(200).json(track);
+});
+
 module.exports = router;

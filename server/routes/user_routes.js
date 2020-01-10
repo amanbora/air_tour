@@ -31,7 +31,7 @@ router.post("/createUserAccount", (req, res) => {
 //add journey
 router.post("/addJourney", (req, res) => {
   
-  let currentUIser = firebase.auth().currentUser;
+  let currentUser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
   let journeys = dbRefObj.child('journeys');
   let uid = currentUser.uid;
@@ -59,7 +59,7 @@ router.post("/addJourney", (req, res) => {
 
 //users journeys
 router.get("/myJourneys", (req, res) => {
-  let currentUIser = firebase.auth().currentUser;
+  let currentUser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
   
   let uid = currentUser.uid;
@@ -74,5 +74,17 @@ router.get("/myJourneys", (req, res) => {
 
   res.status(200).json(ans);
 });
-  
+
+//the journey about to start with all details
+router.get("/thisJourney", (req, res) => {
+  let currentUser = firebase.auth().currentUser;
+  let dbRefObj = firebase.database(). ref();
+
+  let uid = currentUser.uid;
+  let journeyId = req.body.journeyId;
+  let journey = dbRefObj.child('journeys').child(journeyId);
+
+  res.status(200).json(journey);
+});
+
 module.exports = router;
