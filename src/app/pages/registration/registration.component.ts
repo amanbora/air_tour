@@ -4,6 +4,7 @@ import { Phone} from '../../models/Phone'
 import { WindowService} from '../../services/window.service'
 import * as firebase from 'firebase';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -21,8 +22,12 @@ export class RegistrationComponent implements OnInit {
   userId: 0;
   showLoginBox = true;
 
-  constructor(private win: WindowService, private firebaseService: FirebaseService,private http: HttpClient ) { }
+  constructor(private win: WindowService, private firebaseService: FirebaseService,private http: HttpClient, private router: Router ) { }
   ngOnInit() {
+
+
+
+
     // const new_fire = firebase.initializeApp(environment.firebaseConfig)
     this.windowRef = this.win.windowRef;
     this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
@@ -77,6 +82,8 @@ export class RegistrationComponent implements OnInit {
           // new user
           this.firebaseService.createUser(this.phoneNumber.e164,this.verificationCode,result.user.uid).then(res => {
              console.log("SUCCESSFULLY DONE , PLEASE CHECK DATABASE !!!");
+
+             this.router.navigate(['/home']); 
           })
     })
     .catch( error => console.log(error, "Incorrect code entered?"));
