@@ -1,10 +1,10 @@
 export class Phone {
-    country: string;
+
     number : string
   
     // format phone numbers as E.164
     get e164() {
-      const num = this.country + this.number
+      const num = "91" + this.number
       return `+${num}`
     }
   

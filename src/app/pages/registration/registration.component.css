@@ -3,6 +3,16 @@
     justify-content: center;
     margin: 100px 0px;
   }​ */
+  .main{
+    text-align: center;
+  }
+  .input{
+    height: 2em;
+    font-size: 1.51em;
+    border-style: groove;
+    border-color: black;
+    margin-bottom: 2em;
+  }
   .mat-form-field {
     width: 100%;
     min-width: 300px;
@@ -11,4 +21,21 @@
   mat-card-content {
     display: flex;
     justify-content: center;
+  }
+  .button{
+      margin: 1em;
+  }
+
+  mat-form-field{
+    text-align: center;
+  }
+
+  .verify{
+
+    text-align: center;
+  }
+
+  .input-verify{
+    margin: 2em;
+    border-style: double;
   }

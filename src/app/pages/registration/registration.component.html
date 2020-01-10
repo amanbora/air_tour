@@ -1,14 +1,15 @@
 <app-navbar>
 <mat-card>
-  <div [hidden]="user">
+  <div class= "main" [hidden]="user">
     <mat-card-title>Welcome to Air_Portal</mat-card-title>
         <mat-card-content>
           ​ <mat-form-field>
-                 <label for="phone">Phone Number</label>
-                 <br>
+                 
+                 <!-- <br>
                  <input matInput type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="+91"    maxlength="3">
-                 <br>
-                 <input matInput type="text" [(ngModel)]="phoneNumber.number"     class="input" placeholder="Phone"  maxlength="10">
+                 <br> -->
+                 
+                 <input matInput type="text" [(ngModel)]="phoneNumber.number"  class="input" placeholder="Phone"  maxlength="10">
             
                  <div id="recaptcha-container">
 
@@ -17,20 +18,26 @@
                 <button class="button" mat-raised-button color="primary"(click)="sendLoginCode()">Send Code</button>
           ​ </mat-form-field>
             
-                    <div *ngIf="windowRef.confirmationResult">
-                      <hr>
-                      <label for="code">Enter your Verification Code Here</label><br>
-                      <input type="text" name="code" [(ngModel)]="verificationCode">
-                  ​
-                      <button  (click)="verifyLoginCode()">Verify</button>
-                    </div>
-​
-                   
-                      
           </mat-card-content>
    </div>
+   <mat-card-content>
+    <div class="verify" *ngIf="!windowRef.confirmationResult">
+      <br>
+      <label for="code">Enter Verification Code</label><br>
+      <input class="input-verify" type="text" name="code" placeholder="Code" [(ngModel)]="verificationCode">
+    ​  <br>
+      <button mat-raised-button (click)="verifyLoginCode()">Verify</button>
+    </div>
+    ​
+  </mat-card-content>
 ​
 </mat-card>
+
+<mat-card>
+  
+</mat-card>
+
+  
 <div *ngIf="user">
   You have successfully logged in with your phone number!
 ​
@@ -39,3 +46,4 @@
 ​
 </div>
 </app-navbar>
+

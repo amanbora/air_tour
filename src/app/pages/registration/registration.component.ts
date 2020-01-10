@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
     this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     this.windowRef.recaptchaVerifier.render();
 
-
+    
 
   }
 
@@ -46,6 +46,7 @@ export class RegistrationComponent implements OnInit {
 
     const appVerifier = this.windowRef.recaptchaVerifier;    
     const num = this.phoneNumber.e164;
+    console.log(num);
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
             .then(result => {
                 this.windowRef.confirmationResult = result;

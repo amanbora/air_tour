@@ -48,7 +48,6 @@ import { ServiceBoxComponent } from './common/service-box/service-box.component'
     OurCenterComponent,
     UserProfileComponent,
     EditProfileComponent,
-
     ServiceBoxComponent,
   ],
   imports: [
