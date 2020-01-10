@@ -19,6 +19,7 @@ export class RegistrationComponent implements OnInit {
   user: any;
   items: any;
   userId: 0;
+  showLoginBox = true;
 
   constructor(private win: WindowService, private firebaseService: FirebaseService,private http: HttpClient ) { }
   ngOnInit() {
@@ -34,8 +35,6 @@ export class RegistrationComponent implements OnInit {
 // Send Vefification Code
   sendLoginCode() {
 
-    
-
     // if(isAlreadyPresent())
     // {
     //   //get the userId of the user
@@ -50,6 +49,7 @@ export class RegistrationComponent implements OnInit {
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
             .then(result => {
                 this.windowRef.confirmationResult = result;
+                this.showLoginBox = false;
             })
             .catch( error => console.log(error) );
   }

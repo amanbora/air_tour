@@ -12,6 +12,7 @@
     border-style: groove;
     border-color: black;
     margin-bottom: 2em;
+
   }
   .mat-form-field {
     width: 100%;
@@ -38,4 +39,5 @@
   .input-verify{
     margin: 2em;
     border-style: double;
+    text-align: center;
   }
