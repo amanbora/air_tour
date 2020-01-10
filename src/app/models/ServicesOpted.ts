@@ -1,4 +1,4 @@
-export class Services {
+export class ServicesOpted {
     constructor(
         service1: boolean,
         service2: boolean,

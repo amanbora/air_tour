@@ -1,0 +1,25 @@
+<mat-card class="main">
+
+     <div *ngFor="let service of serviceList" >
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                   {{service.name}}
+                </mat-panel-title>
+                
+            </mat-expansion-panel-header>
+           
+        <img mat-card-image src="{{service.imageUrl}}" alt="Photo {{service.name}}">
+                 {{service.desc}}
+        <mat-card>
+            <button mat-button *ngFor="let option of service.options">{{option}}</button>
+        </mat-card>
+        </mat-expansion-panel>
+        
+        <mat-card-actions>
+          
+        </mat-card-actions>
+
+<br>
+</div>
+</mat-card>

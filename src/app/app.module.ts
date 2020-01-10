@@ -19,7 +19,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { NavbarComponent } from './pages/navbar/navbar.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -29,9 +29,11 @@ import {MatExpansionModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 import { OurServiceComponent } from './pages/our-service/our-service.component';
-import { FlashScreenComponent } from './pages/flash-screen/flash-screen.component';
+import { FlashScreenComponent } from './common/flash-screen/flash-screen.component';
 import { OurCenterComponent } from './pages/our-center/our-center.component';
-
+import { ProfileComponent } from './pages/profile/profile.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { ServiceBoxComponent } from './common/service-box/service-box.component';
 
 
 
@@ -39,12 +41,15 @@ import { OurCenterComponent } from './pages/our-center/our-center.component';
   declarations: [
     AppComponent,
     routingComponents,
-    UserProfileComponent,
+    ProfileComponent,
     NavbarComponent,
     OurServiceComponent,
     FlashScreenComponent,
     OurCenterComponent,
+    UserProfileComponent,
+    EditProfileComponent,
 
+    ServiceBoxComponent,
   ],
   imports: [
     // for connecting firebase

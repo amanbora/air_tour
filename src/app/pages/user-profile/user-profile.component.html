@@ -1,0 +1,36 @@
+<app-navbar>
+    <main>
+        <div><h2>My Profile</h2></div>
+    
+        <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+                
+                <mat-card>
+                    <mat-form-field>
+                            <input matInput class="form-control" name="username" placeholder="Username" [(ngModel)]=userProfile.name>
+                    </mat-form-field>
+                    <br>
+    
+                    <mat-form-field>
+                        <input matInput class="form-control" name="email" placeholder="email" [(ngModel)]=userProfile.email>
+                    </mat-form-field>
+                    <br>
+                <mat-form-field>
+                    <input matInput class="form-control" name="phone" placeholder="phone number" [(ngModel)]=userProfile.phone>
+                 </mat-form-field>
+                     <br>
+                     <mat-form-field>
+                        <input matInput class="form-control" name="Home" placeholder="Home address" [(ngModel)]=userProfile.address>
+                     </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                        <input matInput class="form-control" name="age" placeholder="age" [(ngModel)]=userProfile.age>
+                     </mat-form-field>
+                    <br>
+    
+                    <button  mat-raised-button  color="primary">Submit</button>
+                   
+                    
+                </mat-card>
+        </form >
+     </main>
+    </app-navbar>
