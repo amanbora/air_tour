@@ -3,21 +3,18 @@ var router = express.Router();
 var firebase = require('firebase');
 var User = require('./../class/UserClass');
 
-
-
-
 router.post("/createUserAccount", (req, res) => {
   let currentUser = firebase.auth().currentUser;
   let data = req.body; //req.query.search;
 
-  let name = data.name;
-  let contact = data.contact;
-  let age = data.age;
-  let email = data.email;
+  let newUser = {
+    'name':data.name,
+    'phone': data.contact,
+    'email': data.email,
+    'password': data.password,
+    'photoURL': data.photoURL
+  };
 
-  //new User
-  var newUser = new User(name,contact,age,email);
-  
   let dbRef = firebase.database().ref();
   let users = dbRef.child('users');
   let uid = currentUser.uid;
@@ -34,11 +31,11 @@ router.post("/createUserAccount", (req, res) => {
 //add journey
 router.post("/addJourney", (req, res) => {
   
-  // let currentUIser = firebase.auth().currentUser;
+  let currentUser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
   let journeys = dbRefObj.child('journeys');
-  // let uid = currentUser.uid;
-  let user_journey = dbRefObj.child('user_journey').child(123);
+  let uid = currentUser.uid;
+  let user_journey = dbRefObj.child('user_journey').child(uid);
 
   let details = req.body; //req.query.details;
 
@@ -62,7 +59,7 @@ router.post("/addJourney", (req, res) => {
 
 //users journeys
 router.get("/myJourneys", (req, res) => {
-  let currentUIser = firebase.auth().currentUser;
+  let currentUser = firebase.auth().currentUser;
   let dbRefObj = firebase.database().ref();
   
   let uid = currentUser.uid;
@@ -77,5 +74,17 @@ router.get("/myJourneys", (req, res) => {
 
   res.status(200).json(ans);
 });
-  
+
+//the journey about to start with all details
+router.get("/thisJourney", (req, res) => {
+  let currentUser = firebase.auth().currentUser;
+  let dbRefObj = firebase.database(). ref();
+
+  let uid = currentUser.uid;
+  let journeyId = req.body.journeyId;
+  let journey = dbRefObj.child('journeys').child(journeyId);
+
+  res.status(200).json(journey);
+});
+
 module.exports = router;
