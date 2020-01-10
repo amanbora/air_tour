@@ -47,6 +47,9 @@
     },
 
     "journeys": [{
+            "title": "",
+            "source": "",
+            "destination": "",
             "arrival date": "",
             "departure date": "",
             "arrival time": "",
