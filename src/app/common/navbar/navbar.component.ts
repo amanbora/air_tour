@@ -18,16 +18,15 @@ export class NavbarComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private router:Router ) {}
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router ) {}
 
-  logout()
-  {
-    localStorage.clear();
-    this.router.navigate([''])
-    .then(() => {
-    window.location.reload();
-  });
+  logout() {
+      localStorage.clear();
+      this.router.navigate([''])
+      .then(() => {
+      window.location.reload();
+    });
 
-  
+
   }
 }

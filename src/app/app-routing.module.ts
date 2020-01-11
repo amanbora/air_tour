@@ -16,7 +16,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   { path : '', component: FlashScreenComponent },
   { path : 'home', component: HomeComponent },
-  { path : 'userProfile', component: UserProfileComponent, canActivate : [AuthGuardService] },
+  { path : 'user-profile', component: UserProfileComponent, canActivate : [AuthGuardService] },
   { path : 'editProfile', component: EditProfileComponent },
 
   { path : 'register', component: RegistrationComponent},
