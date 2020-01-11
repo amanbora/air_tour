@@ -65,7 +65,7 @@ mat-grid-tile {
   
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
   body {
-    background: linear-gradient(35deg, #64B6AC, #3C6B7C 100%);
+    background: linear-gradient(35deg, #DFEFF8, #FFffff 120%);
     overflow: hidden;
   }
 /*   
@@ -125,4 +125,11 @@ mat-grid-tile {
     opacity: 0;
   }
   
-  
+  img{
+    width: 3em;
+  }
+
+  .image{
+    text-align: center;
+    margin-top: 2em ;
+  }
