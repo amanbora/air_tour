@@ -1,0 +1,99 @@
+<app-navbar>
+
+
+    <div id="page-container" main-dom="">
+
+        <!-- Page Loader -->
+        <!-- <loader></loader> -->
+      
+      
+      
+        <!-- Search -->
+        <div class="b-container b-container__search">
+      
+          <div class="bg-mask"></div>
+      
+          <div class="b-search">
+              <h2 class="b-search_title">Search for Flights anywhere</h2>
+      
+              <div class="f-input-group f-input-group__radio text-center" ng-init="flightway = 'roundtrip'">
+                  <label class="radio">
+                      <input id="roundtrip" type="radio" name="flightway" ng-model="flightway" value="roundtrip">
+                      <span class="outer"><span class="inner"></span></span>
+                      Round-Trip
+                  </label>
+                  <label class="radio">
+                      <input id="oneway" type="radio" name="flightway" ng-model="flightway" value="oneway">
+                      <span class="outer"><span class="inner"></span></span>
+                      One-Way
+                  </label>
+              </div>
+      
+              <!-- Search box -->
+              <div class="b-search-box">
+      
+                  <!-- Search form -->
+                  <form action="" method="" class="b-search-box_form" id="js-form">
+      
+                      <div class="f-input-group">
+                          <div class="f-input-group__half">
+                              <label for="flight-from" class="f-label">Leaving from</label>
+                              <input type="text" name="flight-from"
+                              id="flight-from" ng-autocomplete ng-model="result1" details="details1" options="options1"
+                               class="f-input f-input__plane-right" placeholder="Origin">
+                          </div>
+                          <div class="f-input-group__half">
+                            <label for="flight-to" class="f-label">Going to</label>
+                            <input type="text" name="flight-to"
+                            id="flight-to" ng-autocomplete ng-model="result2" details="details2" options="options2"
+                            class="f-input f-input__plane-left" placeholder="Destination">
+                          </div>
+                      </div>
+      
+                      <div class="f-input-group">
+                          <div class="f-input-group__half">
+                              <label for="f-check-in" class="f-label">Departure</label>
+                              <input type="text" name="f-check-in" id="f-check-in" class="f-input f-input__calendar js-datepicker" placeholder="Depart Date">
+                          </div>
+                          <div class="f-input-group__half" ng-show="flightway == 'roundtrip'">
+                              <label for="f-check-out" class="f-label">Return</label>
+                          <input type="text" name="f-check-out" id="f-check-out" class="f-input f-input__calendar js-datepicker" placeholder="Return Date">
+                          </div>
+                      </div>
+      
+                      <div class="f-input-group">
+                          <div class="f-input-group__third">
+                              <label for="f-destination" class="f-label">Passangers</label>
+                              <div class="f-select-group">
+                                  <div class="f-select-info">Select</div>
+                                  <select name="f-adults" id="f-adults">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                      <option value="8">8</option>
+                                      <option value="9">9</option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+      
+                  </form>
+      
+              </div>
+      
+              <button type="submit" class="search-btn" ng-show="flightway == 'roundtrip'" ng-click="getReturnFlights()">Search Round-Trip</button>
+              <button type="submit" class="search-btn" ng-show="flightway == 'oneway'" ng-click="getSingleFlights()">Search One-Way</button>
+      
+          </div>
+      
+      </div>
+      
+      
+      </div>
+
+
+</app-navbar>
