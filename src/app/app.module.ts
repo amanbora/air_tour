@@ -35,6 +35,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ServiceBoxComponent } from './common/service-box/service-box.component';
 
+import { AuthGuardService} from '../app/services/auth-guard.service';
+
 
 
 @NgModule({
@@ -77,7 +79,7 @@ import { ServiceBoxComponent } from './common/service-box/service-box.component'
     MatGridListModule
 
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
