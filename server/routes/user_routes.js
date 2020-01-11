@@ -3,6 +3,8 @@ var router = express.Router();
 var firebase = require('firebase');
 var User = require('./../class/UserClass');
 
+
+
 router.post("/createUserAccount", (req, res) => {
   let currentUser = firebase.auth().currentUser;
   let data = req.body;
@@ -33,6 +35,19 @@ router.post("/createUserAccount", (req, res) => {
     });
   }
 });
+
+
+
+router.post('/signInUser',(req,res)=>{
+  
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+})
+
 
 
 //add journey

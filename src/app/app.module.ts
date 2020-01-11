@@ -37,6 +37,7 @@ import { ServiceBoxComponent } from './common/service-box/service-box.component'
 import { AddNewJourneyComponent } from './pages/add-new-journey/add-new-journey.component';
 
 import { AuthGuardService} from '../app/services/auth-guard.service';
+import { LoginComponent } from './pages/login/login.component';
 
 
 
@@ -53,6 +54,7 @@ import { AuthGuardService} from '../app/services/auth-guard.service';
     EditProfileComponent,
     ServiceBoxComponent,
     AddNewJourneyComponent,
+    LoginComponent,
   ],
   imports: [
     // for connecting firebase

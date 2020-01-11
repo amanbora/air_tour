@@ -10,6 +10,7 @@ import { OurCenterComponent } from './pages/our-center/our-center.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ServiceBoxComponent } from './common/service-box/service-box.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { LoginComponent } from './pages/login/login.component';
 
 //import { OurServiceComponent } from './pages/our-service/our-service.component';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path : 'home', component: HomeComponent },
   { path : 'user-profile', component: UserProfileComponent, canActivate : [AuthGuardService] },
   { path : 'editProfile', component: EditProfileComponent },
+  { path : 'login', component: LoginComponent },
 
   { path : 'register', component: RegistrationComponent},
   { path : 'profile', component: ProfileComponent },
