@@ -34,6 +34,7 @@ import { OurCenterComponent } from './pages/our-center/our-center.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ServiceBoxComponent } from './common/service-box/service-box.component';
+import { AddNewJourneyComponent } from './pages/add-new-journey/add-new-journey.component';
 
 
 
@@ -49,6 +50,7 @@ import { ServiceBoxComponent } from './common/service-box/service-box.component'
     UserProfileComponent,
     EditProfileComponent,
     ServiceBoxComponent,
+    AddNewJourneyComponent,
   ],
   imports: [
     // for connecting firebase
