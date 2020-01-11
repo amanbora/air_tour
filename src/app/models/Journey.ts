@@ -7,8 +7,7 @@ export class Journey {
         departure: string,
         arrival: string,
         journeyId: string,
-        date: Date,
-        time: Time,
+        datetime: Date,
         services: ServicesOpted
 
     ) {}

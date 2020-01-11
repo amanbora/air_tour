@@ -9,7 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule, MatMenu, MatButtonModule, MatTabsModule } from '@angular/material';
+import { MatCardModule, MatMenu, MatButtonModule, MatTabsModule} from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -80,7 +82,9 @@ import { LoginComponent } from './pages/login/login.component';
     MatIconModule,
     MatListModule,
     MatExpansionModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule ,
+    NgxMatSelectSearchModule,
 
   ],
   providers: [AuthGuardService],

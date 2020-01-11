@@ -18,11 +18,7 @@ export class UserProfileComponent implements OnInit {
   }
   onSubmit()
   {
-    this.userservice.signup(this.userProfile)
-        .subscribe(
-          data => console.log('success',data),
-          error => console.error('error',error)
-        )
+    
   }
 
 }

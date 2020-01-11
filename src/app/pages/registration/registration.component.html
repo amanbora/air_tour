@@ -9,14 +9,12 @@
                           <!-- <br>
                           <input matInput type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="+91"    maxlength="3">
                           <br> -->
-                          
-                          <input matInput type="text" [(ngModel)]="phoneNumber.number"  class="input" placeholder="Phone"  maxlength="10">
-                      
-                          <div id="recaptcha-container">
-
-                          </div>
-                    ​
-                          <button class="button" mat-raised-button color="primary"(click)="sendLoginCode()">Send Code</button>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input matInput type="text" [(ngModel)]="phoneNumber.number"  class="input form-control"  maxlength="10">
+                            </div>
+                            <div id="recaptcha-container"></div>
+                            <button class="button" mat-raised-button color="primary"(click)="sendLoginCode()">Send Code</button>
                           </div>  ​
                   </mat-form-field>
                       

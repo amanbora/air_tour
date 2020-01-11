@@ -1,10 +1,13 @@
+<app-navbar>
+<div class="col-sm-6 offset-sm-3 container">
+
 <h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="Email">Email</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">email is required</div>
         </div>
     </div>
     <div class="form-group">
@@ -14,8 +17,12 @@
             <div *ngIf="f.password.errors.required">Password is required</div>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group login" >
         <button [disabled]="loading" type="submit" class="btn btn-primary">Login</button>
         <a [routerLink]="['/register']" class="btn btn-link">Register</a>
     </div>
 </form>
+
+</div>
+
+</app-navbar>

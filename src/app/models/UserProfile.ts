@@ -4,7 +4,7 @@ export class UserProfile {
         public  email:   string,
         public  phn:   number,
         public  address: string,
-        public age : number,
+        public  age : number,
 
 
     ){}

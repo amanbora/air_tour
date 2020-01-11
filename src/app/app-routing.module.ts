@@ -11,6 +11,8 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
 import { ServiceBoxComponent } from './common/service-box/service-box.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from './pages/login/login.component';
+import { AddNewJourneyComponent } from './pages/add-new-journey/add-new-journey.component';
+
 
 //import { OurServiceComponent } from './pages/our-service/our-service.component';
 
@@ -25,7 +27,8 @@ const routes: Routes = [
   { path : 'profile', component: ProfileComponent },
   { path : 'service', component: OurServiceComponent},
   { path : 'center', component: OurCenterComponent},
-  { path : 'service-box', component: ServiceBoxComponent}
+  { path : 'service-box', component: ServiceBoxComponent},
+  { path : 'add-journey', component: AddNewJourneyComponent}
 
 ];
 
