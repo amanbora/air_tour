@@ -42,6 +42,7 @@ import { AuthGuardService} from '../app/services/auth-guard.service';
 import { LoginComponent } from './pages/login/login.component';
 import { TrackerComponent } from './common/tracker/tracker.component';
 import { AgmCoreModule } from '@agm/core';
+import { LuggageServiceComponent } from './pages/allservices/luggage-service/luggage-service.component';
 
 
 
@@ -60,6 +61,7 @@ import { AgmCoreModule } from '@agm/core';
     AddNewJourneyComponent,
     LoginComponent,
     TrackerComponent,
+    LuggageServiceComponent,
   ],
   imports: [
     // for connecting firebase
