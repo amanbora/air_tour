@@ -26,7 +26,7 @@ const routes: Routes = [
 
   { path : 'register', component: RegistrationComponent},
   { path : 'profile', component: ProfileComponent },
-  { path : 'service', component: OurServiceComponent},
+  { path : 'our-service', component: OurServiceComponent},
   { path : 'center', component: OurCenterComponent},
   { path : 'service-box', component: ServiceBoxComponent},
   { path : 'add-journey', component: AddNewJourneyComponent},
