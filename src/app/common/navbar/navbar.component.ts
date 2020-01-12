@@ -26,7 +26,5 @@ export class NavbarComponent {
       .then(() => {
       window.location.reload();
     });
-
-
   }
 }

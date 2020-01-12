@@ -10,13 +10,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 export class FlashScreenComponent implements OnInit {
 
   constructor() { }
-  
-
   ngOnInit() {
-    localStorage.clear();
-}
- userId = localStorage.getItem('userId');
+    if(!localStorage.getItem('auth')) localStorage.setItem('auth', 'false');
   }
-
-  
-
+}
