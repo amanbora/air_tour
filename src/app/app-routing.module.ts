@@ -12,6 +12,7 @@ import { ServiceBoxComponent } from './common/service-box/service-box.component'
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from './pages/login/login.component';
 import { AddNewJourneyComponent } from './pages/add-new-journey/add-new-journey.component';
+import { TrackerComponent } from './common/tracker/tracker.component';
 
 
 //import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path : 'service', component: OurServiceComponent},
   { path : 'center', component: OurCenterComponent},
   { path : 'service-box', component: ServiceBoxComponent},
-  { path : 'add-journey', component: AddNewJourneyComponent}
+  { path : 'add-journey', component: AddNewJourneyComponent},
+  { path : 'tracker', component: TrackerComponent}
 
 ];
 

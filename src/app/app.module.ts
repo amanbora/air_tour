@@ -40,6 +40,8 @@ import { AddNewJourneyComponent } from './pages/add-new-journey/add-new-journey.
 
 import { AuthGuardService} from '../app/services/auth-guard.service';
 import { LoginComponent } from './pages/login/login.component';
+import { TrackerComponent } from './common/tracker/tracker.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -57,6 +59,7 @@ import { LoginComponent } from './pages/login/login.component';
     ServiceBoxComponent,
     AddNewJourneyComponent,
     LoginComponent,
+    TrackerComponent,
   ],
   imports: [
     // for connecting firebase
@@ -85,6 +88,9 @@ import { LoginComponent } from './pages/login/login.component';
     MatGridListModule,
     MatSelectModule ,
     NgxMatSelectSearchModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDYzOj_e7CSYYRW36a4K52O1OjR7rvEN9E'
+    })
 
   ],
   providers: [AuthGuardService],

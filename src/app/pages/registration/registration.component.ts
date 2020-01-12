@@ -43,7 +43,7 @@ export class RegistrationComponent implements OnInit {
     //   //create new user
     // }
 
-    const appVerifier = this.windowRef.recaptchaVerifier;    
+    const appVerifier = this.windowRef.recaptchaVerifier;
     const num = this.phoneNumber.e164;
     console.log(num);
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
