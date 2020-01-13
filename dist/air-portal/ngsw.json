@@ -1,0 +1,100 @@
+{
+  "configVersion": 1,
+  "timestamp": 1578884633560,
+  "index": "/dev/pwa/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main-es2015.19c4b702b091e44890ca.js",
+        "/main-es5.19c4b702b091e44890ca.js",
+        "/manifest.webmanifest",
+        "/polyfills-es2015.2987770fde9daa1d8a2e.js",
+        "/polyfills-es5.6696c533341b95a3d617.js",
+        "/runtime-es2015.edb2fcf2778e7bf1d426.js",
+        "/runtime-es5.edb2fcf2778e7bf1d426.js",
+        "/styles.20b1103d4bcdc3dce16b.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/img-service/checkin.jpeg",
+        "/assets/images/img-service/child-care.jpeg",
+        "/assets/images/img-service/flight.png",
+        "/assets/images/img-service/luggage.jpeg",
+        "/assets/images/img-service/taxi.jpeg",
+        "/glyphicons-halflings-regular.448c34a56d699c29117a.woff2",
+        "/glyphicons-halflings-regular.89889688147bd7575d63.svg",
+        "/glyphicons-halflings-regular.e18bbf611f2a2e43afc0.ttf",
+        "/glyphicons-halflings-regular.f4769f9bdb7466be6508.eot",
+        "/glyphicons-halflings-regular.fa2772327f55d8198301.woff"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/images/img-service/checkin.jpeg": "2dd698194918f00e5d9678c2e9f8a9011652f0d9",
+    "/assets/images/img-service/child-care.jpeg": "feb403e31a75a04559949fcb4a86b30834925312",
+    "/assets/images/img-service/flight.png": "4368babdb53cf863793f58e475ad4f060321da69",
+    "/assets/images/img-service/luggage.jpeg": "2594f119f2fde80a6a33a314678d800c33908796",
+    "/assets/images/img-service/taxi.jpeg": "599dd59f06a1d7694edbbf102bf365ffae4ce8f7",
+    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/glyphicons-halflings-regular.448c34a56d699c29117a.woff2": "ca35b697d99cae4d1b60f2d60fcd37771987eb07",
+    "/glyphicons-halflings-regular.89889688147bd7575d63.svg": "de51a8494180a6db074af2dee2383f0a363c5b08",
+    "/glyphicons-halflings-regular.e18bbf611f2a2e43afc0.ttf": "44bc1850f570972267b169ae18f1cb06b611ffa2",
+    "/glyphicons-halflings-regular.f4769f9bdb7466be6508.eot": "86b6f62b7853e67d3e635f6512a5a5efc58ea3c3",
+    "/glyphicons-halflings-regular.fa2772327f55d8198301.woff": "278e49a86e634da6f2a02f3b47dd9d2a8f26210f",
+    "/index.html": "fa3175172f0295a125b48f29c56a8839ab2b247c",
+    "/main-es2015.19c4b702b091e44890ca.js": "9eb6c9a78fe6c6c97809dd434bb453aacaa64fa9",
+    "/main-es5.19c4b702b091e44890ca.js": "3167d601ef58f6d79e3e91af0c402c6b72cb1005",
+    "/manifest.webmanifest": "70d84ecf53d0b7d2592ba0a85d455348ebe54047",
+    "/polyfills-es2015.2987770fde9daa1d8a2e.js": "cf5cbfa9134716054fb479ab21362146cdf1f2ff",
+    "/polyfills-es5.6696c533341b95a3d617.js": "6bff0c03e05bb347d213ad1b3674045eb892d189",
+    "/runtime-es2015.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/runtime-es5.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/styles.20b1103d4bcdc3dce16b.css": "733d89889d581a2c8c10aea90709f8e06838cf11"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
