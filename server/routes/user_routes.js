@@ -3,11 +3,9 @@ var router = express.Router();
 var firebase = require('firebase');
 var User = require('./../class/UserClass');
 
-
-
 router.post("/createUserAccount", (req, res) => {
-  let currentUser = firebase.auth().currentUser;
-  let data = req.body;
+  let uid = req.body.uid;
+  let data = req.body.data;
 
   let newUser = {
     "name": data.name,
@@ -20,7 +18,6 @@ router.post("/createUserAccount", (req, res) => {
   try{  
     let dbRef = firebase.database().ref();
     let users = dbRef.child('users');
-    let uid = currentUser.uid;
     let identities = dbRef.child('identities');
     users.child(uid).set(newUser);
     identities.child(uid).set('user');
@@ -36,23 +33,20 @@ router.post("/createUserAccount", (req, res) => {
   }
 });
 
+router.post('/addLocationStamp', (req, res) => {
+  let location = req.body.data;
+  let user = req.body.uid;
+  let journey = req.body.journeyId;
 
+  let dbRefObj = firebase.database().ref().child(user).child(journey);
 
-router.post('/signInUser',(req,res)=>{
-  
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    });
-})
-
-
+  dbRefObj.child(location.timeStamp).set(location.coords);
+});
 
 //add journey
 router.post("/addJourney", (req, res) => {
-  let details = req.body; //req.query.details;
+  let uid = req.bodu.uid;
+  let details = req.body.data;
   let journey = {
     "title": details.title,
     "source": details.source,
@@ -67,10 +61,8 @@ router.post("/addJourney", (req, res) => {
   };
 
   try{
-    let currentUser = firebase.auth().currentUser;
     let dbRefObj = firebase.database().ref();
     let journeys = dbRefObj.child('journeys');
-    let uid = currentUser.uid;
     let user_journey = dbRefObj.child('user_journey').child(uid);
 
     let key = journeys.push(journey).key;
@@ -89,12 +81,11 @@ router.post("/addJourney", (req, res) => {
 
 //users journeys
 router.get("/myJourneys", (req, res) => {
-  let currentUser = firebase.auth().currentUser;
+  let uid = req.body.uid;
   let dbRefObj = firebase.database().ref();
   let journeyIDRef = dbRefObj.child('user-journeys').child(uid);
   let journeyRef = dbRefObj.child('journeys');
 
-  let uid = currentUser.uid;
   let ans = [];
 
   journeyIDRef.on('value', snap =>{
@@ -124,12 +115,10 @@ router.get("/myJourneys", (req, res) => {
 
 //the journey about to start with all details
 router.get("/thisJourney", (req, res) => {
-  let currentUser = firebase.auth().currentUser;
-  let dbRefObj = firebase.database().ref().child('journeys').child(journeyId);
-
-  let uid = currentUser.uid;
+  //let uid = req.body.uid;
   let journeyId = req.body.journeyId;
 
+  let dbRefObj = firebase.database().ref().child('journeys').child(journeyId);
   try{
     dbRefObj.on('value', snap => {
       let journey = snap.val();
