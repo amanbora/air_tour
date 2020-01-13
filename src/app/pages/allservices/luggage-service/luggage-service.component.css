@@ -1,16 +1,22 @@
+body{
+    background: linear-gradient(35deg, #ece9e6, #ffffff 120%);
+    overflow: hidden;
+}
 .title{
     font-size: 20px;
     display: flex;
+    display: flex;
+    justify-content: center;
+    
     
 }
 
-.container{
+/* .container{
     display: flex;
     text-align: center;
-}
-.col{
-    margin-right: 1.5em;
-    margin-left: 1em;
+} */
+.mat-tab-label, .mat-tab-label-content{
+    
     font-size: 17px;
     color: rgba(1,57,118,1);
 }

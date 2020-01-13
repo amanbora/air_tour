@@ -1,15 +1,17 @@
 <app-navbar>
-        <div class="title">Our Baggage Services</div>
-        <div class="row container">
-            <div  *ngFor="let luggage of luggages">
-                <div class="col" >
-                    {{luggage}} 
-                </div>
+    <body>
+        <div class="title">Baggage Services</div>
+        <mat-tab-group  color="primary" >
+
+            <mat-tab color="accent" *ngFor="let luggage of luggages" label="{{luggage}}">
                 
-            </div>
-            
-        
-        </div>
+                    {{luggage}}
+                
+            </mat-tab>
+        </mat-tab-group>
+    
+    </body>   
+       
         
 </app-navbar>
 

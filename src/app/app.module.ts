@@ -44,6 +44,9 @@ import { TrackerComponent } from './common/tracker/tracker.component';
 import { AgmCoreModule } from '@agm/core';
 import { LuggageServiceComponent } from './pages/allservices/luggage-service/luggage-service.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TaxiServiceComponent } from './pages/allservices/taxi-service/taxi-service.component';
+import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
+import { CheckinServiceComponent } from './pages/allservices/checkin-service/checkin-service.component';
 
 
 
@@ -63,6 +66,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     LoginComponent,
     TrackerComponent,
     LuggageServiceComponent,
+    TaxiServiceComponent,
+    ChildServiceComponent,
+    CheckinServiceComponent,
   ],
   imports: [
     // for connecting firebase

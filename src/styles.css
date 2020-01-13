@@ -5,3 +5,20 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Open Sans', sans-serif; }
 div, a, p, h1, h2, span, button {font-family: 'Open Sans', sans-serif;}
+
+.mat-tab-label,
+.mat-tab-labels,
+.mat-form-field-appearance-legacy,
+.mat-form-field-can-float,
+.mat-form-field-should-float, 
+.mat-form-field-label:not(.mat-empty):not(.mat-form-field-empty) {
+    font-size: 17px;
+    color: rgba(1,57,118,1);
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .mat-tab-group.mat-primary .mat-ink-bar{
+      background-color: #f9a61a;
+  }

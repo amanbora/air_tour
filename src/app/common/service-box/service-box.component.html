@@ -25,7 +25,7 @@
                             </p>    
                         </div>
 
-                    <button mat-button color="primary">Add Service</button>
+                    <button mat-button color="primary" [routerLink]="['/', service.name | lowercase]" routerLinkActive="router-link-active" >Add Service</button>
                 </div>
             </div>
 
