@@ -4,7 +4,8 @@ var firebase = require("firebase");
 var Official = require('./../class/OfficialClass');
 
 router.post("/createOfficialAccount", (req, res) => {
-  let data = req.body;
+  let uid = req.body.uid;
+  let data = req.body.data;
   var official = {
     "name":data.name,
     "phone": data.phone,
@@ -17,7 +18,6 @@ router.post("/createOfficialAccount", (req, res) => {
   try{
     let dbRef = firebase.database().ref();
     let officials = dbRef.child('officials');
-    let uid = currentUser.uid;
     let identities = dbRef.child('identities');
     officials.child(uid).set(official);
     identities.child(uid).set('official');
@@ -56,11 +56,10 @@ router.get("/numberOfPeopleWithService", (req, res) => {
   });
 });
 
-
 //searching users by a list of parameters
 router.get("/searchUser", (req, res) => {
   let dbRefObj = firebase.database().ref().child('users');
-  let search = req.body;
+  let search = req.body.data;
   let skeys = Object.keys(search);
 
   let ans = [];
@@ -94,7 +93,7 @@ router.get("/searchUser", (req, res) => {
 
 //user-journey tracking
 router.get("/track", (req, res) => {
-  let user = req.body.userId;
+  let user = req.body.uid;
   let journey = req.body.journeyId;
 
   let tracks = firebase.database().ref().child('location_track');
