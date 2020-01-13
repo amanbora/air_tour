@@ -6,7 +6,7 @@
     /* margin-left: 1.3em; */
 }
 .container{
-    display: flex;
+    display: inline;
     margin-top: 1em;
 }
 .example{
@@ -23,8 +23,10 @@ img{
 mat-panel-title{
     font-weight: 100;
     font-size: x-large;
+    color: gold;
 }
 
 .title{
-    border: 2px black dotted;
+    border: 2px black double;
+    background: #283e51;
 }

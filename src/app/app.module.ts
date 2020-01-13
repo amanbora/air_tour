@@ -43,6 +43,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { TrackerComponent } from './common/tracker/tracker.component';
 import { AgmCoreModule } from '@agm/core';
 import { LuggageServiceComponent } from './pages/allservices/luggage-service/luggage-service.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 
@@ -92,7 +93,8 @@ import { LuggageServiceComponent } from './pages/allservices/luggage-service/lug
     NgxMatSelectSearchModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDYzOj_e7CSYYRW36a4K52O1OjR7rvEN9E'
-    })
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
   providers: [AuthGuardService],

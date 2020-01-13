@@ -1,10 +1,12 @@
 .title{
     font-size: 20px;
     display: flex;
+    
 }
 
 .container{
     display: flex;
+    text-align: center;
 }
 .col{
     margin-right: 1.5em;
