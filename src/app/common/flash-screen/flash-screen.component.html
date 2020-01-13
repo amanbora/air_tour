@@ -16,26 +16,41 @@
     
   </mat-grid-list> -->
   {{userId}}
-  <div class="main">
+  <!-- <div class="main">
       
       <div class="container">
             <div class="official">
-                <a routerLink="/">
-                    <button mat-raised-button>
-                        Officials
-                    </button>
-                </a>    
-
+                <a routerLink="/" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-cog"></span> Official </a>    
             </div>
 
             <div class="user">
-                <a routerLink="/register">
-                    <button mat-raised-button>
-                        Login Users
-                    </button>
-                
-                </a>    
+                <a routerLink="/register" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-cog"></span> User </a>
+
 
             </div>
       </div>
+  </div> -->
+<body>
+  <div class="container1">
+    <div class="wrap1">
+      <button routerLink="/register" target="_blank">
+      <div class="first">User</div>
+        <div class="second"></div>
+      </button>
+    </div>
   </div>
+
+  <div class="container2">
+    <div class="wrap1" style="margin-top: 4em">
+      <button routerLink="/register" target="_blank">
+      <div class="first">Official</div>
+        <div class="second"></div>
+      </button>
+    </div>
+  </div>
+
+  <div class="image">
+    <img src="./../../../assets/images/img-service/flight.png">
+  </div>
+  
+</body>

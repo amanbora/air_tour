@@ -1,0 +1,16 @@
+.title{
+    font-size: 20px;
+    display: flex;
+    
+}
+
+.container{
+    display: flex;
+    text-align: center;
+}
+.col{
+    margin-right: 1.5em;
+    margin-left: 1em;
+    font-size: 17px;
+    color: rgba(1,57,118,1);
+}

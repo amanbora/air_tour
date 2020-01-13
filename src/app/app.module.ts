@@ -40,6 +40,10 @@ import { AddNewJourneyComponent } from './pages/add-new-journey/add-new-journey.
 
 import { AuthGuardService} from '../app/services/auth-guard.service';
 import { LoginComponent } from './pages/login/login.component';
+import { TrackerComponent } from './common/tracker/tracker.component';
+import { AgmCoreModule } from '@agm/core';
+import { LuggageServiceComponent } from './pages/allservices/luggage-service/luggage-service.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 
@@ -57,6 +61,8 @@ import { LoginComponent } from './pages/login/login.component';
     ServiceBoxComponent,
     AddNewJourneyComponent,
     LoginComponent,
+    TrackerComponent,
+    LuggageServiceComponent,
   ],
   imports: [
     // for connecting firebase
@@ -85,6 +91,10 @@ import { LoginComponent } from './pages/login/login.component';
     MatGridListModule,
     MatSelectModule ,
     NgxMatSelectSearchModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDYzOj_e7CSYYRW36a4K52O1OjR7rvEN9E'
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
   providers: [AuthGuardService],

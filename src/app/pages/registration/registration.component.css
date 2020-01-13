@@ -3,8 +3,16 @@
     justify-content: center;
     margin: 100px 0px;
   }​ */
+
   .main{
     text-align: center;
+  }
+  mat-card{
+    background: linear-gradient(to right, #C4E0E5, #4CA1AF);
+    padding-top: 1em;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
   .input{
     height: 2em;
@@ -34,7 +42,7 @@
   mat-card-title,
   mat-card-content {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
   }
   .button{
       margin: 1em;
@@ -54,4 +62,23 @@
     margin: 2em;
     border-style: double;
     text-align: center;
+  }
+
+  mat-card-title{
+    /* text-align: center; */
+    /* margin-top: 10em; */
+    width: 100%;
+    height: 41px;
+    /* border: 2px solid black; */
+    /* transition: all 0.3s ease; */
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+
+  img{
+      width: 1em;
+      margin: 5px;
+      height: 1em;
+      border-style: double;
+      border-radius: 29%;
   }

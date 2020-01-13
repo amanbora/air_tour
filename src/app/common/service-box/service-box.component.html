@@ -1,20 +1,38 @@
 <mat-card class="main">
-
      <div *ngFor="let service of serviceList" >
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                   {{service.name}}
-                </mat-panel-title>
-                
-            </mat-expansion-panel-header>
+        <!-- <mat-expansion-panel> -->
+            <!-- <mat-expansion-panel-header> -->
+                <div class="title"><mat-panel-title>
+                    {{service.name}}
+                 </mat-panel-title>
+                </div>
+            <!-- </mat-expansion-panel-header> -->
+           <div class="row container">
+                <div class="col">
+                    <mat-card>
+                        <img src="{{service.imageUrl}}" alt="Photo {{service.name}}">
+                        <p>{{service.desc}}</p>
+                    </mat-card>
+                    
+                </div>
+                <div class="col-md">
+                   
+                    
+                        <div  *ngFor="let option of service.options">
+                            <p>
+                            <span class="glyphicon glyphicon-record"></span>
+                            {{option}}
+                            </p>    
+                        </div>
+
+                    <button mat-button color="primary">Add Service</button>
+                </div>
+            </div>
+
+            
+
            
-        <img mat-card-image src="{{service.imageUrl}}" alt="Photo {{service.name}}">
-                 {{service.desc}}
-        <mat-card>
-            <button mat-button *ngFor="let option of service.options">{{option}}</button>
-        </mat-card>
-        </mat-expansion-panel>
+        <!-- </mat-expansion-panel> -->
         
         <mat-card-actions>
           

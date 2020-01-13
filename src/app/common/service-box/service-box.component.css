@@ -1,8 +1,32 @@
 .main{
   
     top: 50%;
+    /* width: 20em; */
+    text-align: center;
+    /* margin-left: 1.3em; */
+}
+.container{
+    display: inline;
+    margin-top: 1em;
 }
 .example{
     height: 20px;
     width: 50px;
+}
+img{
+    width: 4em;
+}
+.col-md{
+    text-align: initial;
+    margin-left: 1em;
+}
+mat-panel-title{
+    font-weight: 100;
+    font-size: x-large;
+    color: gold;
+}
+
+.title{
+    border: 2px black double;
+    background: #283e51;
 }
