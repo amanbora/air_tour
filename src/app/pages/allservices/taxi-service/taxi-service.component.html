@@ -1,0 +1,16 @@
+<app-navbar>
+    <body>
+        <div class="title">Taxi Services</div>
+        <mat-tab-group  color="primary" >
+
+            <mat-tab color="accent" *ngFor="let taxi of taxis" label="{{taxi}}">
+                
+                    {{taxi}}
+                
+            </mat-tab>
+        </mat-tab-group>
+    
+    </body>   
+       
+        
+</app-navbar>
