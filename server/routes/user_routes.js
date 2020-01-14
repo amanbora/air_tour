@@ -45,7 +45,7 @@ router.post('/addLocationStamp', (req, res) => {
 
 //add journey
 router.post("/addJourney", (req, res) => {
-  let uid = req.bodu.uid;
+  let uid = req.body.uid;
   let details = req.body.data;
   let journey = {
     "title": details.title,
@@ -128,6 +128,34 @@ router.get("/thisJourney", (req, res) => {
   catch(err){
     res.status(300).json({
       "msg": "journey could not be fetched!"
+    });
+  }
+});
+
+router.post("/addService", (req, res) => {
+  let uid = req.body.uid;
+  let services = req.body.services;
+
+  let dbRefObj = firebase.database().ref();
+  let servicesRef = dbRefObj.child('booked-services');
+  let personRef = dbRefObj.child('user-services').child(uid);
+
+  try{
+    services.forEach(service => {
+      let newService = {
+        uid: service
+      }
+      let key = servicesRef.push(newService).key;
+      personRef.push(key);
+    });
+
+    res.status(200).json({
+      "msg": "service added!"
+    });
+  } 
+  catch(err){
+    res.status(300).json({
+      "msg": "service could not be added!"
     });
   }
 });
