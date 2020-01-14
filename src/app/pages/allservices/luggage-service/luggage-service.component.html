@@ -7,7 +7,7 @@
 
                     <img src="{{option.imgUrl}}">
                     <div>{{option.desc}}</div>
-                    <button mat-button color="primary">Add {{option.name}} Service</button>
+                    <button  mat-button color="primary" (click)="func(option.name)" >Add {{option.name}} Service</button>
             </mat-tab>
         </mat-tab-group>
     
