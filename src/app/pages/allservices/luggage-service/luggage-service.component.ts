@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceOptionPrototype } from './../../../models/ServiceOptionDesc';
+import { AddserviceService } from 'src/app/services/addservice.service';
+import {Service} from '../../../models/Service';
+import * as firebase from 'firebase';
+
+
+
 
 @Component({
   selector: 'app-luggage-service',
@@ -19,7 +25,9 @@ export class LuggageServiceComponent implements OnInit {
   //     ServiceOptionPrototype
   // };
 
-  constructor() { }
+  constructor(private addservice: AddserviceService) {
+
+   }
 
   ngOnInit() {
       this.porter.name = this.luggages[0];
@@ -40,5 +48,37 @@ export class LuggageServiceComponent implements OnInit {
 
       this.options = [this.porter, this.baggage, this.lost];
   }
+
+  // public  user =  firebase.auth().currentUser;
+user:any;
+service :any;
+newService:any;
+  
+  func(name:any)
+  {   
+    console.log(name);
+    this.user =  firebase.auth().currentUser.uid;
+
+    this.service = {};
+    this.service['name'] = name;//interpolate
+    this.service['to'] = 'to';//interpolate
+    this.service['from'] = 'from';//interpolate
+    this.service['time'] = 'time';//interpolate
+   
+    this.newService = {};
+    this.newService['uid'] = this.user;
+    this.newService['services'] = [];
+    this.newService['services'].push(this.service);
+
+    this.addservice.add(this.newService)
+    .subscribe(
+      data => { console.log(data);
+
+
+    },error => {console.log(error)})
+  }
+
+
+ 
 
 }
