@@ -1,0 +1,18 @@
+
+
+<div class="carousel-wrapper">
+  <div class="carousel flickity-enabled is-draggable" data-flickity>
+    
+    <div class="carousel-cell" style="height: 21em" *ngFor="let service of serviceList">
+        <h3>{{service.name}}</h3>
+        <a class="more" [routerLink]="['/', service.name | lowercase]" routerLinkActive="router-link-active" >Explore more</a>
+        
+        <div><img src="{{service.imageUrl}}" /></div>
+
+        <div class="price">
+          <span>225<sup>€</sup></span>
+        </div>
+      </div>
+
+  </div>
+</div>
