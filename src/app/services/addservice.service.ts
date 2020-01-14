@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as firebase from 'firebase';
+import {Service} from '../models/Service'
+import { User } from '../models/User';
 
 
 @Injectable({
@@ -8,18 +10,21 @@ import * as firebase from 'firebase';
 })
 export class AddserviceService {
 
-   user = firebase.auth().currentUser;
 
 
-  newUserUrl = 'http://localhost:3201/createUser';
-  addPorterUrl = 'http://localhost:3201/addPorter';
+   url = "http://localhost:3201/user/addService";
 
+  userlocation:any;
 
 
   constructor(public http: HttpClient) { }
 
-
-  addPorter() {
-    return this.http.post<any>(this.addPorterUrl,this.user);
+  add(data:any)
+  { 
+    console.log(data);
+    return this.http.post<any>(this.url ,data);
   }
-}
+  
+                                                                                                                                           
+
+  }
