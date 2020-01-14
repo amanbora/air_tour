@@ -1,1 +1,17 @@
-<p>checkin-service works!</p>
+<app-navbar>
+    <body>
+        <div class="title">Check-In Services</div>
+        <mat-tab-group  color="primary" >
+
+            <mat-tab color="accent" *ngFor="let option of options" label="{{option.name}}">
+
+                <img src="{{option.imgUrl}}">
+                <div>{{option.desc}}</div>
+                <button mat-button color="primary">Add {{option.name}} Service</button>
+        </mat-tab>
+        </mat-tab-group>
+    
+    </body>   
+       
+        
+</app-navbar>

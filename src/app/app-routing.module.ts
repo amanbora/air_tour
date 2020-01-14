@@ -17,6 +17,7 @@ import { LuggageServiceComponent } from './pages/allservices/luggage-service/lug
 import { TaxiServiceComponent } from './pages/allservices/taxi-service/taxi-service.component';
 import { CheckinServiceComponent } from './pages/allservices/checkin-service/checkin-service.component';
 import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
+import { ServiceCardComponent } from './common/service-card/service-card.component';
 
 
 //import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path : 'taxi-service', component: TaxiServiceComponent},
   { path : 'checkin-service', component: CheckinServiceComponent},
   { path : 'child-service', component: ChildServiceComponent},
+  { path : 'service-card', component: ServiceCardComponent}
 
 ];
 

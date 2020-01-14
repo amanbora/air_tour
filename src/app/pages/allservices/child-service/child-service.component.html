@@ -3,11 +3,12 @@
         <div class="title">Child Services</div>
         <mat-tab-group  color="primary" >
 
-            <mat-tab color="accent" *ngFor="let child of childs" label="{{child}}">
-                
-                    {{child}}
-                
-            </mat-tab>
+            <mat-tab color="accent" *ngFor="let option of options" label="{{option.name}}">
+
+                <img src="{{option.imgUrl}}">
+                <div>{{option.desc}}</div>
+                <button mat-button color="primary">Add {{option.name}} Service</button>
+        </mat-tab>
         </mat-tab-group>
     
     </body>   

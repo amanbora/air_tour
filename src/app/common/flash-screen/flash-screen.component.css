@@ -127,8 +127,8 @@ mat-grid-tile {
   
   img{
     width: 3em;
-    border-style: double;
     border-radius: 29%;
+    border: 2px black double;
   }
 
   .image{

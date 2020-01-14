@@ -47,6 +47,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { TaxiServiceComponent } from './pages/allservices/taxi-service/taxi-service.component';
 import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
 import { CheckinServiceComponent } from './pages/allservices/checkin-service/checkin-service.component';
+import { ServiceCardComponent } from './common/service-card/service-card.component';
 
 
 
@@ -69,6 +70,7 @@ import { CheckinServiceComponent } from './pages/allservices/checkin-service/che
     TaxiServiceComponent,
     ChildServiceComponent,
     CheckinServiceComponent,
+    ServiceCardComponent,
   ],
   imports: [
     // for connecting firebase

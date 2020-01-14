@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~bootstrap/dist/css/bootstrap.css";
+@import url("https://fonts.googleapis.com/css?family=Hind:400,700");
+@import url("https://unpkg.com/flickity@2.0/dist/flickity.min.css");
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Open Sans', sans-serif; }
@@ -22,3 +24,13 @@ div, a, p, h1, h2, span, button {font-family: 'Open Sans', sans-serif;}
   .mat-tab-group.mat-primary .mat-ink-bar{
       background-color: #f9a61a;
   }
+
+  .mat-tab-body-content{
+    margin: 2em;
+    text-align: center;
+}
+
+/* .mat-button-wrapper{
+    padding: 5px;
+    border: 1px black double;
+} */
