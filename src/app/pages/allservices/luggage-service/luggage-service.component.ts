@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceOptionPrototype } from './../../../models/ServiceOptionDesc';
+import { AddserviceService } from 'src/app/services/addservice.service';
+
 
 @Component({
   selector: 'app-luggage-service',
@@ -19,7 +21,7 @@ export class LuggageServiceComponent implements OnInit {
   //     ServiceOptionPrototype
   // };
 
-  constructor() { }
+  constructor(private addservice: AddserviceService) { }
 
   ngOnInit() {
       this.porter.name = this.luggages[0];
@@ -40,5 +42,21 @@ export class LuggageServiceComponent implements OnInit {
 
       this.options = [this.porter, this.baggage, this.lost];
   }
+  funct1()
+  {
+    this.addservice.addPorter()
+    .subscribe(
+      data => { console.log(data);
+
+
+    },error => {console.log(error)})
+  }
+
+  funct(i: any)
+  {
+    if(i==0)
+    this.funct1();
+  }
+
 
 }

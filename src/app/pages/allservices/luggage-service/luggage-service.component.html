@@ -3,11 +3,11 @@
         <div class="title">Baggage Services</div>
         <mat-tab-group  color="primary" >
 
-            <mat-tab color="accent" *ngFor="let option of options" label="{{option.name}}">
+            <mat-tab color="accent" *ngFor="let option of options; #i = index" label="{{option.name}}">
 
                     <img src="{{option.imgUrl}}">
                     <div>{{option.desc}}</div>
-                    <button mat-button color="primary">Add {{option.name}} Service</button>
+                    <button  mat-button color="primary" onclick="funct(i)">Add {{option.name}} Service</button>
             </mat-tab>
         </mat-tab-group>
     
