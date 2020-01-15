@@ -33,7 +33,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { OurServiceComponent } from './pages/our-service/our-service.component';
 import { FlashScreenComponent } from './common/flash-screen/flash-screen.component';
 import { OurCenterComponent } from './pages/our-center/our-center.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { MyServicesComponent } from './pages/my-services/my-services.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ServiceBoxComponent } from './common/service-box/service-box.component';
 import { AddNewJourneyComponent } from './pages/add-new-journey/add-new-journey.component';
@@ -57,7 +57,7 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
   declarations: [
     AppComponent,
     routingComponents,
-    ProfileComponent,
+    MyServicesComponent,
     NavbarComponent,
     OurServiceComponent,
     FlashScreenComponent,

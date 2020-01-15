@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceOptionPrototype } from './../../../models/ServiceOptionDesc';
 import { AddserviceService } from 'src/app/services/addservice.service';
-import {Service} from '../../../models/Service';
+import {ServiceProt} from '../../../models/Service';
 import * as firebase from 'firebase';
 
 
@@ -15,7 +15,7 @@ import * as firebase from 'firebase';
 export class LuggageServiceComponent implements OnInit {
 
   luggages = ['Porter', 'Baggage Wrapping', 'Lost Baggage'];
- 
+
   porter = new ServiceOptionPrototype();
   baggage = new ServiceOptionPrototype();
   lost = new ServiceOptionPrototype();
@@ -50,20 +50,23 @@ export class LuggageServiceComponent implements OnInit {
   }
 
   // public  user =  firebase.auth().currentUser;
-user:any;
-service :any;
-newService:any;
+  user: any;
+  service= new ServiceProt();
+  newService: any;
+  to: string;
+  from: string;
   
-  func(name:any)
+  func(name: any)
   {   
     console.log(name);
     this.user =  firebase.auth().currentUser.uid;
 
-    this.service = {};
-    this.service['name'] = name;//interpolate
-    this.service['to'] = 'to';//interpolate
-    this.service['from'] = 'from';//interpolate
-    this.service['time'] = 'time';//interpolate
+    
+    this.service.servicename = name; // interpolate
+    this.service.to = this.to; // interpolate
+    this.service.from = this.from ; // interpolate
+    this.service.date = new Date() ; // interpolate
+    this.service.user = this.user;
    
     this.newService = {};
     this.newService['uid'] = this.user;

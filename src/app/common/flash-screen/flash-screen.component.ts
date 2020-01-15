@@ -11,6 +11,8 @@ export class FlashScreenComponent implements OnInit {
 
   constructor() { }
   ngOnInit() {
-    if(!localStorage.getItem('auth')) localStorage.setItem('auth', 'false');
+    if (!localStorage.getItem('auth')) {
+        localStorage.setItem('auth', 'false');
+    }
   }
 }

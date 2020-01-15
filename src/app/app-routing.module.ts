@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { MyServicesComponent } from './pages/my-services/my-services.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -20,27 +20,27 @@ import { ChildServiceComponent } from './pages/allservices/child-service/child-s
 import { ServiceCardComponent } from './common/service-card/service-card.component';
 
 
-//import { OurServiceComponent } from './pages/our-service/our-service.component';
+// import { OurServiceComponent } from './pages/our-service/our-service.component';
 
 const routes: Routes = [
   { path : '', component: FlashScreenComponent },
   { path : 'home', component: HomeComponent },
   { path : 'user-profile', component: UserProfileComponent, canActivate : [AuthGuardService] },
-  { path : 'editProfile', component: EditProfileComponent },
-  { path : 'login', component: LoginComponent },
+  { path : 'editProfile', component: EditProfileComponent , canActivate : [AuthGuardService]},
+  { path : 'login', component: LoginComponent , canActivate : [AuthGuardService]},
 
   { path : 'register', component: RegistrationComponent},
-  { path : 'profile', component: ProfileComponent },
-  { path : 'our-service', component: OurServiceComponent},
-  { path : 'center', component: OurCenterComponent},
-  { path : 'service-box', component: ServiceBoxComponent},
-  { path : 'add-journey', component: AddNewJourneyComponent},
-  { path : 'tracker', component: TrackerComponent},
-  { path : 'luggage-service', component: LuggageServiceComponent},
-  { path : 'taxi-service', component: TaxiServiceComponent},
-  { path : 'checkin-service', component: CheckinServiceComponent},
-  { path : 'child-service', component: ChildServiceComponent},
-  { path : 'service-card', component: ServiceCardComponent}
+  { path : 'my-services', component: MyServicesComponent , canActivate : [AuthGuardService]},
+  { path : 'our-service', component: OurServiceComponent , canActivate : [AuthGuardService]},
+  { path : 'center', component: OurCenterComponent , canActivate : [AuthGuardService]},
+  { path : 'service-box', component: ServiceBoxComponent , canActivate : [AuthGuardService]},
+  { path : 'add-journey', component: AddNewJourneyComponent , canActivate : [AuthGuardService]},
+  { path : 'tracker', component: TrackerComponent , canActivate : [AuthGuardService]},
+  { path : 'luggage-service', component: LuggageServiceComponent , canActivate : [AuthGuardService]},
+  { path : 'taxi-service', component: TaxiServiceComponent , canActivate : [AuthGuardService]},
+  { path : 'checkin-service', component: CheckinServiceComponent , canActivate : [AuthGuardService]},
+  { path : 'child-service', component: ChildServiceComponent , canActivate : [AuthGuardService]},
+  { path : 'service-card', component: ServiceCardComponent , canActivate : [AuthGuardService]}
 
 ];
 

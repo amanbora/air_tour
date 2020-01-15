@@ -15,7 +15,7 @@ export class AuthGuardService implements CanActivate {
         let flag = localStorage.getItem('auth');
         if(flag == "false"){
             alert('You are not allowed to view this page. You are redirected to login Page');
-            return false;
+            return  this.router.parseUrl('/');
         }
         return true;
     }

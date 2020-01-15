@@ -1,11 +1,11 @@
 import * as firebase from 'firebase';
 
-export class Service {
-    constructor(
-        public name : string,
-        public  user =  firebase.auth().currentUser,
-        public  airport  =  'airport',
-        public   date = new Date()
-    ) {} 
+export class ServiceProt {
+    public servicename: string;
+    public user: string;
+    public to: string;
+    public from: string;
+    public date: Date;
 
+    constructor() {}
 }

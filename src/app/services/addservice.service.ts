@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 // import * as firebase from 'firebase';
-import {Service} from '../models/Service';
+import {ServiceProt} from '../models/Service';
 import { User } from '../models/User';
 import { FirebaseService } from './firebase.service';
 
