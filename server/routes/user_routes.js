@@ -160,4 +160,37 @@ router.post("/addService", (req, res) => {
   }
 });
 
+router.get("/myServices", (req, res) => {
+  let uid = req.body.uid;
+  let dbRefObj = firebase.database().ref();
+  let USRef = dbRefObj.child('user-services').child(uid);
+  let services = dbRefObj.child('booked-services');
+  let ans = [];
+
+  try{
+    USRef.on('value', snap => {
+      let user_services = snap.val();
+      services.on('value', snap => {
+        snap = snap.val();
+        user_services.forEach(service => {
+          ans.push(snap[service]);
+        })
+      });
+    });
+
+    if(ans.length === 0){
+      res.status(200).json({
+        "msg": "No services found!"
+      });
+    }
+    else{
+      res.status(200).json(ans);
+    }
+  } catch(err){
+    res.status(300).json({
+      "msg": "There was some problem fetching your services!"
+    });
+  }
+});
+
 module.exports = router;
