@@ -42,7 +42,7 @@ router.get("/numberOfPeopleWithService", (req, res) => {
   let servicesList = req.body.search;
   services.on('value', snap=> {
     snap = snap.val();
-    if(snap === null){
+    if(snap === {}){
       res.status(300).json({
         "msg": "no services taken !"
       });
@@ -67,7 +67,7 @@ router.get("/searchUser", (req, res) => {
   dbRefObj.on('value', snap => {
     let users = snap.val();
     if(users === null){
-      res.status(300).json({
+      res.status(210).json({
         "msg": "No users present!"
       });
     }
@@ -82,7 +82,7 @@ router.get("/searchUser", (req, res) => {
         if(flag == true) ans.push(user);
       });
       if(ans.length == 0){
-        res.status(300).json({
+        res.status(210).json({
           "msg": "no users matches the description!"
         });
       }
@@ -99,14 +99,20 @@ router.get("/track", (req, res) => {
   let tracks = firebase.database().ref().child('location_track');
   let track = tracks.child(user).child(journey);
 
-  track.on('value', snap => {
-    if(snap.val() === null){
-      res.status(300).json({
-        "msg": "no track record present!"
-      });
-    }
-    res.status(200).json(snap.val());
-  });
+  try{
+    track.on('value', snap => {
+      if(snap.val() === null){
+        res.status(210).json({
+          "msg": "no track record present!"
+        });
+      }
+      res.status(200).json(snap.val());
+    });
+  } catch(err){
+    res.status(300).json({
+      "msg": "There was an error fetching the track record!"
+    })
+  }
 });
 
 module.exports = router;
