@@ -40,7 +40,16 @@ router.post('/addLocationStamp', (req, res) => {
 
   let dbRefObj = firebase.database().ref().child(user).child(journey);
 
-  dbRefObj.child(location.timeStamp).set(location.coords);
+  try{
+    dbRefObj.child(location.timeStamp).set(location.coords);
+    res.status(200).json({
+      "msg": "The location was added successfully!"
+    })
+  } catch(err){
+    res.status(300).json({
+      "msg": "The Location could not be updated!"
+    })
+  }
 });
 
 //add journey
@@ -89,16 +98,18 @@ router.get("/myJourneys", (req, res) => {
   let ans = [];
 
   journeyIDRef.on('value', snap =>{
-    let journetIDs = snap.val();
-    if(ans.length == 0){
-      res.status(200).json({
+    let journeyIDs = snap.val();
+    if(journeyIDs === null){
+      res.status(210).json({
         "msg": "user has no journeys!"
       });
     }
     else{
       journeyRef.on('value', snap => {
         let journeys = snap.val();
-        journeysIDs.forEach(id => {
+        let keys = Object.keys(journeyIDs);
+        keys.forEach(key => {
+          let id = journeyIDs[key];
           ans.push(journeys[id]);
         });
   
@@ -142,10 +153,8 @@ router.post("/addService", (req, res) => {
 
   try{
     services.forEach(service => {
-      let newService = {
-        uid: service
-      }
-      let key = servicesRef.push(newService).key;
+      service["uid"] = uid;
+      let key = servicesRef.push(service).key;
       personRef.push(key);
     });
 
@@ -172,20 +181,20 @@ router.get("/myServices", (req, res) => {
       let user_services = snap.val();
       services.on('value', snap => {
         snap = snap.val();
-        user_services.forEach(service => {
-          ans.push(snap[service]);
-        })
+        let keys = Object.keys(user_services);
+        keys.forEach(key => {
+          ans.push(snap[user_services[key]]);
+        });
+        if(ans.length === 0){
+          res.status(200).json({
+            "msg": "No services found!"
+          });
+        }
+        else{
+          res.status(200).json(ans);
+        }
       });
     });
-
-    if(ans.length === 0){
-      res.status(200).json({
-        "msg": "No services found!"
-      });
-    }
-    else{
-      res.status(200).json(ans);
-    }
   } catch(err){
     res.status(300).json({
       "msg": "There was some problem fetching your services!"
