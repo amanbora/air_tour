@@ -50,6 +50,7 @@ import { CheckinServiceComponent } from './pages/allservices/checkin-service/che
 import { ServiceCardComponent } from './common/service-card/service-card.component';
 import * as firebase from 'firebase';
 import { FirebaseService } from './services/firebase.service';
+import { MachineComponent } from './ml-model/machine/machine.component';
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
 
@@ -73,6 +74,7 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     ChildServiceComponent,
     CheckinServiceComponent,
     ServiceCardComponent,
+    MachineComponent,
   ],
   imports: [
     // for connecting firebase

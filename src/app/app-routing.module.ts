@@ -18,6 +18,7 @@ import { TaxiServiceComponent } from './pages/allservices/taxi-service/taxi-serv
 import { CheckinServiceComponent } from './pages/allservices/checkin-service/checkin-service.component';
 import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
 import { ServiceCardComponent } from './common/service-card/service-card.component';
+import { MachineComponent } from './ml-model/machine/machine.component';
 
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path : 'taxi-service', component: TaxiServiceComponent , canActivate : [AuthGuardService]},
   { path : 'checkin-service', component: CheckinServiceComponent , canActivate : [AuthGuardService]},
   { path : 'child-service', component: ChildServiceComponent , canActivate : [AuthGuardService]},
-  { path : 'service-card', component: ServiceCardComponent , canActivate : [AuthGuardService]}
+  { path : 'service-card', component: ServiceCardComponent , canActivate : [AuthGuardService]},
+  { path : 'machine', component: MachineComponent }
 
 ];
 
