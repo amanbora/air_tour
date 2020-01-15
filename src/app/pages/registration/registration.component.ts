@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { Phone} from '../../models/Phone'
-import { WindowService} from '../../services/window.service'
+import { Phone} from '../../models/Phone';
+import { WindowService} from '../../services/window.service';
 import * as firebase from 'firebase';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   userId: 0;
   showLoginBox = true;
 
-  constructor(private win: WindowService, private firebaseService: FirebaseService,private http: HttpClient, private router: Router ) { }
+  constructor(private win: WindowService, private firebaseService: FirebaseService, private http: HttpClient, private router: Router ) { }
   ngOnInit() {
           this.windowRef = this.win.windowRef;
           this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
 
 // Send Vefification Code
   sendLoginCode() {
-    const appVerifier = this.windowRef.recaptchaVerifier;    
+    const appVerifier = this.windowRef.recaptchaVerifier;
     const num = this.phoneNumber.e164;
     console.log(num);
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
@@ -48,8 +48,21 @@ export class RegistrationComponent implements OnInit {
     this.windowRef.confirmationResult.confirm(this.verificationCode)
     .then(result => {
               localStorage.setItem('auth', 'true');
-              this.router.navigate(['/home']);
+              localStorage.setItem('userId', result.user.uid);
+              console.log('Phone number = ' + this.phoneNumber.e164);
+              console.log('OTP Sent = ' + this.verificationCode);
+              console.log('UserID =' + result.user.uid);
+
+
+              this.user = result.user.uid;
+
+              this.firebaseService.createUser(this.phoneNumber.e164, this.verificationCode, result.user.uid).then(res => {
+             console.log('SUCCESSFULLY DONE , PLEASE CHECK DATABASE !!!');
+             this.router.navigate(['/home']);
+
          })
+        })
+
     .catch( error => console.log(error, 'Incorrect code entered?'));
   }
 }

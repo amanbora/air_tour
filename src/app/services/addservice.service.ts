@@ -12,19 +12,23 @@ export class AddserviceService {
 
 
 
-   url = "http://localhost:3201/user/addService";
+  url = "http://localhost:3201/user";
 
-  userlocation:any;
+  user:any;
 
 
   constructor(public http: HttpClient) { }
 
-  add(data:any)
-  { 
+  add(data: any)
+  {
     console.log(data);
-    return this.http.post<any>(this.url ,data);
+    return this.http.post<any>(this.url + '/addService', data);
   }
-  
-                                                                                                                                           
+
+  getMyServices(){
+    this.user = firebase.auth().currentUser.uid;
+    console.log(this.user);
+    return this.http.get<any>(this.url + '/myService', this.user);
+  }
 
   }
