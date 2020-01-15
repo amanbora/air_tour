@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import * as firebase from 'firebase';
-import {Service} from '../models/Service'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+// import * as firebase from 'firebase';
+import {Service} from '../models/Service';
 import { User } from '../models/User';
+import { FirebaseService } from './firebase.service';
 
 
 @Injectable({
@@ -12,23 +13,29 @@ export class AddserviceService {
 
 
 
-  url = "http://localhost:3201/user";
+  url = 'http://localhost:3201/user';
 
-  user:any;
-
-
-  constructor(public http: HttpClient) { }
-
-  add(data: any)
-  {
-    console.log(data);
-    return this.http.post<any>(this.url + '/addService', data);
+  user: any;
+  config = {
+    params: { userid : '' }
   }
 
-  getMyServices(){
-    this.user = firebase.auth().currentUser.uid;
-    console.log(this.user);
-    return this.http.get<any>(this.url + '/myService', this.user);
+
+  constructor(public http: HttpClient, private fire: FirebaseService) {
+    this.user = fire.currentUser();
+   }
+
+  add(data: any) {
+    console.log(data);
+    return this.http.post<any>(this.url + '/addService', data );
+  }
+
+  getMyServices() {
+
+    this.config.params.userid = this.user;
+    console.log(this.config);
+
+    return this.http.get<any>(this.url + '/myService', this.config);
   }
 
   }

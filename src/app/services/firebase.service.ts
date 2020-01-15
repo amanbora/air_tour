@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/firestore';
 import { AngularFireDatabase } from '@angular/fire/database';
+import * as firebase from 'firebase';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,4 +16,8 @@ export class FirebaseService {
       Current_OTP : value
     });
   }
+
+  currentUser(){
+    return localStorage.getItem('userId');
+    }
 }

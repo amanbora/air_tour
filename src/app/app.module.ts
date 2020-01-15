@@ -48,8 +48,10 @@ import { TaxiServiceComponent } from './pages/allservices/taxi-service/taxi-serv
 import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
 import { CheckinServiceComponent } from './pages/allservices/checkin-service/checkin-service.component';
 import { ServiceCardComponent } from './common/service-card/service-card.component';
+import * as firebase from 'firebase';
+import { FirebaseService } from './services/firebase.service';
 
-
+AngularFireModule.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -105,7 +107,7 @@ import { ServiceCardComponent } from './common/service-card/service-card.compone
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

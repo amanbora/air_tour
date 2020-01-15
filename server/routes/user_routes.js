@@ -126,7 +126,7 @@ router.get("/myJourneys", (req, res) => {
 
 //the journey about to start with all details
 router.get("/thisJourney", (req, res) => {
-  //let uid = req.body.uid;
+  let uid = req.body.uid;
   let journeyId = req.body.journeyId;
 
   let dbRefObj = firebase.database().ref().child('journeys').child(journeyId);
@@ -169,16 +169,25 @@ router.post("/addService", (req, res) => {
   }
 });
 
-router.get("/myServices", (req, res) => {
-  let uid = req.body.uid;
+router.get("/myService", (req, res) => {
+  
+  let uid = req.query.userid;
+  console.log(uid);
   let dbRefObj = firebase.database().ref();
   let USRef = dbRefObj.child('user-services').child(uid);
+  // if(!dbRefObj.child('user-services').exists())
+  //   return res.send('NO USER SERVICES');
   let services = dbRefObj.child('booked-services');
   let ans = [];
 
   try{
     USRef.on('value', snap => {
       let user_services = snap.val();
+      if(user_services === null){
+        res.status(210).json({
+          "msg": "user has no services!"
+        });
+      }
       services.on('value', snap => {
         snap = snap.val();
         let keys = Object.keys(user_services);

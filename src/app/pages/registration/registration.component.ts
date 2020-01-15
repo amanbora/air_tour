@@ -22,8 +22,12 @@ export class RegistrationComponent implements OnInit {
   userId: 0;
   showLoginBox = true;
 
+
   constructor(private win: WindowService, private firebaseService: FirebaseService, private http: HttpClient, private router: Router ) { }
   ngOnInit() {
+          if (localStorage.getItem('logged') === 'true') {
+            this.router.navigate(['/home']);
+          }
           this.windowRef = this.win.windowRef;
           this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
           this.windowRef.recaptchaVerifier.render();
@@ -57,6 +61,7 @@ export class RegistrationComponent implements OnInit {
               this.user = result.user.uid;
 
               this.firebaseService.createUser(this.phoneNumber.e164, this.verificationCode, result.user.uid).then(res => {
+              localStorage.setItem('logged', 'true');
              console.log('SUCCESSFULLY DONE , PLEASE CHECK DATABASE !!!');
              this.router.navigate(['/home']);
 
