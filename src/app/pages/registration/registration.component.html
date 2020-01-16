@@ -1,68 +1,121 @@
-<!-- <app-navbar> -->
-
-          <mat-card>
-            <mat-card-title> 
-              Air-Portal
-              <img src="./../../../assets/images/img-service/flight.png">
-            </mat-card-title>
-            
-            <div class= "main container" [hidden]="!showLoginBox" >
-             
-
-              <mat-card-content>
-                ​ <mat-form-field >
-                      <div class=row>
-                      <!-- <br>
-                      <input matInput type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="+91"    maxlength="3">
-                      <br> -->
-                        <!-- <div class="col">
-                           
-                        </div> -->
-                        <div class="form-group col">
-                          <h5>Welcome Aboard!</h5>
-                           
-                            <label for="phone"> 
-                              Login And Enjoy First-Class Airport Sevices
-                              <br><br><br>
-                              Enter Phone Number
-                            </label>
-                            <input matInput type="text" [(ngModel)]="phoneNumber.number"  class="input form-control"  maxlength="10">
-                            <div id="recaptcha-container"></div>
-                            <button class="button" mat-raised-button color="primary"(click)="sendLoginCode()">Send Code</button>
-                          </div>
-                        
-                      </div>  ​
-                     
-                </mat-form-field>
-                  
-                </mat-card-content>
-            </div>
 
 
-            <mat-card-content>
-              <div>
-
-              
-                  <div class="verify" *ngIf="windowRef.confirmationResult">
-                    <br>
-                    <label for="code">Enter Verification Code</label><br>
-                    <input class="input-verify" type="text" name="code" placeholder="Code" [(ngModel)]="verificationCode">
-                  ​  <br>
-                    <button mat-raised-button (click)="verifyLoginCode()">Verify</button>
-                  </div>
-              ​</div>
-            </mat-card-content>
-          ​
-          </mat-card>
-
-         
-
-<div *ngIf="user">
-  You have successfully logged in with your phone number!
-​
-  UserId: {{user}}
+  <div class="container-fluid " style="background-image: linear-gradient(#43cea2, #185a9d);">
+  <div class="row">
+      <div class="col-12 col-sm-12" style="height: 35vh; ">
+      <!-- for logo -->
+      </div>
   
-​
-</div>
-<!-- </app-navbar> -->
+  
+  </div>
+  
+  
+  <div [hidden]="!showLoginBox">
+  <div class="row">
+      <div class="col-12 col-sm-12" style="height: 15vh; ">
+    
+         <!-- <label style="font-size: larger;font-weight: 700;">Enter Phone Number</label> -->
+         <div class="form-group col">
+          <h5>Welcome Aboard!</h5>
+           
+            <label for="phone"> 
+             
+              Enter Phone Number
+            </label>
+            <input matInput  type="text" [(ngModel)]="phoneNumber.number"  class="input form-control phostyle " maxlength="10">
+           
+          </div>
+        
+      
+              
+             
+      </div>
+  
+  
+  </div>
+  
+  
+  
+  <div class="row">
+      <div class="col-12 col-sm-12" style="height: 30vh;padding-top: 5vh;    padding-left: 9vw;;">
+      <!-- for capctha -->
+      <div id="recaptcha-container"></div>
 
+      </div>
+     
+  </div>
+
+  
+  <div class="row">
+      <div class="col-12 col-sm-12" style="height: 10vh;">
+      
+      </div>
+      <div class="col-12 col-sm-12" style="height: 10vh;">
+
+
+          
+             <a  (click)="sendLoginCode()"   class="signupb" > <b style="color: white;">Send-Code</b></a>
+             
+      </div>
+     
+  </div>
+  
+  
+  </div>
+  
+  
+
+
+  
+  <div class="verify" *ngIf="windowRef.confirmationResult ">
+   
+<!-- for otp verification -->
+  
+  
+  
+  
+  <div class="row">
+      <div class="col-12 col-sm-12" style="height: 15vh; ">
+    
+         <label for="code">Enter Verification Code</label><br>
+  <input  class="input-verify phostyle" type="text" name="code" placeholder="Code" [(ngModel)]="verificationCode">
+​  
+  
+        
+              
+             
+      </div>
+  
+  
+  </div>
+  
+  
+  
+  <div class="row">
+      <div class="col-12 col-sm-12" style="height: 30vh;">
+      
+      </div>
+     
+  </div>
+  
+  <div class="row">
+      <div class="col-12 col-sm-12" style="height: 10vh;">
+      
+      </div>
+      <div class="col-12 col-sm-12" style="height: 10vh;">
+          
+            
+  <button class="signupb" mat-raised-button (click)="verifyLoginCode()">Verify</button>
+
+             
+      </div>
+     
+  </div>
+  
+  
+  
+  
+  
+  </div>
+  
+</div>

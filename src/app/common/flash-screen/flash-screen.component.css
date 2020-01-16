@@ -1,137 +1,42 @@
-mat-grid-tile {
-    background: lightblue;
-    
-    
-  }
-  /* .official,.user {
-    height: 50%;
-    width: 50%;
-    
    
-  }  */
-
-  body {
-    background-color: rgb(129, 216, 231);
-    font-family: 'Ubuntu', sans-serif;
-}
-  .main{
-    width: 70%;
-    height: 70%;
-    top: 50%;
-    left: 50%;
-    margin: 7em auto;
-    border-radius: 1.5em;
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-  }
-  .container{
-    top: 50%;
-    left: 50%;
-    padding: 10%;
-    display: flexbox;
-
-  }
-  .official
-  { 
-    margin-top: 30%;
-    width: 76%;
-    font-size: 14px;
-    letter-spacing: 1px;
-    padding: 10px 20px;
-    outline: none;
-    box-sizing: border-box;
-    margin-top: 70px;
-    margin-bottom: 50px;
-    margin-left: 16%;
-    text-align: center;
-    margin-bottom: 10%;
-    font-family: 'Ubuntu', sans-serif;
-  }
-  .user{
-    margin-top: 30%;
-    width: 76%;
-    font-size: 14px;
-    letter-spacing: 1px;
-    padding: 10px 20px;
-    outline: none;
-    box-sizing: border-box;
-    margin-top: 70px;
-    margin-bottom: 50px;
-    margin-left: 16%;
-    text-align: center;
-    margin-bottom: 10%;
-    font-family: 'Ubuntu', sans-serif;
-  }
- 
-  
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  body {
-    background: linear-gradient(35deg, #DFEFF8, #FFffff 120%);
-    overflow: hidden;
-  }
-/*   
-  .container1,
-  .first,
-  .second {
+  .login {
     position: absolute;
-  }
-   */
-  .container1,.container2 {
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 170px;
-    height: 50px;
-    transition: all 0.3s ease; 
-  }
+     height: 40vh;
+ 
+     
+     background-color: white;
+     bottom: 27vh;
+     margin-left: 15vw;
+     width: 70vw;
+     border-radius: 25px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .div1{
+     height: 60vh;
+     background-image: linear-gradient(#ffffff, #185a9d);
+     display: flex;
+     justify-content: center;
+    }
+    .div2 {
+     height: 40vh;
+      background-color:white;
+       border-radius: 20px 20px 0px 0px; 
+       position: relative;bottom: 29px;
+    }
+ 
+    .logindiv{
+        height: 15vh;
+        display: flex;
+       justify-content: center;
+    }
+ 
+    .imgstyle{
+     border: solid;
+     border-radius: 50%;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .airimg{
+     width: 130px;
   
-  .wrap1 {
-    text-align: center;
-    margin-top: 10em;
-    width: 100%;
-    height: 50px;
-    border: 2px solid black;
-    transition: all 0.3s ease;
-    border-radius: 5px;
-  }
-
-  /* .wrap2 {
-    text-align: center;
-    margin-top: 2em;
-    width: 100%;
-    height: 50px;
-    border: 2px solid black;
-    transition: all 0.3s ease;
-    border-radius: 5px;
-  } */
-  
-  .first,
-  .second {
-    width: 100%;
-    height: 50px;
-    font-family: 'Open Sans', sans-serif;
-    transition: all 0.2s ease-in-out;
-    font-size: 17px;
-    text-transform: uppercase;
-    color: black;
-    letter-spacing: 2px; 
-    text-align: center;
-    vertical-align: middle;
-    line-height: 50px;
-  }
-  
-  .second {
-    opacity: 0;
-  }
-  
-  img{
-    width: 3em;
-    border-radius: 29%;
-    border: 2px black double;
-  }
-
-  .image{
-    text-align: center;
-    margin-top: 2em ;
-  }
+     padding-top: 4vh;
+    }

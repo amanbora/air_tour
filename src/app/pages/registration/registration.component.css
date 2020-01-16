@@ -1,84 +1,17 @@
-/* :host {
-    display: flex;
-    justify-content: center;
-    margin: 100px 0px;
-  }​ */
-
-  .main{
-    text-align: center;
-  }
-  mat-card{
-    background: linear-gradient(to right, #C4E0E5, #4CA1AF);
-    padding-top: 1em;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  .input{
-    height: 2em;
-    font-size: 1.51em;
-    border-style: groove;
-    border-color: black;
-    margin-bottom: 2em;
-
-  }
-  .form-control {
-    display: block;
-    width: 100%;
-    height: calc(2.25rem + 2px);
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+.phostyle{
+  width: 100%;
+  height: 60px;
+  border-radius: 151px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
 }
-  .mat-form-field {
-    width: 100%;
-    min-width: 300px;
-  }
-  mat-card-title,
-  mat-card-content {
-    display: flex;
-    /* justify-content: center; */
-  }
-  .button{
-      margin: 1em;
-  }
-
-  label {
-    display: inline-block;
-    margin-bottom: .5rem;
-  }
-
-  .verify{
-
-    text-align: center;
-  }
-
-  .input-verify{
-    margin: 2em;
-    border-style: double;
-    text-align: center;
-  }
-
-  mat-card-title{
-    /* text-align: center; */
-    /* margin-top: 10em; */
-    width: 100%;
-    height: 41px;
-    /* border: 2px solid black; */
-    /* transition: all 0.3s ease; */
-    border-radius: 5px;
-    margin-bottom: 8px;
-  }
-
-  img{
-      width: 1em;
-      margin: 5px;
-      height: 1em;
-      border-style: double;
-      border-radius: 29%;
-  }
+.signupb{
+  display: block;
+  background-color:rgb(233, 15, 167); 
+  width: 100%;
+  border-radius: 25px; 
+  display: block;
+  text-align: center; 
+  padding: 3vh;
+  font-size: large;
+}

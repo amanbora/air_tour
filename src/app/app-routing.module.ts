@@ -19,6 +19,13 @@ import { CheckinServiceComponent } from './pages/allservices/checkin-service/che
 import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
 import { ServiceCardComponent } from './common/service-card/service-card.component';
 import { MachineComponent } from './ml-model/machine/machine.component';
+import { Carousel3dComponent } from './common/carousel3d/carousel3d.component';
+import { CouponComponent } from './common/coupon/coupon.component';
+import { CabcouponComponent } from './common/cabcoupon/cabcoupon.component';
+import { FlightcouponComponent } from './common/flightcoupon/flightcoupon.component';
+import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
+import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
+import { CarouselComponent } from './common/carousel/carousel.component';
 
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -42,7 +49,19 @@ const routes: Routes = [
   { path : 'checkin-service', component: CheckinServiceComponent , canActivate : [AuthGuardService]},
   { path : 'child-service', component: ChildServiceComponent , canActivate : [AuthGuardService]},
   { path : 'service-card', component: ServiceCardComponent , canActivate : [AuthGuardService]},
-  { path : 'machine', component: MachineComponent }
+  { path : 'machine', component: MachineComponent },
+  { path : 'carousel', component :CarouselComponent},
+  { path : 'carousel3d', component: Carousel3dComponent},
+  { path : 'coupon', component: CouponComponent},
+  { path : 'cabcoupon', component: CabcouponComponent},
+  { path : 'flightcoupon', component: FlightcouponComponent},
+  { path : 'foodcoupon', component: FoodcouponComponent}, 
+   { path : 'hotelcoupon', component: HotelcouponComponent},
+
+
+  
+
+
 
 ];
 

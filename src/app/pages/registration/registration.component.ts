@@ -21,6 +21,7 @@ export class RegistrationComponent implements OnInit {
   items: any;
   userId: 0;
   showLoginBox = true;
+  show = 'false'
 
 
   constructor(private win: WindowService, private firebaseService: FirebaseService, private http: HttpClient, private router: Router ) { }
@@ -43,6 +44,7 @@ export class RegistrationComponent implements OnInit {
             .then(result => {
                 this.windowRef.confirmationResult = result;
                 this.showLoginBox = false;
+                this.show ='true';
             })
             .catch( error => console.log(error) );
   }

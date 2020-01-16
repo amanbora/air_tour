@@ -51,6 +51,15 @@ import { ServiceCardComponent } from './common/service-card/service-card.compone
 import { FirebaseService } from './services/firebase.service';
 import { MachineComponent } from './ml-model/machine/machine.component';
 import { SafePipe } from './../app/pipe/safe.pipe';
+import { DialogComponent } from './pages/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material';
+import { CarouselComponent } from './common/carousel/carousel.component';
+import { Carousel3dComponent } from './common/carousel3d/carousel3d.component';
+import { CouponComponent } from './common/coupon/coupon.component';
+import { CabcouponComponent } from './common/cabcoupon/cabcoupon.component';
+import { FlightcouponComponent } from './common/flightcoupon/flightcoupon.component';
+import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
+import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
 
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
@@ -83,9 +92,11 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    
     // firebase connected
 
     BrowserModule,
+    MatDialogModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -112,6 +123,7 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
    
 
   ],
+  
   providers: [AuthGuardService, FirebaseService],
   bootstrap: [AppComponent]
 })
