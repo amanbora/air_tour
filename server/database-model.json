@@ -36,6 +36,10 @@
 
     "available_drivers": ["driverId"],
 
+    "assigned_porters": [{"porterId" : "journeyId"}],
+
+    "assigned_drivers": [{"driverId" : "journeyId"}],
+
     "ongoing_journeys": ["journeyId"],
 
     "location_track": {

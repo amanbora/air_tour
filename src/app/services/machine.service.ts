@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MachineService {
-  url = 'http://0.0.0.0:8000';
+  url = 'https://0.0.0.0:8000';
 
   constructor(private http: HttpClient) {}
 
