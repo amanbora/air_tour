@@ -170,13 +170,10 @@ router.post("/addService", (req, res) => {
 });
 
 router.get("/myService", (req, res) => {
-  
   let uid = req.query.userid;
-  console.log(uid);
+  //console.log(uid);
   let dbRefObj = firebase.database().ref();
   let USRef = dbRefObj.child('user-services').child(uid);
-  // if(!dbRefObj.child('user-services').exists())
-  //   return res.send('NO USER SERVICES');
   let services = dbRefObj.child('booked-services');
   let ans = [];
 
