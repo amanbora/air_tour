@@ -48,11 +48,17 @@ import { TaxiServiceComponent } from './pages/allservices/taxi-service/taxi-serv
 import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
 import { CheckinServiceComponent } from './pages/allservices/checkin-service/checkin-service.component';
 import { ServiceCardComponent } from './common/service-card/service-card.component';
-import * as firebase from 'firebase';
 import { FirebaseService } from './services/firebase.service';
 import { MachineComponent } from './ml-model/machine/machine.component';
 import { DialogComponent } from './pages/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material';
+import { CarouselComponent } from './common/carousel/carousel.component';
+import { Carousel3dComponent } from './common/carousel3d/carousel3d.component';
+import { CouponComponent } from './common/coupon/coupon.component';
+import { CabcouponComponent } from './common/cabcoupon/cabcoupon.component';
+import { FlightcouponComponent } from './common/flightcoupon/flightcoupon.component';
+import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
+import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
 
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
@@ -79,6 +85,13 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     ServiceCardComponent,
     MachineComponent,
     DialogComponent,
+    CarouselComponent,
+    Carousel3dComponent,
+    CouponComponent,
+    CabcouponComponent,
+    FlightcouponComponent,
+    FoodcouponComponent,
+    HotelcouponComponent,
   ],
   entryComponents: [
     DialogComponent
