@@ -51,6 +51,9 @@ import { ServiceCardComponent } from './common/service-card/service-card.compone
 import * as firebase from 'firebase';
 import { FirebaseService } from './services/firebase.service';
 import { MachineComponent } from './ml-model/machine/machine.component';
+import { DialogComponent } from './pages/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material';
+
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
 
@@ -75,15 +78,21 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     CheckinServiceComponent,
     ServiceCardComponent,
     MachineComponent,
+    DialogComponent,
+  ],
+  entryComponents: [
+    DialogComponent
   ],
   imports: [
     // for connecting firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    
     // firebase connected
 
     BrowserModule,
+    MatDialogModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -109,6 +118,7 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
+  
   providers: [AuthGuardService, FirebaseService],
   bootstrap: [AppComponent]
 })

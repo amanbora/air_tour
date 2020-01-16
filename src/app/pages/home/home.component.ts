@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
+
 
 @Component({
   selector: 'app-home',
@@ -7,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(public dialog: MatDialog) { }
   userId = localStorage.getItem('userId');
 
   ngOnInit() {
+  }
+
+  openDialog() {
+    this.dialog.open(DialogComponent);
   }
 
 }
