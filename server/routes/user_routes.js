@@ -173,8 +173,8 @@ router.get("/myService", (req, res) => {
   let uid = req.query.userid;
   //console.log(uid);
   let dbRefObj = firebase.database().ref();
-  let USRef = dbRefObj.child('user-services').child(uid);
-  let services = dbRefObj.child('booked-services');
+  let USRef = dbRefObj.child('user_services').child(uid);
+  let services = dbRefObj.child('booked_services');
   let ans = [];
 
   try{

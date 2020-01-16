@@ -75,4 +75,5 @@ export const routingComponents =
             RegistrationComponent, OurServiceComponent,
             FlashScreenComponent, OurCenterComponent,
             EditProfileComponent, ChildServiceComponent,
-            CheckinServiceComponent, LuggageServiceComponent ];
+            CheckinServiceComponent, LuggageServiceComponent, CarouselComponent, Carousel3dComponent, CabcouponComponent,
+            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent ];

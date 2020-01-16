@@ -85,8 +85,22 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     CheckinServiceComponent,
     ServiceCardComponent,
     MachineComponent,
-    SafePipe
+    SafePipe,
+    DialogComponent,
+    CarouselComponent,
+    Carousel3dComponent,
+    CabcouponComponent,
+    CouponComponent,
+    FlightcouponComponent,
+    FoodcouponComponent,
+    HotelcouponComponent
+
+
+
+
   ],
+
+  entryComponents : [DialogComponent],
   imports: [
     // for connecting firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -123,6 +137,7 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
    
 
   ],
+  
   
   providers: [AuthGuardService, FirebaseService],
   bootstrap: [AppComponent]
