@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    
+    <div class="row box"   *ngFor="let mydata of data" >
+      <div class="col-2 col-sm-2"> 
+          <div ><b>{{mydata.off}}</b></div>
+            
+      </div>
+  
+  
+  
+  
+       <div class="col-7 col-sm-7">
+           <div> <strong>{{mydata.title}}</strong></div>
+          <div [innerHTML]="mydata.condition"></div>
+        </div>
+  
+  
+  
+  
+  
+         <div class="col-3 col-sm-3">
+             <div> <p> <strong>coupon</strong><br><strong>code</strong> </p></div>
+             <div style="margin-top: 50px;"><small class="con" style="color: #f20000; ">{{mydata.couponcode}}</small></div>
+        </div>
+    </div>
+  
+  </div>
