@@ -33,7 +33,7 @@ export class AddserviceService {
   getMyServices() {
 
     this.config.params.userid = this.user;
-    console.log(this.config);
+    // console.log(this.config);
 
     return this.http.get<any>(this.url + '/myService', this.config);
   }

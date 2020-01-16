@@ -185,22 +185,25 @@ router.get("/myService", (req, res) => {
           "msg": "user has no services!"
         });
       }
-      services.on('value', snap => {
-        snap = snap.val();
-        let keys = Object.keys(user_services);
-        keys.forEach(key => {
-          ans.push(snap[user_services[key]]);
-        });
-        if(ans.length === 0){
-          res.status(200).json({
-            "msg": "No services found!"
+      else{
+        services.on('value', snap => {
+          snap = snap.val();
+          let keys = Object.keys(user_services);
+          keys.forEach(key => {
+            ans.push(snap[user_services[key]]);
           });
-        }
-        else{
-          res.status(200).json(ans);
-        }
-      });
+          if(ans.length === 0){
+             res.status(200).json({
+              "msg": "No services found!"
+            });
+          }
+          else{
+             res.status(200).json(ans);
+          }
+        });
+      }
     });
+      
   } catch(err){
     res.status(300).json({
       "msg": "There was some problem fetching your services!"

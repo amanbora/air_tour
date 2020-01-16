@@ -5,7 +5,7 @@ export class ServiceProt {
     public user: string;
     public to: string;
     public from: string;
-    public date: Date;
+    public date: number;
 
     constructor() {}
 }

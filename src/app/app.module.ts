@@ -48,9 +48,10 @@ import { TaxiServiceComponent } from './pages/allservices/taxi-service/taxi-serv
 import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
 import { CheckinServiceComponent } from './pages/allservices/checkin-service/checkin-service.component';
 import { ServiceCardComponent } from './common/service-card/service-card.component';
-import * as firebase from 'firebase';
 import { FirebaseService } from './services/firebase.service';
 import { MachineComponent } from './ml-model/machine/machine.component';
+import { SafePipe } from './../app/pipe/safe.pipe';
+
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
 
@@ -75,6 +76,7 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     CheckinServiceComponent,
     ServiceCardComponent,
     MachineComponent,
+    SafePipe
   ],
   imports: [
     // for connecting firebase
@@ -106,7 +108,8 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDYzOj_e7CSYYRW36a4K52O1OjR7rvEN9E'
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+   
 
   ],
   providers: [AuthGuardService, FirebaseService],

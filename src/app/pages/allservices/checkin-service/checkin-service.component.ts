@@ -39,7 +39,7 @@ export class CheckinServiceComponent implements OnInit {
     this.service.servicename = name; // interpolate
     this.service.to = this.to; // interpolate
     this.service.from = this.from ; // interpolate
-    this.service.date = new Date() ; // interpolate
+    this.service.date = Date.now() ; // interpolate
     this.service.user = this.user;
   
     this.newService = {};

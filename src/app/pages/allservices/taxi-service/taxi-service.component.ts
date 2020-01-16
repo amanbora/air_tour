@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddserviceService } from './../../../services/addservice.service';
 import { ServiceOptionPrototype } from 'src/app/models/ServiceOptionDesc';
 import { ServiceProt } from 'src/app/models/Service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-taxi-service',
@@ -11,14 +12,23 @@ import { ServiceProt } from 'src/app/models/Service';
 export class TaxiServiceComponent implements OnInit {
   [x: string]: any;
 
-  taxis = ['Ride Now', 'Ride Later'];
+
+
+  constructor( private addservice: AddserviceService, private router: Router) { }
+
+  taxis = ['Ride-Now', 'Ride-Later'];
+
+  select = {'taxis[0]': false, 'taxis[1]': false};
 
   now = new ServiceOptionPrototype();
   later = new ServiceOptionPrototype();
 
   options: ServiceOptionPrototype [];
-
-  constructor( private addservice: AddserviceService) { }
+  airport = '';
+  terminal = '';
+  user: any;
+  service = new ServiceProt();
+  newService: any;
 
   ngOnInit() {
 
@@ -33,34 +43,46 @@ export class TaxiServiceComponent implements OnInit {
       this.later.imgUrl = './../../../../assets/images/img-service/taxi.jpeg';
 
       this.options = [this.now, this.later];
+
+      this.select['Ride-Now'] = false;
+      this.select['Ride-Later'] = false;
+
   }
 
-  user: any;
-  service= new ServiceProt();
-  newService: any;
-  
-  func(name: any)
-  {   
+  add(name: any) {
+    this.select[name] = true;
+  }
+
+  func(name: any) {
     console.log(name);
     this.user =  localStorage.getItem('userId');
 
-    
-    this.service['name'] = name;//interpolate
-    this.service['to'] = 'to';//interpolate
-    this.service['from'] = 'from';//interpolate
-    this.service['time'] = 'time';//interpolate
-   
-    this.newService = {};
-    this.newService['uid'] = this.user;
-    this.newService['services'] = [];
-    this.newService['services'].push(this.service);
 
+
+    this.service.servicename = name; // interpolate
+    this.service.to = 'Aiport -' + this.airport + ' Terminal -' + this.terminal; // interpolate
+    this.service.from = localStorage.getItem('data'); // interpolate
+    this.service.date = Date.now(); // interpolate
+
+    this.newService = {};
+    this.newService.uid = this.user;
+    this.newService.services = [];
+    this.newService.services.push(this.service);
+
+    console.log(this.service.to);
+    window.alert('Taxi Service Added!');
     this.addservice.add(this.newService)
     .subscribe(
-      data => { console.log(data);
+      data => {
+        console.log(data);
 
+        this.router.navigate(['/my-services'])
+        .then(() => {
+          window.location.reload();
+        });
+      },
 
-    },error => {console.log(error)})
+      error => { console.log(error); });
   }
 
 }

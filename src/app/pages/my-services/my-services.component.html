@@ -1,0 +1,32 @@
+<app-navbar>
+    <h1>
+        My Services
+    </h1>
+    <mat-card>
+    <table *ngIf="myservices">
+        <tr>
+            <th>SNo.</th>
+            <th>Service Type</th> 
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+        </tr>
+        
+        <tr *ngFor="let service of myservices; let i=index">
+           <td>{{i+1}}.</td>
+            <td>{{service.servicename}}</td>
+            <td>{{service.from}}</td>
+            <td>{{service.to}}</td>
+            <td>{{service.date}}</td>
+        </tr>
+    </table>
+    </mat-card>
+    
+    
+
+    
+    
+    
+        
+    
+</app-navbar>
