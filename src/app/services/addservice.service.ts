@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 // import * as firebase from 'firebase';
-import {Service} from '../models/Service';
+import {ServiceProt} from '../models/Service';
 import { User } from '../models/User';
 import { FirebaseService } from './firebase.service';
 
@@ -18,7 +18,7 @@ export class AddserviceService {
   user: any;
   config = {
     params: { userid : '' }
-  }
+  };
 
 
   constructor(public http: HttpClient, private fire: FirebaseService) {
@@ -33,7 +33,7 @@ export class AddserviceService {
   getMyServices() {
 
     this.config.params.userid = this.user;
-    console.log(this.config);
+    // console.log(this.config);
 
     return this.http.get<any>(this.url + '/myService', this.config);
   }

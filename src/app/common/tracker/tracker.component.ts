@@ -1,5 +1,5 @@
-import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ɵConsole } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -7,27 +7,51 @@ import { Router } from '@angular/router';
   templateUrl: './tracker.component.html',
   styleUrls: ['./tracker.component.css']
 })
+export class TrackerComponent implements OnInit {
+  res: any;
+  constructor(private http: HttpClient) { }
 
-export class TrackerComponent implements OnInit{
-  
-    constructor(private router : Router){}
-    ngOnInit() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(displayLocationInfo);
-      }
-      
-      function displayLocationInfo(position) {
-        const lng = position.coords.longitude;
-        const lat = position.coords.latitude;
-
-        const url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDYzOj_e7CSYYRW36a4K52O1OjR7rvEN9E&q="+ lat+", "+ lng;
-        console.log(lat,lng,url)
-        this.set
-      }
-      setTimeout(() => {
-        this.ngOnInit();
-     }, 5000);
+  ngOnInit() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
     }
-    
-    
+
+    function showPosition(position) {
+      const latlon = position.coords.latitude + ',' + position.coords.longitude;
+      localStorage.setItem('data', latlon);
+    }
+
+    this.location();
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 10000);
+  }
+
+  location() {
+    const url = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDm9MO7inWEy-_k6hgApQgCToE1D-AldfY&q=' + localStorage.getItem('data') ;
+    // console.log(localStorage.getItem('data')); 
+    return url;
+  }
+
+  search() {
+    const x = ( (document.getElementById('search')) as HTMLInputElement).value;
+    console.log(x);
+
+    // const headers = new HttpHeaders({
+    //       'Content-Type': 'Application/json',
+    // })
+
+    return this.http.get('https://us1.locationiq.com/v1/search.php?key=3199bc66a77470&q=' + x + '&format=json').subscribe((suc) => {
+        this.res = suc;
+        this.res = this.res[0];
+        console.log(this.res);
+        const data = this.res.lat + ',' + this.res.lon;
+        console.log(data);
+        localStorage.setItem('data', data);
+        this.location();
+
+    });
+  }
+
+
 }

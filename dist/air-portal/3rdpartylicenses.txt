@@ -125,6 +125,8 @@ THE SOFTWARE.
 
 @angular/material/core
 
+@angular/material/dialog
+
 @angular/material/expansion
 
 @angular/material/form-field
@@ -138,6 +140,8 @@ THE SOFTWARE.
 @angular/material/select
 
 @angular/material/sidenav
+
+@angular/material/tabs
 
 @angular/material/toolbar
 

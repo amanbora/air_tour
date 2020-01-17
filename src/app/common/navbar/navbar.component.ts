@@ -12,6 +12,8 @@ import { Routes, RouterModule, Router } from '@angular/router';
 })
 export class NavbarComponent {
 
+  auth = localStorage.getItem('auth');
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -26,5 +28,9 @@ export class NavbarComponent {
       .then(() => {
       window.location.reload();
     });
+  }
+
+  login() {
+    this.router.navigate(['']);
   }
 }

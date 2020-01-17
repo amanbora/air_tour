@@ -3,13 +3,48 @@
         <div class="title">Taxi Services</div>
         <mat-tab-group  color="primary" >
 
-            <mat-tab color="accent" *ngFor="let taxi of taxis" label="{{taxi}}">
-                
-                    {{taxi}}
-                
-            </mat-tab>
+            <mat-tab color="accent" *ngFor="let option of options" label="{{option.name}}">
+
+                <img src="{{option.imgUrl}}">
+                <div>{{option.desc}}</div>
+                <button class="option" mat-button color="primary" (click)="add(option.name)">Add {{option.name}} Service</button>
+        </mat-tab>
+
+
+
+        
         </mat-tab-group>
-    
+
+        <mat-card *ngIf="select['Ride-Now']">
+            <div class="input">
+                <input type="text" placeholder="Airport " [(ngModel)]="airport">
+                <input type="text" placeholder="Terminal"[(ngModel)]="terminal">
+                <br>
+                <button class="enter" (click)="func('Ride-Now')">Enter</button>
+            
+            </div>
+            <div class="map" >
+                <app-tracker></app-tracker>
+            </div>
+        </mat-card>
+
+
+        <mat-card *ngIf="select['Ride-Later']">
+            <div class="input">
+                <input type="text" placeholder="Airport " [(ngModel)]="airport">
+                <input type="text" placeholder="Terminal"[(ngModel)]="terminal">
+                <!-- <input type="text" placeholder="Terminal"[(ngModel)]="terminal"> -->
+                
+                <button mat-button color="primary" (click)="func('Ride-Later')">Enter</button>
+            
+            </div>
+            <div class="map" >
+                <app-tracker></app-tracker>
+            </div>
+        </mat-card>
+        
+
+       
     </body>   
        
         

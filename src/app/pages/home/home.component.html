@@ -1,6 +1,21 @@
 
 <app-navbar>
-  <h1>{{userId}}</h1>
 
-  <button [routerLink]="['/addJourney']" routerLinkActive="router-link-active" >Add New Journey</button>
+  <body>
+    <h1>{{userId}}</h1>
+<!-- 
+  <button [routerLink]="['/addJourney']" routerLinkActive="router-link-active" >Add New Journey</button> -->
+  
+  <!-- <div>
+    <button  mat-raised-button
+    (click)="openDialog()">Daaku Mangal dialog </button>
+ </div>
+ -->
+
+ <app-carousel></app-carousel>
+ <app-coupon></app-coupon>
+<app-carousel3d></app-carousel3d>
+
+  </body>
+  
 </app-navbar>

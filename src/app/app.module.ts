@@ -33,7 +33,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { OurServiceComponent } from './pages/our-service/our-service.component';
 import { FlashScreenComponent } from './common/flash-screen/flash-screen.component';
 import { OurCenterComponent } from './pages/our-center/our-center.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { MyServicesComponent } from './pages/my-services/my-services.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ServiceBoxComponent } from './common/service-box/service-box.component';
 import { AddNewJourneyComponent } from './pages/add-new-journey/add-new-journey.component';
@@ -48,8 +48,19 @@ import { TaxiServiceComponent } from './pages/allservices/taxi-service/taxi-serv
 import { ChildServiceComponent } from './pages/allservices/child-service/child-service.component';
 import { CheckinServiceComponent } from './pages/allservices/checkin-service/checkin-service.component';
 import { ServiceCardComponent } from './common/service-card/service-card.component';
-import * as firebase from 'firebase';
 import { FirebaseService } from './services/firebase.service';
+import { MachineComponent } from './ml-model/machine/machine.component';
+import { SafePipe } from './../app/pipe/safe.pipe';
+import { DialogComponent } from './pages/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material';
+import { CarouselComponent } from './common/carousel/carousel.component';
+import { Carousel3dComponent } from './common/carousel3d/carousel3d.component';
+import { CouponComponent } from './common/coupon/coupon.component';
+import { CabcouponComponent } from './common/cabcoupon/cabcoupon.component';
+import { FlightcouponComponent } from './common/flightcoupon/flightcoupon.component';
+import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
+import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
+
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
 
@@ -57,7 +68,7 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
   declarations: [
     AppComponent,
     routingComponents,
-    ProfileComponent,
+    MyServicesComponent,
     NavbarComponent,
     OurServiceComponent,
     FlashScreenComponent,
@@ -73,15 +84,33 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     ChildServiceComponent,
     CheckinServiceComponent,
     ServiceCardComponent,
+    MachineComponent,
+    SafePipe,
+    DialogComponent,
+    CarouselComponent,
+    Carousel3dComponent,
+    CabcouponComponent,
+    CouponComponent,
+    FlightcouponComponent,
+    FoodcouponComponent,
+    HotelcouponComponent
+
+
+
+
   ],
+
+  entryComponents : [DialogComponent],
   imports: [
     // for connecting firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    
     // firebase connected
 
     BrowserModule,
+    MatDialogModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -104,9 +133,12 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDYzOj_e7CSYYRW36a4K52O1OjR7rvEN9E'
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+   
 
   ],
+  
+  
   providers: [AuthGuardService, FirebaseService],
   bootstrap: [AppComponent]
 })

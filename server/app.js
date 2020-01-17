@@ -53,4 +53,4 @@ app.listen(3201, ()=>{
   console.log(`Listening at port 3201`);
 });
 
-app.use('/user',user_routes);
+// app.use('/user',user_routes);

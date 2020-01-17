@@ -1,6 +1,6 @@
 body{
     background: linear-gradient(35deg, #ece9e6, #ffffff 120%);
-    overflow: hidden;
+
 }
 .title{
     font-size: 20px;
@@ -19,4 +19,33 @@ body{
     
     font-size: 17px;
     color: rgba(1,57,118,1);
+}
+
+img{
+    height: 15em;
+}
+
+.option{
+    margin-top: 1em;
+    border: 1px black double;
+}
+
+.map {
+    height: 500px;
+    width: 100%;
+   }
+
+.input{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+input{
+    text-align: center;
+    margin: 2px;
+    border: 1px black solid;
+}
+.enter{
+    border: 1px black solid;
 }
