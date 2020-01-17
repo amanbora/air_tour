@@ -40,3 +40,13 @@
   
      padding-top: 4vh;
     }
+
+    .guest{
+      display: flex;
+    justify-content: center;
+    }
+
+    .guest-button{
+      margin-top: 5em;
+      box-shadow: 2px 4px 10px grey;
+    }

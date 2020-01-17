@@ -18,7 +18,7 @@ export class AddserviceService {
   user: any;
   config = {
     params: { userid : '' }
-  }
+  };
 
 
   constructor(public http: HttpClient, private fire: FirebaseService) {

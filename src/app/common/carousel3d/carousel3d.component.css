@@ -5,6 +5,7 @@ body {
   }
   .main{
     text-align: center;
+
   }
   .container1 {
     margin: 0 auto;
@@ -16,8 +17,7 @@ body {
   .con{
     display: flex;
     justify-content: center;
-
-
+    height: 10em;
 
   }
   
@@ -36,8 +36,8 @@ body {
     display: block;
     position: absolute;
     background: #000;
-    width: 150px;
-    height: 150px;
+    width: 174px;
+    height: 174px;
     line-height: 150px;
     font-size: 5em;
     text-align: center;
@@ -45,7 +45,11 @@ body {
     opacity: 0.95;
     border-radius: 10px;
   }
-  
+
+  img{
+    height: 132px;
+    width: 132px;
+  }
   .a {
     transform: rotateY(0deg) translateZ(250px);
     background:#f8f8f8;
@@ -83,6 +87,7 @@ body {
     font-weight: 800;
   }
   .mainstyle{
-    background-image: linear-gradient(#43CEA2, #185A9D);
+    height: 23em;
+    background-image: linear-gradient(#FFEFBA, #ffffff);
     padding-top: 10vh;
   }
