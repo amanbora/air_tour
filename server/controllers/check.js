@@ -14,14 +14,19 @@ exports.check = async function(){
         } else{
             let keys = Object.keys(services);
             keys.forEach(key => {
-                porterC.assignPorter({
-                    key: key,
-                    service: services[key]
-                });
-                driverC.assignDriver({
-                    key: key,
-                    service: services[key]
-                });
+                let service = services[key];
+                if(service.name === "porter"){
+                    porterC.assignPorter({
+                        key: key,
+                        service: service
+                    });
+                }
+                if(service.name === "driver"){
+                    driverC.assignDriver({
+                        key: key,
+                        service: service
+                    });
+                }
                 notificationC.sendNotification(services[key])
                 console.log(key, " service updated!");
             });
