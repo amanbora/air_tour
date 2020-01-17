@@ -39,7 +39,7 @@ router.get("/numberOfPeopleWithService", (req, res) => {
   
   let ans = {};
   // the request body contains the services in consideration (an array)
-  let servicesList = req.body.search;
+  let servicesList = req.query.search;
   services.on('value', snap=> {
     snap = snap.val();
     if(snap === {}){
@@ -59,7 +59,7 @@ router.get("/numberOfPeopleWithService", (req, res) => {
 //searching users by a list of parameters
 router.get("/searchUser", (req, res) => {
   let dbRefObj = firebase.database().ref().child('users');
-  let search = req.body.data;
+  let search = req.query.data;
   let skeys = Object.keys(search);
 
   let ans = [];
@@ -91,9 +91,9 @@ router.get("/searchUser", (req, res) => {
   });
 });
 
-//user-journey tracking
+//user_journey tracking
 router.get("/track", (req, res) => {
-  let user = req.body.uid;
+  let user = req.query.uid;
   let journey = req.body.journeyId;
 
   let tracks = firebase.database().ref().child('location_track');
