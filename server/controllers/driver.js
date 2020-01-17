@@ -1,68 +1,73 @@
-exports.getDriver = async () => {
-    let driver = {};
-    dbRef = firebase.database().ref().child("available_drivers");
-    try{
-        dbRef.on('value', snap => {
-            let drivers = snap.val();
+var firebase = require("firebase");
 
-            if(drivers === null){
-                // res.status(210).json({
-                //     "msg": "No drivers available!"
-                // });
-            } else{
-                let keys = Object.keys(drivers);
-                let key = keys[Math.floor(Math.random() * keys.length)];
-                driver = drivers[key];
-                driver["uid"] = key;
-
-                // res.status(200).json(driver);
-            }
+async function getDriver(){
+    let driver = null;
+    dbRef = firebase.database().ref();
+    let key = "";
+    
+    function getAvailableDrivers(){
+        let availableDriversRef = dbRef.child("available_drivers");
+        return new Promise((resolve, reject) => {
+            availableDriversRef.once('value', snap => {
+                try{
+                    let availableDrivers = snap.val();
+                    let keys = Object.keys(availableDrivers);
+                    let availableKey = keys[Math.floor(Math.random() * keys.length)];
+                    key = availableDrivers[availableKey];
+                    availableDriversRef.child(availableKey).remove();
+                    resolve(key);
+                } catch(err){
+                    reject(err);
+                }
+            });
         });
+    }
+    
+    function returningDriver(){
+        let driversRef = dbRef.child("porters");
+        return new Promise((resolve, reject) => {
+            driversRef.once('value', snap => {
+                try{
+                    let drivers = snap.val();
+                    driver = drivers[key];
+                    driver["uid"] = key;
+                    resolve(driver);
+                } catch(err){
+                    reject(err);
+                }
+            });
+        });
+    }
+    
+    try{
+        await getAvailableDrivers();
+        await returningDriver();
+        //console.log("exiting");
     } catch(err){
-        // res.status(300).json({
-        //     "msg": "Driver could not be fetched!"
-        // });
+        console.log("Could not get porter!");
     }
     return driver;
 }
 
-exports.assignDriver = async (req, res) => {
-    let serviceObj = req.body.service;
+exports.assignDriver = async (serviceObj) => {
     serviceKey = serviceObj.key;
-    service = serviceObj.value;
+    service = serviceObj.service;
     
-    let response = await getDriver();
+    console.log("yo-----------------------------------");
+    
+    let driver = await getDriver();
 
-    if(response.status === 200){
-        let driver = await response.json();
+    console.log("-----------------------------------yo");
+    
+    if(driver === null) console.log("No driver found!");
+    else{
         service["driver"] = driver;
         try{
             let dbRef = firebase.database().ref();
-            dbRef.child(serviceKey).set(service);
-            let available_drivers = dbRef.child("available_drivers");
-            available_drivers.child(driver.uid).remove();
-            // res.status(200).json({
-            //     "msg": "Service updated!"
-            // });
+            dbRef.child("notified_services").child(serviceKey).set(service);
+            console.log("Driver updated for service ", serviceKey);
         } catch(err){
-            // res.status(300).json({
-            //     "msg": "Service could not be updated!"
-            // });
+            console.log("Driver could not be added for service ", serviceKey);
         }
-    } else{
-        // res.status(300).json({
-        //     "msg": "service could not be updated!"
-        // });
     }
-    next();
-}
-
-exports.releaseDriver = async (req, res) => {
-    let service = req.body.service;
-    if(service.has("driver")){
-        let driver = service.driver.uid;
-        let dbRef = firebase.database().ref().child("available_drivers");
-        dbRef.push(driver);
-    }
-    next();
 }

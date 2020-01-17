@@ -5,11 +5,11 @@ var fireConfig = require("./config/firebase_config");
 var user_routes = require("./routes/user_routes");
 var official_routes = require("./routes/official_routes");
 var working_routes = require("./routes/working_routes");
+var check = require("./controllers/check");
+var firebase = require("firebase");
 
 var app = express();
 var bodyParser = require('body-parser');
-
-
 
 firebase.initializeApp(fireConfig);
 var serviceAccount = require("./serviceAccountKey.json");
@@ -35,6 +35,9 @@ app.use((req, res, next) => {
   next();
 });
 
+setInterval(function(){
+    check.check()
+  }, 10 * 1000);
 
 app.get('/',(req,res)=>{
     res.send("hello");

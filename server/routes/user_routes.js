@@ -72,7 +72,7 @@ router.post("/addJourney", (req, res) => {
   try{
     let dbRefObj = firebase.database().ref();
     let journeys = dbRefObj.child('journeys');
-    let user_journey = dbRefObj.child('user_journey').child(uid);
+    let user_journey = dbRefObj.child('user_journeys').child(uid);
 
     let key = journeys.push(journey).key;
     user_journey.push(key);
@@ -90,9 +90,9 @@ router.post("/addJourney", (req, res) => {
 
 //users journeys
 router.get("/myJourneys", (req, res) => {
-  let uid = req.body.uid;
+  let uid = req.query.uid;
   let dbRefObj = firebase.database().ref();
-  let journeyIDRef = dbRefObj.child('user-journeys').child(uid);
+  let journeyIDRef = dbRefObj.child('user_journeys').child(uid);
   let journeyRef = dbRefObj.child('journeys');
 
   let ans = [];
@@ -126,7 +126,7 @@ router.get("/myJourneys", (req, res) => {
 
 //the journey about to start with all details
 router.get("/thisJourney", (req, res) => {
-  let uid = req.body.uid;
+  let uid = req.query.uid;
   let journeyId = req.body.journeyId;
 
   let dbRefObj = firebase.database().ref().child('journeys').child(journeyId);
@@ -148,8 +148,8 @@ router.post("/addService", (req, res) => {
   let services = req.body.services;
 
   let dbRefObj = firebase.database().ref();
-  let servicesRef = dbRefObj.child('booked-services');
-  let personRef = dbRefObj.child('user-services').child(uid);
+  let servicesRef = dbRefObj.child('booked_services');
+  let personRef = dbRefObj.child('user_services').child(uid);
 
   try{
     services.forEach(service => {
@@ -169,43 +169,71 @@ router.post("/addService", (req, res) => {
   }
 });
 
-router.get("/myService", (req, res) => {
-  let uid = req.query.userid;
-  //console.log(uid);
+router.get("/myServices", (req, res) => {
+  let uid = req.query.uid;
   let dbRefObj = firebase.database().ref();
-  let USRef = dbRefObj.child('user-services').child(uid);
-  let services = dbRefObj.child('booked-services');
+  let USRef = dbRefObj.child('user_services').child(uid);
+  let services = dbRefObj.child('booked_services');
   let ans = [];
 
   try{
     USRef.on('value', snap => {
       let user_services = snap.val();
-      if(user_services === null){
+      if(user_services === {}){
         res.status(210).json({
           "msg": "user has no services!"
         });
-      }
-      services.on('value', snap => {
-        snap = snap.val();
-        let keys = Object.keys(user_services);
-        keys.forEach(key => {
-          ans.push(snap[user_services[key]]);
-        });
-        if(ans.length === 0){
-          res.status(200).json({
-            "msg": "No services found!"
+      } else{
+        services.on('value', snap => {
+          snap = snap.val();
+          let keys = Object.keys(user_services);
+          keys.forEach(key => {
+            ans.push(snap[user_services[key]]);
           });
-        }
-        else{
-          res.status(200).json(ans);
-        }
-      });
+          if(ans.length === 0){
+            res.status(200).json({
+              "msg": "No services found!"
+            });
+          }
+          else{
+            res.status(200).json(ans);
+          }
+        });
+      }
     });
   } catch(err){
     res.status(300).json({
       "msg": "There was some problem fetching your services!"
     });
   }
+});
+
+router.get("/myDriver", (req, res) => {
+  let uid = req.query.uid;
+  let driverRef = firebase.database().ref().child("drivers").child(uid);
+
+  driverRef.on('value', driver => {
+      if(driver === null){
+          res.status(300).json({
+              "msg": "Porter's data is not available!"
+          });
+      }
+      else res.status(200).json(driver);
+  });
+});
+
+router.get("/myPorter", (req, res) => {
+  let uid = req.query.uid;
+  let porterRef = firebase.database().ref().child("porters").child(uid);
+
+  porterRef.on('value', porter => {
+      if(porter === null){
+          res.status(300).json({
+              "msg": "Porter's data is not available!"
+          });
+      }
+      else res.status(200).json(porter);
+  });
 });
 
 module.exports = router;
