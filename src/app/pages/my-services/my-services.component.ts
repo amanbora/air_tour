@@ -16,9 +16,9 @@ export class MyServicesComponent implements OnInit {
       console.log(this.myservices);
       this.addservice.getMyServices().subscribe(
         result => {
-          console.log(result),
-          if(result.status)
-          this.myservices = result as string[];
+          console.log(result, result.status);
+
+          this.myservices = result.body as string[];
         },
          error => console.log(error)
       );

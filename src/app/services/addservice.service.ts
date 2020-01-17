@@ -15,7 +15,7 @@ export class AddserviceService {
 
   url = 'http://localhost:3201/user';
 
-  user: any;
+  user: string;
   config = {
     params: { userid : '' }
   };
@@ -35,7 +35,7 @@ export class AddserviceService {
     this.config.params.userid = this.user;
     // console.log(this.config);
 
-    return this.http.get<any>(this.url + '/myService', this.config);
+    return this.http.get<any>(this.url + '/myServices?uid' + '=' + this.user, {observe: 'response'});
   }
 
   }

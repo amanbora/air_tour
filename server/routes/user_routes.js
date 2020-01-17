@@ -179,7 +179,7 @@ router.get("/myServices", (req, res) => {
   try{
     USRef.on('value', snap => {
       let user_services = snap.val();
-      if(user_services === {}){
+      if(user_services === null){
         res.status(210).json({
           "msg": "user has no services!"
         });
