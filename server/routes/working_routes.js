@@ -7,7 +7,7 @@ router.post("/addPorter", (req, res) => {
     let porter = req.body.porter;
     let dbRef = firebase.database().ref();
     let portersRef = dbRef.child("porters");
-    let availablePorterRef = dbRef.child("avilable_porters");
+    let availablePorterRef = dbRef.child("available_porters");
 
     try{
         let key = portersRef.push(porter).key;
@@ -21,20 +21,6 @@ router.post("/addPorter", (req, res) => {
             "msg": "Porter could not be added!"
         });
     }
-});
-
-router.get("/myPorter", (req, res) => {
-    let uid = req.body.uid;
-    let porterRef = firebase.database().ref().child("porters").child(uid);
-
-    porterRef.on('value', porter => {
-        if(porter === null){
-            res.status(300).json({
-                "msg": "Porter's data is not available!"
-            });
-        }
-        else res.status(200).json(porter);
-    });
 });
 
 //---------------------------DRIVER------------------------------------
@@ -58,18 +44,20 @@ router.post("/addDriver", (req, res) => {
     }
 });
 
-router.get("/myDriver", (req, res) => {
-    let uid = req.body.uid;
-    let driverRef = firebase.database().ref().child("drivers").child(uid);
+//----------------------------AUTOMATED------------------------------
 
-    driverRef.on('value', driver => {
-        if(driver === null){
-            res.status(300).json({
-                "msg": "Porter's data is not available!"
-            });
-        }
-        else res.status(200).json(driver);
-    });
+router.post("/serviceOver", (req, res) => {
+    let service = req.body.service;
+    if(service.has("porter")){
+        let porter = service.porter.uid;
+        let dbRef = firebase.database().ref().child("available_porters");
+        dbRef.push(porter);
+    }
+    if(service.has("driver")){
+        let driver = service.driver.uid;
+        let dbRef = firebase.database().ref().child("available_drivers");
+        dbRef.push(driver);
+    }
 });
 
 module.exports = router;

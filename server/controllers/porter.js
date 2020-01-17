@@ -1,68 +1,73 @@
-exports.getPorter = async () => {
-    let porter = {};
-    dbRef = firebase.database().ref().child("available_porters");
-    try{
-        dbRef.on('value', snap => {
-            let porters = snap.val();
+var firebase = require("firebase");
 
-            if(porters === null){
-                // res.status(210).json({
-                //     "msg": "No porters available!"
-                // });
-            } else{
-                let keys = Object.keys(porters);
-                let key = keys[Math.floor(Math.random() * keys.length)];
-                porter = porters[key];
-                porter["uid"] = key;
-
-                //res.status(200).json(porter);
-            }
+async function getPorter(){
+    let porter = null;
+    let dbRef = firebase.database().ref();
+    let key = "";
+    
+    function getAvailablePorters(){
+        let availablePortersRef = dbRef.child("available_porters");
+        return new Promise((resolve, reject) => {
+            availablePortersRef.once('value', snap => {
+                try{
+                    let availablePorters = snap.val();
+                    let keys = Object.keys(availablePorters);
+                    let availableKey = keys[Math.floor(Math.random() * keys.length)];
+                    key = availablePorters[availableKey];
+                    available_portersRef.child(availableKey).remove();
+                    resolve(key);
+                } catch(err){
+                    reject(err);
+                }
+            });
         });
+    }
+    
+    function returningPorter(){
+        let portersRef = dbRef.child("porters");
+        return new Promise((resolve, reject) => {
+            portersRef.once('value', snap => {
+                try{
+                    let porters = snap.val();
+                    porter = porters[key];
+                    porter["uid"] = key;
+                    resolve(porter);
+                } catch(err){
+                    reject(err);
+                }
+            });
+        });
+    }
+    
+    try{
+        await getAvailablePorters();
+        await returningPorter();
+        //console.log("exiting");
     } catch(err){
-        // res.status(300).json({
-        //     "msg": "Porter could not be fetched!"
-        // });
+        console.log("Could not get porter!");
     }
     return porter;
 }
 
-exports.assignPorter = async (req, res, next) => {
-    let serviceObj = req.body.service;
-    serviceKey = serviceObj.key;
-    service = serviceObj.value;
+exports.assignPorter = async (serviceObj) => {
+    let serviceKey = serviceObj.key;
+    let service = serviceObj.service;
+
+    console.log("yo-----------------------------------");
     
-    let response = await getPorter();
+    let porter = await getPorter();
     
-    if(response.status === 200){
-        let porter = await response.json();
+    console.log("-----------------------------------yo");
+    
+    if(porter === null) console.log("No Porter found!");
+    else{
         service["porter"] = porter;
         try{
             let dbRef = firebase.database().ref();
-            dbRef.child(serviceKey).set(service);
-            let available_porters = dbRef.child("available_porters");
-            available_porters.child(porter.uid).remove();
-            // res.status(200).json({
-            //     "msg": "Service updated!"
-            // });
+            dbRef.child("notified_services").child(serviceKey).set(service);
+            console.log("Porter added for service ", serviceKey);
         } catch(err){
-            // res.status(300).json({
-            //     "msg": "Service could not be updated!"
-            // });
+            console.log("There was an error adding Porter for service ", serviceKey);
         }
-    } else{
-        // res.status(300).json({
-        //     "msg": "service could not be updated!"
-        // });
     }
-    next();
-}
-
-exports.releasePorter = async (req, res) => {
-    let service = req.body.service;
-    if(service.has("porter")){
-        let porter = service.porter.uid;
-        let dbRef = firebase.database().ref().child("available_porters");
-        dbRef.push(porter);
-    }
-    next();
 }

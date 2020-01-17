@@ -10,7 +10,7 @@ var notificationC = require('../controllers/notification');
 //3. sending notifications
 //4. ...
 
-router.post("/check", (req, res, next) => porterC.assignPorter, driverC.assignDriver, notificationC.sendNotification);
+//router.post("/check", (req, res, next) => porterC.assignPorter, driverC.assignDriver, notificationC.sendNotification);
 
 router.post("/journeyEnded", (req, res, next) => porterC.releasePorter, driverC.releaseDriver);
 
