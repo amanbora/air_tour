@@ -15,7 +15,7 @@ router.post("/createUserAccount", (req, res) => {
     "photoURL": data.photoURL
   };
 
-  try{  
+  try{
     let dbRef = firebase.database().ref();
     let users = dbRef.child('users');
     let identities = dbRef.child('identities');
@@ -148,7 +148,8 @@ router.post("/addService", (req, res) => {
   let services = req.body.services;
 
   let dbRefObj = firebase.database().ref();
-  let servicesRef = dbRefObj.child('booked_services');
+  let servicesRef = dbRefObj.child('services');;
+  let bookedServicesRef = dbRefObj.child('booked_services');
   let personRef = dbRefObj.child('user_services').child(uid);
 
   try{
@@ -156,6 +157,7 @@ router.post("/addService", (req, res) => {
       service["uid"] = uid;
       let key = servicesRef.push(service).key;
       personRef.push(key);
+      bookedServicesRef.child(service.time).set(key);
     });
 
     res.status(200).json({
@@ -169,44 +171,28 @@ router.post("/addService", (req, res) => {
   }
 });
 
-router.get("/myServices", (req, res) => {
+router.get("/myServices", async (req, res) => {
   let uid = req.query.uid;
   let dbRefObj = firebase.database().ref();
   let USRef = dbRefObj.child('user_services').child(uid);
-  let services = dbRefObj.child('booked_services');
+  let servicesRef = dbRefObj.child('services');
   let ans = [];
 
   try{
-    USRef.on('value', snap => {
-      let user_services = snap.val();
-      if(user_services === {}){
-        res.status(210).json({
-          "msg": "user has no services!"
-        });
+    let snap = await Promise.all([USRef.once("value"), servicesRef.once("value")]);
 
-      }
-      else{
-        services.on('value', snap => {
-          snap = snap.val();
-          let keys = Object.keys(user_services);
-          keys.forEach(key => {
-            ans.push(snap[user_services[key]]);
-          });
-          if(ans.length === 0){
+    let userServices = snap[0].val();
+    let services = snap[1].val();
 
-             res.status(200).json({
-
-              "msg": "No services found!"
-            });
-          }
-          else{
-             res.status(200).json(ans);
-
-          }
-        });
-      }
-    });
-      
+    if(userServices === null){
+      res.status(210).json({
+        "msg": "user has no services!"
+      });
+    } else{
+      let keys = Object.keys(userServices);
+      keys.forEach(key => { ans.push(services[userServices[key]]); });
+      res.status(200).json(ans);
+    }
   } catch(err){
     res.status(300).json({
       "msg": "There was some problem fetching your services!"
@@ -240,6 +226,52 @@ router.get("/myPorter", (req, res) => {
       }
       else res.status(200).json(porter);
   });
+});
+
+router.post("/onlineCheckin", (req, res) => {
+  let pnr = req.body.pnr;
+  try{
+    firebase.database.ref().child("online_checkIn").child(pnr).set(true);
+    res.status(200).json({
+      "msg": "You were successfully checked in!"
+    });
+  } catch(err){
+    res.status(300).json({
+      "msg": "You could not be checked in"
+    });
+  }
+});
+
+router.get("/check_checkIn", (req, res) => {
+  let pnr = req.query.pnr;
+  let ref = firebase.database.ref().child("online_checkIn").child(pnr);
+
+  ref.on('value', snap => {
+    snap = snap.val();
+    if(snap === true){
+      res.status(200).json({
+        "msg": "You are checked in!"
+      });
+    } else{
+      res.status(300).json({
+        "msg": "You are not checked in!"
+      });
+    }
+  })
+});
+
+router.post("/addChildService", (req, res) => {
+  let child = req.body.child;
+  try{
+    let key = firebase.database().ref().child("childService").push(child).key;
+    res.status(200).json({
+      "msg": "Child service was successfully added!"
+    });
+  } catch(err){
+    res.status(300).json({
+      "msg": "Child service could not be added!"
+    });
+  }
 });
 
 module.exports = router;

@@ -1,73 +1,37 @@
 var firebase = require("firebase");
 
-async function getDriver(){
-    let driver = null;
-    dbRef = firebase.database().ref();
-    let key = "";
-    
-    function getAvailableDrivers(){
-        let availableDriversRef = dbRef.child("available_drivers");
-        return new Promise((resolve, reject) => {
-            availableDriversRef.once('value', snap => {
-                try{
-                    let availableDrivers = snap.val();
-                    let keys = Object.keys(availableDrivers);
-                    let availableKey = keys[Math.floor(Math.random() * keys.length)];
-                    key = availableDrivers[availableKey];
-                    availableDriversRef.child(availableKey).remove();
-                    resolve(key);
-                } catch(err){
-                    reject(err);
-                }
-            });
-        });
-    }
-    
-    function returningDriver(){
-        let driversRef = dbRef.child("porters");
-        return new Promise((resolve, reject) => {
-            driversRef.once('value', snap => {
-                try{
-                    let drivers = snap.val();
-                    driver = drivers[key];
-                    driver["uid"] = key;
-                    resolve(driver);
-                } catch(err){
-                    reject(err);
-                }
-            });
-        });
-    }
-    
-    try{
-        await getAvailableDrivers();
-        await returningDriver();
-        //console.log("exiting");
-    } catch(err){
-        console.log("Could not get porter!");
-    }
-    return driver;
-}
-
 exports.assignDriver = async (serviceObj) => {
-    serviceKey = serviceObj.key;
-    service = serviceObj.service;
-    
-    console.log("yo-----------------------------------");
-    
-    let driver = await getDriver();
+    let dbRef = firebase.database().ref();
 
-    console.log("-----------------------------------yo");
-    
-    if(driver === null) console.log("No driver found!");
-    else{
-        service["driver"] = driver;
-        try{
-            let dbRef = firebase.database().ref();
-            dbRef.child("notified_services").child(serviceKey).set(service);
-            console.log("Driver updated for service ", serviceKey);
-        } catch(err){
-            console.log("Driver could not be added for service ", serviceKey);
+    let serviceKey = serviceObj.key;
+    let service = serviceObj.service;
+
+    let availableDriversRef = dbRef.child("available_drivers");
+    let driversRef = dbRef.child("drivers");
+    let bookedServicesRef = dbRef.child("booked_services");
+    let notifiedServicesRef = dbRef.child("notified_services");
+
+    try{
+        let snap = await Promise.all([availableDriversRef.once('value'), driversRef.once('value'), bookedServicesRef.once('value'), notifiedServicesRef.once('value')]);
+
+        let availableDrivers = snap[0].val();
+        let drivers = snap[1].val();
+        let bookedServices = snap[2].val();
+        let notifiedServices = snap[3].val();
+
+        let keys = Object.keys(availableDrivers);
+        if(keys.length > 0){
+            let aKey = keys[Math.floor(Math.random() * keys.length)];
+            let key = availableDrivers[aKey];
+
+            let driver = drivers[key];
+            service["driver"] = driver;
+
+            notifiedServicesRef.child(serviceKey).set(service);
+            bookedServicesRef.child(serviceKey).remove();
+            availableDriversRef.child(aKey).remove();
         }
+    } catch(err){
+        console.log(err);
     }
 }
