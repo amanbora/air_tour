@@ -13,26 +13,26 @@ export class MachineComponent implements OnInit {
   ngOnInit() {
   }
 
-  funcHello(){
-    this.machine.hello().subscribe(
-      data=> {
+  funcHello() {
+    this.machine.hello().then(
+      data => {
         console.log(data);
       },
-      error=>{
+      error => {
         console.log(error);
       }
-    )};
+    ); }
 
-    funcRecommend(){
-      this.machine.recommend().subscribe(
-        data=> {
+    funcRecommend() {
+      this.machine.recommend().then(
+        data => {
           this.mlData = JSON.stringify(data);
           console.log(data);
         },
-        error=>{
+        error => {
           console.log(error);
         }
-      )};
-  
- 
+      ); }
+
+
 }
