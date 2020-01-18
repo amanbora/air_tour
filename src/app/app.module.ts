@@ -60,6 +60,7 @@ import { CabcouponComponent } from './common/cabcoupon/cabcoupon.component';
 import { FlightcouponComponent } from './common/flightcoupon/flightcoupon.component';
 import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
 import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
+import { OfficialComponent } from './pages/official/official.component';
 
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
@@ -93,7 +94,8 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     CouponComponent,
     FlightcouponComponent,
     FoodcouponComponent,
-    HotelcouponComponent
+    HotelcouponComponent,
+    OfficialComponent
 
 
 

@@ -26,6 +26,7 @@ import { FlightcouponComponent } from './common/flightcoupon/flightcoupon.compon
 import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
 import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
 import { CarouselComponent } from './common/carousel/carousel.component';
+import { OfficialComponent } from './pages/official/official.component';
 
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -56,7 +57,8 @@ const routes: Routes = [
   { path : 'cabcoupon', component: CabcouponComponent},
   { path : 'flightcoupon', component: FlightcouponComponent},
   { path : 'foodcoupon', component: FoodcouponComponent}, 
-   { path : 'hotelcoupon', component: HotelcouponComponent},
+  { path : 'hotelcoupon', component: HotelcouponComponent},
+  { path : 'official', component: OfficialComponent},
 
 
   
@@ -76,4 +78,4 @@ export const routingComponents =
             FlashScreenComponent, OurCenterComponent,
             EditProfileComponent, ChildServiceComponent,
             CheckinServiceComponent, LuggageServiceComponent, CarouselComponent, Carousel3dComponent, CabcouponComponent,
-            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent ];
+            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent ];
