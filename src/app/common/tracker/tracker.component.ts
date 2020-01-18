@@ -12,30 +12,32 @@ export class TrackerComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(showPosition);
-      navigator.geolocation.watchPosition(showPosition2);
-    }
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.watchPosition(showPosition);
+    //   navigator.geolocation.watchPosition(showPosition2);
+    // }
 
-    function showPosition(position) {
-      const latlon = position.coords.latitude + ',' + position.coords.longitude;
-      localStorage.setItem('data', latlon);
-    }
-    function showPosition2(position) {
-      const latlon = 25.5947 + ',' + 85.0908;
-      localStorage.setItem('data2', latlon);
-    }
+    // function showPosition(position) {
+    //   const latlon = position.coords.latitude + ',' + position.coords.longitude;
+    //   localStorage.setItem('data', latlon);
+    // }
+    // function showPosition2(position) {
+    //   const latlon = 25.5947 + ',' + 85.0908;
+    //   localStorage.setItem('data2', latlon);
+    // }
 
 
-    this.location();
-    setTimeout(() => {
-      this.ngOnInit();
-    }, 10000);
+    // this.location();
+    // setTimeout(() => {
+    //   this.ngOnInit();
+    // }, 10000);
+
+    
   }
 
   location() {
     const url = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDm9MO7inWEy-_k6hgApQgCToE1D-AldfY&q=' + localStorage.getItem('data') ;
-    
+    this.location2();
     console.log(localStorage.getItem('data')); 
     return url;
   }
