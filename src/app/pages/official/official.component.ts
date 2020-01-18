@@ -31,7 +31,7 @@ export class OfficialComponent implements OnInit {
   TaxiServiceUserList : NewUser[] = [];
   CheckInServiceUserList: NewUser[] = [];
   ChildServiceUserList : NewUser[]= [];
-  LuggageServiceUserList: NewUser[] = [];
+  PorterServiceUserList: NewUser[] = [];
 
   url = 'http://localhost:3201/official/peopleWithService';
   
@@ -49,7 +49,7 @@ export class OfficialComponent implements OnInit {
 
     this.serviceArray.push({'name' :'Taxi-Service', userList :this.TaxiServiceUserList});
 
-    this.serviceArray.push({'name' :'Luggage-Service', userList :this.LuggageServiceUserList});
+    this.serviceArray.push({'name' :'Porter-Service', userList :this.PorterServiceUserList});
     
     this.serviceArray.push({'name' :'CheckIn-Service', userList :this.CheckInServiceUserList});
 
@@ -83,7 +83,7 @@ export class OfficialComponent implements OnInit {
     this.config.params.name ='LuggageService';
     this.http.get<NewUser[]>(this.url,this.config).subscribe(data =>{
       console.log(data);
-      this.LuggageServiceUserList = data;
+      this.PorterServiceUserList = data;
     },
     error => console.log(error));
   }
