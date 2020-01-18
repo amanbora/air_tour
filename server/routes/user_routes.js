@@ -148,16 +148,18 @@ router.post("/addService", (req, res) => {
   let services = req.body.services;
 
   let dbRefObj = firebase.database().ref();
-  let servicesRef = dbRefObj.child('services');;
+  let servicesRef = dbRefObj.child('services');
+  let servicesForOficial = dbRefObj.child('servicePeopleList');
   let bookedServicesRef = dbRefObj.child('booked_services');
   let personRef = dbRefObj.child('user_services').child(uid);
 
   try{
-    services.forEach(service => {
+      services.forEach(service => {
       service["uid"] = uid;
       let key = servicesRef.push(service).key;
       personRef.push(key);
       bookedServicesRef.child(service.time).set(key);
+      servicesForOficial.push(uid);
     });
 
     res.status(200).json({
@@ -165,6 +167,7 @@ router.post("/addService", (req, res) => {
     });
   } 
   catch(err){
+    console.log(err);
     res.status(300).json({
       "msg": "service could not be added!"
     });

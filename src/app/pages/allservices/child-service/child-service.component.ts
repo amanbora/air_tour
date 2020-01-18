@@ -55,10 +55,10 @@ export class ChildServiceComponent implements OnInit {
     this.user =  localStorage.getItem('userId');
 
 
-    this.service.servicename = name; // interpolate
+    this.service.name = name; // interpolate
     this.service.to = this.to; // interpolate
     this.service.from = this.from ; // interpolate
-    this.service.date = Date.now() ; // interpolate
+    this.service.time = Date.now() ; // interpolate
     this.service.user = this.user;
 
 

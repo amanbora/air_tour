@@ -57,7 +57,7 @@ router.get("/numberOfPeopleWithService", (req, res) => {
 });
 
 router.get("/peopleWithService", (req, res) => {
-  let service = req.query.service;
+  let service = req.query.name;
   let ref = firebase.database().ref().child("servicePeopleList").child(service);
   ref.on('value', snap => {
     snap = snap.val();
