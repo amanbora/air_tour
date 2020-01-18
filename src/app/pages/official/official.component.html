@@ -1,0 +1,41 @@
+<app-navbar>
+    <mat-tab-group  color="primary" >
+
+        <mat-tab color="accent" *ngFor="let service of serviceArray" label="{{service.servicename}} ">
+            
+            <table *ngIf="service.userList">
+
+               
+                <tr>
+                    <th>SNo.</th>
+                    <th>Name</th> 
+                    <th>Phone</th>
+                   
+                </tr>
+                
+                <tr *ngFor="let list of service.userList; let i=index">
+                    <td>{{i+1}}.</td>
+                    <td>{{list.name}}</td>
+                    <td>{{list.phn}}</td>
+                    
+                </tr>
+            </table>
+           
+
+            <!-- <div *ngFor="let userList of service.userList; let i=index"></div>
+            <div>
+              {{userList.name}} -->
+            <!-- </div> -->
+            <!-- {{service.userList[0].name}}
+            {{service.userList[0].phn}} -->
+
+             
+            <!-- <div>{{service.desc}}</div> -->
+            <!-- <button class="option" mat-button color="primary" (click)="add(option.name)">Add {{option.name}} Service</button> -->
+    </mat-tab>
+    
+    
+    
+    
+    </mat-tab-group>
+</app-navbar>
