@@ -18,7 +18,7 @@ export class MachineService {
   }
 
   async perform(method, resource, data= {}) {
-     const url = `http://0.0.0.0:8000${resource}`;
+     const url = `https://09d56334.ngrok.io${resource}`;
 
      const httpOptions = {
       headers: new HttpHeaders({
