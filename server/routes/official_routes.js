@@ -35,23 +35,39 @@ router.post("/createOfficialAccount", (req, res) => {
 
 router.get("/numberOfPeopleWithService", (req, res) => {
   let dbRefObj = firebase.database().ref();
-  let services = dbRefObj.child('services');
+  let services = dbRefObj.child('servicesCount');
   
   let ans = {};
   // the request body contains the services in consideration (an array)
   let servicesList = req.query.search;
   services.on('value', snap=> {
     snap = snap.val();
-    if(snap === {}){
+    if(snap === null){
       res.status(300).json({
         "msg": "no services taken !"
       });
     }
     else{
       servicesList.forEach(service => {
-        ans[service] = snap.service.count;
+        ans[service] = snap[service].count;
       });
       res.status(200).json(ans);
+    }
+  });
+});
+
+router.get("/peopleWithService", (req, res) => {
+  let service = req.query.service;
+  let ref = firebase.database().ref().child("servicePeopleList").child(service);
+  ref.on('value', snap => {
+    snap = snap.val();
+    if(snap === null){
+      res.status(210).json({
+        "msg": "There are no people with service!"
+      });
+    }
+    else{
+      res.status(200).json(snap);
     }
   });
 });
