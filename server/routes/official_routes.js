@@ -57,8 +57,8 @@ router.get("/numberOfPeopleWithService", (req, res) => {
 });
 
 router.get("/peopleWithService", (req, res) => {
-  let service = req.query.name;
-  let ref = firebase.database().ref().child("servicePeopleList").child(service);
+  let officialService = req.query.name;
+  let ref = firebase.database().ref().child("servicePeopleList").child(officialService);
   ref.on('value', snap => {
     snap = snap.val();
     if(snap === null){
@@ -67,14 +67,19 @@ router.get("/peopleWithService", (req, res) => {
       });
     }
     else{
-      res.status(200).json(snap);
+      let keys = Object.keys(snap);
+      let ans = [];
+      keys.forEach(key => {
+        ans.push(snap[key]);
+      });
+      res.status(200).json(ans);
     }
   });
 });
 
 //searching users by a list of parameters
 router.get("/searchUser", (req, res) => {
-  let dbRefObj = firebase.database().ref().child('users');
+  let dbRefObj = firebase.database().ref().child('user');
   let search = req.query.data;
   let skeys = Object.keys(search);
 
@@ -128,6 +133,54 @@ router.get("/track", (req, res) => {
     res.status(300).json({
       "msg": "There was an error fetching the track record!"
     })
+  }
+});
+
+router.get("/ourPorters", (req, res) => {
+  let portersRef = firebase.database().ref().child("porters");
+  try{
+    portersRef.on('value', snap => {
+      let porters = snap.val();
+      if(porters === null){
+        res.status(210).json({
+          "msg": "No porters recruited!"
+        });
+      } else{
+        let ans = [];
+        let keys = Object.keys(porters);
+        keys.forEach(key => {
+          ans.push(porters[key]);
+        });
+      }
+    });
+  } catch(err){
+    res.status(300).json({
+      "msg": "There was some error fetching porters!"
+    });
+  }
+});
+
+router.get("/ourDrivers", (req, res) => {
+  let driversRef = firebase.database().ref().child("drivers");
+  try{
+    driversRef.on('value', snap => {
+      let drivers = snap.val();
+      if(drivers === null){
+        res.status(210).json({
+          "msg": "No drivers recruited!"
+        });
+      } else{
+        let ans = [];
+        let keys = Object.keys(drivers);
+        keys.forEach(key => {
+          ans.push(drivers[key]);
+        });
+      }
+    });
+  } catch(err){
+    res.status(300).json({
+      "msg": "There was some error fetching drivers!"
+    });
   }
 });
 
