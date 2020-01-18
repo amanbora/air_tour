@@ -29,6 +29,7 @@ import { CarouselComponent } from './common/carousel/carousel.component';
 import { OfficialComponent } from './pages/official/official.component';
 import { MainOfficialComponent } from './pages/main-official/main-official.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { MapComponent } from './common/map/map.component';
 
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path : 'child-service', component: ChildServiceComponent , canActivate : [AuthGuardService]},
   { path : 'service-card', component: ServiceCardComponent , canActivate : [AuthGuardService]},
   { path : 'machine', component: MachineComponent },
+  { path : 'map', component: MapComponent},
   { path : 'carousel', component :CarouselComponent},
   { path : 'carousel3d', component: Carousel3dComponent},
   { path : 'coupon', component: CouponComponent},
@@ -83,4 +85,5 @@ export const routingComponents =
             FlashScreenComponent, OurCenterComponent,
             EditProfileComponent, ChildServiceComponent,
             CheckinServiceComponent, LuggageServiceComponent, CarouselComponent, Carousel3dComponent, CabcouponComponent,
-            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent,MainOfficialComponent ];
+            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent,MainOfficialComponent,
+            MapComponent ];
