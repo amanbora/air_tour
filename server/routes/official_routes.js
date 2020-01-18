@@ -151,6 +151,7 @@ router.get("/ourPorters", (req, res) => {
         keys.forEach(key => {
           ans.push(porters[key]);
         });
+        res.status(200).json(ans);
       }
     });
   } catch(err){
@@ -174,7 +175,9 @@ router.get("/ourDrivers", (req, res) => {
         let keys = Object.keys(drivers);
         keys.forEach(key => {
           ans.push(drivers[key]);
+
         });
+        res.status(200).json(ans);
       }
     });
   } catch(err){

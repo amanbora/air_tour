@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {NewUser} from '../../models/NewUser';
 import { HttpClient } from '@angular/common/http';
 
+interface NewArray{
+  name : string,
+  phone : number;
+}
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
@@ -19,20 +23,19 @@ export class EmployeesComponent implements OnInit {
     this.getdrivers();
     this.getPorters();
   }
+  
 
-  drivers : NewUser[] =[];
-  porters : NewUser[] =[];
+  drivers :  NewArray[] = [];
+  porters :  NewArray[] = [];
 
-  config = {
-    params: { name : '' }
-  };
 
   getdrivers()
   { 
     
-    this.http.get<NewUser[]>(this.url+'ourDrivers').subscribe(data =>{
+    this.http.get<NewArray[]>(this.url+'ourDrivers').subscribe(data =>{
       console.log(data);
-      this.drivers = data as NewUser[];
+      this.drivers = data as NewArray[];
+      console.log(this.drivers);
     },
     error => console.log(error)
     );
@@ -42,9 +45,10 @@ export class EmployeesComponent implements OnInit {
   getPorters()
   { 
     
-    this.http.get<NewUser[]>(this.url+'ourPorters').subscribe(data =>{
+    this.http.get<NewArray[]>(this.url+'ourPorters').subscribe(data =>{
       console.log(data);
-      this.porters = data as NewUser[];
+      this.porters = data as NewArray[];
+      console.log(this.porters);
     },
     error => console.log(error)
     );
