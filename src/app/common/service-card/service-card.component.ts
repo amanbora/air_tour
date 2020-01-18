@@ -17,17 +17,7 @@ export class ServiceCardComponent implements OnInit {
   serviceList: Service[] = [] ;
   mySubscription: any;
 
-  constructor(private router: Router) { 
-    this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
-    };
-    this.mySubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        // Trick the Router into believing it's last link wasn't previously loaded
-        this.router.navigated = false;
-      }
-    });
-  }
+  constructor() { }
 
   ngOnInit() {
 
@@ -52,17 +42,11 @@ export class ServiceCardComponent implements OnInit {
         this.serviceluggage.options.push('Add Extra Luggage', 'Porter Service', 'Fragile');
 
         this.serviceList.push(this.servicetaxi, this.servicechild, this.servicecheckIn, this.serviceluggage);
-        
-
-
-        
+      
         console.log(this.serviceList);
   }
-  ngOnDestroy() {
-    if (this.mySubscription) {
-      this.mySubscription.unsubscribe();
-    }
+ 
   }
 
 
-}
+

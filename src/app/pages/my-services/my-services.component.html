@@ -3,23 +3,35 @@
         My Services
     </h1>
     <mat-card>
-    <table *ngIf="myservices">
+    <table class="table" *ngIf="status == 200 ">
+        <thead>
         <tr>
-            <th>SNo.</th>
-            <th>Service Type</th> 
-            <th>From</th>
-            <th>To</th>
-            <th>Date</th>
+            <th scope="col">SNo.</th>
+            <th scope="col">Service Type</th> 
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Date</th>
         </tr>
-        
+    </thead>
+        <tbody>
         <tr *ngFor="let service of myservices; let i=index">
-           <td>{{i+1}}.</td>
+           <th scope="row">{{i+1}}.</th>
             <td>{{service.servicename}}</td>
             <td>{{service.from}}</td>
             <td>{{service.to}}</td>
             <td>{{service.date}}</td>
         </tr>
+    </tbody>
     </table>
+
+    <div *ngIf="status == 210">
+        No Services Enrolled!
+    </div>
+
+    <div *ngIf="status == 300">
+        Error in getting your Services!
+    </div>
+    
     </mat-card>
     
     

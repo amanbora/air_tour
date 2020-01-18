@@ -179,6 +179,7 @@ router.get("/myServices", async (req, res) => {
   let ans = [];
 
   try{
+
     let snap = await Promise.all([USRef.once("value"), servicesRef.once("value")]);
 
     let userServices = snap[0].val();

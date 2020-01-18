@@ -10,14 +10,16 @@ export class MyServicesComponent implements OnInit {
 
   constructor(private addservice: AddserviceService) { }
   // my = [ { "from": "from", "name": "Lost Baggage","time": "time","to": "to","uid": "1234"}   ];
-  myservices: string[];
+  myservices: string[] =[''];
+  status = 0;
   objectKeys = Object.keys;
   ngOnInit() {
       console.log(this.myservices);
       this.addservice.getMyServices().subscribe(
         result => {
-          console.log(result),
-          this.myservices = result as string[];
+          console.log(result, result.status);
+          this.status = result.status;
+          this.myservices = result.body as string[];
         },
          error => console.log(error)
       );
