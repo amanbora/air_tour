@@ -57,8 +57,8 @@ router.get("/numberOfPeopleWithService", (req, res) => {
 });
 
 router.get("/peopleWithService", (req, res) => {
-  let service = req.query.name;
-  let ref = firebase.database().ref().child("servicePeopleList").child(service);
+  let officialService = req.query.name;
+  let ref = firebase.database().ref().child("servicePeopleList").child(officialService);
   ref.on('value', snap => {
     snap = snap.val();
     if(snap === null){
@@ -67,14 +67,19 @@ router.get("/peopleWithService", (req, res) => {
       });
     }
     else{
-      res.status(200).json(snap);
+      let keys = Object.keys(snap);
+      let ans = [];
+      keys.forEach(key => {
+        ans.push(snap[key]);
+      });
+      res.status(200).json(ans);
     }
   });
 });
 
 //searching users by a list of parameters
 router.get("/searchUser", (req, res) => {
-  let dbRefObj = firebase.database().ref().child('users');
+  let dbRefObj = firebase.database().ref().child('user');
   let search = req.query.data;
   let skeys = Object.keys(search);
 

@@ -17,9 +17,9 @@ router.post("/createUserAccount", (req, res) => {
 
   try{
     let dbRef = firebase.database().ref();
-    let users = dbRef.child('users');
+    let user = dbRef.child('user');
     let identities = dbRef.child('identities');
-    users.child(uid).set(newUser);
+    user.child(uid).set(newUser);
     identities.child(uid).set('user');
 
     res.status(200).json({
@@ -143,31 +143,38 @@ router.get("/thisJourney", (req, res) => {
   }
 });
 
-router.post("/addService", (req, res) => {
+router.post("/addService", async (req, res) => {
   let uid = req.body.uid;
   let services = req.body.services;
 
   let dbRefObj = firebase.database().ref();
   let servicesRef = dbRefObj.child('services');
-  let servicesForOficial = dbRefObj.child('servicePeopleList');
+  let servicesForOfficial = dbRefObj.child('servicePeopleList');
   let bookedServicesRef = dbRefObj.child('booked_services');
   let personRef = dbRefObj.child('user_services').child(uid);
 
   try{
-      services.forEach(service => {
+    services.forEach(async service => {
       service["uid"] = uid;
       let key = servicesRef.push(service).key;
       personRef.push(key);
       bookedServicesRef.child(service.time).set(key);
-      servicesForOficial.push(uid);
+      
+      let user = await dbRefObj.child('user').child(uid).once('value');
+      user = user.val();
+      let phone = user.Phone_number;
+      let SFOObject = {
+        "uid": uid,
+        "phone": phone
+      };
+      servicesForOfficial.child(service.name).push(SFOObject);
+      
+      res.status(200).json({
+        "msg": "service added!"
+      });
     });
-
-    res.status(200).json({
-      "msg": "service added!"
-    });
-  } 
-  catch(err){
-    console.log(err);
+  } catch(err){
+    //console.log(err);
     res.status(300).json({
       "msg": "service could not be added!"
     });
@@ -182,8 +189,7 @@ router.get("/myServices", async (req, res) => {
   let ans = [];
 
   try{
-
-    let snap = await Promise.all([USRef.once("value"), servicesRef.once("value")]);
+    let snap = await Promise.all([USRef.once('value'), servicesRef.once('value')]);
 
     let userServices = snap[0].val();
     let services = snap[1].val();
