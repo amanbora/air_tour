@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceOptionPrototype } from 'src/app/models/ServiceOptionDesc';
 import { AddserviceService } from 'src/app/services/addservice.service';
 import { ServiceProt } from 'src/app/models/Service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkin-service',
@@ -15,7 +16,7 @@ export class CheckinServiceComponent implements OnInit {
   web = new ServiceOptionPrototype();
   options: ServiceOptionPrototype [];
 
-  constructor(private addservice: AddserviceService) { }
+  constructor(private addservice: AddserviceService, private router: Router) { }
 
   ngOnInit() {
       this.web.name = this.check[0];
@@ -50,8 +51,10 @@ export class CheckinServiceComponent implements OnInit {
     this.addservice.add(this.newService)
     .subscribe(
       data => { console.log(data);
-
-
+                this.router.navigate(['/my-services'])
+      .then(() => {
+        window.location.reload();
+      });
     },error => {console.log(error)})
   }
 

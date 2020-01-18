@@ -4,6 +4,7 @@ import { AddserviceService } from 'src/app/services/addservice.service';
 import { ServiceProt } from './../../../models/Service';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 
 export interface DialogData {
   animal: string;
@@ -17,16 +18,22 @@ export interface DialogData {
 })
 export class ChildServiceComponent implements OnInit {
 
+  
+  // date: Date;
+
+  constructor(private addservice: AddserviceService, private router: Router) { }
+
   childs = ['Child Travelling Alone', 'Child On-Board'];
 
   alone = new ServiceOptionPrototype();
   onboard = new ServiceOptionPrototype();
   options: ServiceOptionPrototype [];
 
-  
-  // date: Date;
-
-  constructor(private addservice: AddserviceService) { }
+  user: any;
+  service= new ServiceProt();
+  newService: any;
+  to: string;
+  from: string;
 
   ngOnInit() {
       this.alone.name = this.childs[0];
@@ -42,12 +49,6 @@ export class ChildServiceComponent implements OnInit {
       this.options = [this.alone, this.onboard];
   }
 
-  user: any;
-  service= new ServiceProt();
-  newService: any;
-  to: string;
-  from: string;
-
   func(name: any)
   {   
     console.log(name);
@@ -60,7 +61,7 @@ export class ChildServiceComponent implements OnInit {
     this.service.date = Date.now() ; // interpolate
     this.service.user = this.user;
 
-   
+
     this.newService = {};
     this.newService['uid'] = this.user;
     this.newService['services'] = [];
@@ -69,9 +70,14 @@ export class ChildServiceComponent implements OnInit {
     this.addservice.add(this.newService)
     .subscribe(
       data => { console.log(data);
+                this.router.navigate(['/my-services'])
+      .then(() => {
+        window.location.reload();
+      });
+    }, error => {console.log(error)
 
-
-    }, error => {console.log(error)})
+    }
+    );
   }
 
 }
