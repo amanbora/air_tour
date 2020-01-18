@@ -270,18 +270,4 @@ router.get("/check_checkIn", (req, res) => {
   })
 });
 
-router.post("/addChildService", (req, res) => {
-  let child = req.body.child;
-  try{
-    let key = firebase.database().ref().child("childService").push(child).key;
-    res.status(200).json({
-      "msg": "Child service was successfully added!"
-    });
-  } catch(err){
-    res.status(300).json({
-      "msg": "Child service could not be added!"
-    });
-  }
-});
-
 module.exports = router;

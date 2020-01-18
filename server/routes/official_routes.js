@@ -136,4 +136,52 @@ router.get("/track", (req, res) => {
   }
 });
 
+router.get("/ourPorters", (req, res) => {
+  let portersRef = firebase.database().ref().child("porters");
+  try{
+    portersRef.on('value', snap => {
+      let porters = snap.val();
+      if(porters === null){
+        res.status(210).json({
+          "msg": "No porters recruited!"
+        });
+      } else{
+        let ans = [];
+        let keys = Object.keys(porters);
+        keys.forEach(key => {
+          ans.push(porters[key]);
+        });
+      }
+    });
+  } catch(err){
+    res.status(300).json({
+      "msg": "There was some error fetching porters!"
+    });
+  }
+});
+
+router.get("/ourDrivers", (req, res) => {
+  let driversRef = firebase.database().ref().child("drivers");
+  try{
+    driversRef.on('value', snap => {
+      let drivers = snap.val();
+      if(drivers === null){
+        res.status(210).json({
+          "msg": "No drivers recruited!"
+        });
+      } else{
+        let ans = [];
+        let keys = Object.keys(drivers);
+        keys.forEach(key => {
+          ans.push(drivers[key]);
+        });
+      }
+    });
+  } catch(err){
+    res.status(300).json({
+      "msg": "There was some error fetching drivers!"
+    });
+  }
+});
+
 module.exports = router;
