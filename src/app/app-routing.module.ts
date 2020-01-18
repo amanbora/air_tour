@@ -27,6 +27,7 @@ import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
 import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
 import { CarouselComponent } from './common/carousel/carousel.component';
 import { OfficialComponent } from './pages/official/official.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -37,7 +38,7 @@ const routes: Routes = [
   { path : 'user-profile', component: UserProfileComponent, canActivate : [AuthGuardService] },
   { path : 'editProfile', component: EditProfileComponent , canActivate : [AuthGuardService]},
   { path : 'login', component: LoginComponent , canActivate : [AuthGuardService]},
-
+  { path : 'about-us', component: AboutUsComponent },
   { path : 'register', component: RegistrationComponent},
   { path : 'my-services', component: MyServicesComponent },
   { path : 'our-service', component: OurServiceComponent , canActivate : [AuthGuardService]},
@@ -54,11 +55,11 @@ const routes: Routes = [
   { path : 'carousel', component :CarouselComponent},
   { path : 'carousel3d', component: Carousel3dComponent},
   { path : 'coupon', component: CouponComponent},
-  { path : 'cabcoupon', component: CabcouponComponent},
-  { path : 'flightcoupon', component: FlightcouponComponent},
-  { path : 'foodcoupon', component: FoodcouponComponent}, 
-  { path : 'hotelcoupon', component: HotelcouponComponent},
-  { path : 'official', component: OfficialComponent},
+  { path : 'cabcoupon', component: CabcouponComponent , canActivate : [AuthGuardService]},
+  { path : 'flightcoupon', component: FlightcouponComponent , canActivate : [AuthGuardService]},
+  { path : 'foodcoupon', component: FoodcouponComponent , canActivate : [AuthGuardService]}, 
+  { path : 'hotelcoupon', component: HotelcouponComponent , canActivate : [AuthGuardService]},
+  { path : 'official', component: OfficialComponent },
 
 
   
