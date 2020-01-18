@@ -1,0 +1,51 @@
+<app-navbar>
+   
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+           <mat-panel-title>
+              Driver List
+           </mat-panel-title>
+           <mat-panel-description>
+                we are here
+           </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngFor="let driver of drivers; let i=index ">
+            {{driver.name}}  {{driver.phn}}
+        </div>
+     
+    </mat-expansion-panel>
+            <!-- <table *ngIf="driver">
+
+               
+                <tr>
+                    <th>SNo.</th>
+                    <th>Name</th> 
+                    <th>Phone</th>
+                   
+                </tr>
+                
+                <tr *ngFor="let list of driver; let i=index">
+                    <td>{{i+1}}.</td>
+                    <td>{{list.name}}</td>
+                    <td>{{list.phn}}</td>
+                    
+                </tr>
+            </table>
+            -->
+
+          
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                   <mat-panel-title>
+                      Porter List
+                   </mat-panel-title>
+                   <mat-panel-description>
+                        we are here
+                   </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div *ngFor="let porter of porters; let i=index ">
+                    {{porter.name}}  {{porter.phn}}
+                </div>
+             
+            </mat-expansion-panel>
+</app-navbar>
