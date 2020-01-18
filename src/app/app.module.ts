@@ -62,6 +62,8 @@ import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
 import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
 import { OfficialComponent } from './pages/official/official.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { MainOfficialComponent } from './pages/main-official/main-official.component';
+import { EmployeesComponent } from './pages/employees/employees.component';
 
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
@@ -97,7 +99,9 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     FoodcouponComponent,
     HotelcouponComponent,
     OfficialComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    MainOfficialComponent,
+    EmployeesComponent
 
 
 

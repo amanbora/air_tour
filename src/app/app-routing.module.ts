@@ -27,6 +27,7 @@ import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
 import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
 import { CarouselComponent } from './common/carousel/carousel.component';
 import { OfficialComponent } from './pages/official/official.component';
+import { MainOfficialComponent } from './pages/main-official/main-official.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 
@@ -55,11 +56,14 @@ const routes: Routes = [
   { path : 'carousel', component :CarouselComponent},
   { path : 'carousel3d', component: Carousel3dComponent},
   { path : 'coupon', component: CouponComponent},
-  { path : 'cabcoupon', component: CabcouponComponent , canActivate : [AuthGuardService]},
-  { path : 'flightcoupon', component: FlightcouponComponent , canActivate : [AuthGuardService]},
-  { path : 'foodcoupon', component: FoodcouponComponent , canActivate : [AuthGuardService]}, 
-  { path : 'hotelcoupon', component: HotelcouponComponent , canActivate : [AuthGuardService]},
-  { path : 'official', component: OfficialComponent },
+
+  { path : 'cabcoupon', component: CabcouponComponent},
+  { path : 'flightcoupon', component: FlightcouponComponent},
+  { path : 'foodcoupon', component: FoodcouponComponent}, 
+  { path : 'hotelcoupon', component: HotelcouponComponent},
+  { path : 'official', component: OfficialComponent},
+  { path : 'main-official', component: MainOfficialComponent},
+
 
 
   
@@ -79,4 +83,4 @@ export const routingComponents =
             FlashScreenComponent, OurCenterComponent,
             EditProfileComponent, ChildServiceComponent,
             CheckinServiceComponent, LuggageServiceComponent, CarouselComponent, Carousel3dComponent, CabcouponComponent,
-            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent ];
+            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent,MainOfficialComponent ];
