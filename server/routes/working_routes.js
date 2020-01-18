@@ -47,16 +47,25 @@ router.post("/addDriver", (req, res) => {
 //----------------------------AUTOMATED------------------------------
 
 router.post("/serviceOver", (req, res) => {
-    let service = req.body.service;
-    if(service.has("porter")){
-        let porter = service.porter.uid;
-        let dbRef = firebase.database().ref().child("available_porters");
-        dbRef.push(porter);
-    }
-    if(service.has("driver")){
-        let driver = service.driver.uid;
-        let dbRef = firebase.database().ref().child("available_drivers");
-        dbRef.push(driver);
+    try{
+        let service = req.body.service;
+        if(service.name === "porter"){
+            let porter = service.uid;
+            let dbRef = firebase.database().ref().child("available_porters");
+            dbRef.push(porter);
+        }
+        else if(service.name === "driver"){
+            let driver = service.uid;
+            let dbRef = firebase.database().ref().child("available_drivers");
+            dbRef.push(driver);
+        }
+        res.status(200).json({
+            "msg": "Service ended!"
+        });
+    } catch(err){
+        res.status(300).json({
+            "msg": "Service could not be ended!"
+        });
     }
 });
 

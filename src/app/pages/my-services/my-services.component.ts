@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddserviceService } from 'src/app/services/addservice.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-my-services',
@@ -8,9 +9,15 @@ import { AddserviceService } from 'src/app/services/addservice.service';
 })
 export class MyServicesComponent implements OnInit {
 
-  constructor(private addservice: AddserviceService) { }
+  constructor(private addservice: AddserviceService, private http: HttpClient) { }
   // my = [ { "from": "from", "name": "Lost Baggage","time": "time","to": "to","uid": "1234"}   ];
+  url = 'http://localhost:3201/working/serviceOver';
+
   myservices: string[] =[''];
+
+  serviceCancel ={
+    'service':{}
+  }
   status = 0;
   objectKeys = Object.keys;
   ngOnInit() {
@@ -24,5 +31,18 @@ export class MyServicesComponent implements OnInit {
          error => console.log(error)
       );
   }
+
+  cancel(service){
+      console.log(service);
+      this.serviceCancel.service = service;
+      console.log(this.serviceCancel);
+        this.http.post<any>(this.url,service).subscribe(
+          data=>{
+            console.log(data);
+            window.location.reload();
+          }, 
+          error=>console.log(error)
+        );
+  } 
 
 }

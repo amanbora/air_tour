@@ -65,6 +65,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { MainOfficialComponent } from './pages/main-official/main-official.component';
 import { EmployeesComponent } from './pages/employees/employees.component';
 import { MapComponent } from './common/map/map.component';
+import { PushNotComponent } from './common/push-not/push-not.component';
+import { PushService } from './services/push.service';
 
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
@@ -103,9 +105,8 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     AboutUsComponent,
     MainOfficialComponent,
     EmployeesComponent,
-    MapComponent
-
-
+    MapComponent,
+    PushNotComponent
 
 
   ],
@@ -144,12 +145,11 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
       apiKey: 'AIzaSyDYzOj_e7CSYYRW36a4K52O1OjR7rvEN9E'
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-   
 
   ],
   
   
-  providers: [AuthGuardService, FirebaseService],
+  providers: [AuthGuardService, FirebaseService, PushService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
