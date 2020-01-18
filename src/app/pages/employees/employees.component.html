@@ -1,6 +1,6 @@
 <app-navbar>
    
-    <mat-expansion-panel>
+    <!-- <mat-expansion-panel>
         <mat-expansion-panel-header>
            <mat-panel-title>
               Driver List
@@ -8,44 +8,47 @@
            <mat-panel-description>
                 we are here
            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div *ngFor="let driver of drivers; let i=index ">
-            {{driver.name}}  {{driver.phn}}
-        </div>
+        </mat-expansion-panel-header> -->
+            <table *ngIf="drivers.length>0">
+            <!-- <tr>
+                <th>Drivers</th>
+            </tr> -->
+        <tr *ngFor="let driver of drivers; let i=index ">
+            
+           <td>{{driver.name}}</td> 
+           <td>{{driver.phone}}</td>
+        </tr>
      
-    </mat-expansion-panel>
-            <!-- <table *ngIf="driver">
+     </table>
+     
+       
+    <!-- </mat-expansion-panel> -->
+         
 
-               
-                <tr>
-                    <th>SNo.</th>
-                    <th>Name</th> 
-                    <th>Phone</th>
-                   
-                </tr>
+
+
+    <!-- <mat-expansion-panel>
+        <mat-expansion-panel-header>
+           <mat-panel-title>
+              Porter List
+           </mat-panel-title>
+           <mat-panel-description>
+               see the list
+           </mat-panel-description>
+        </mat-expansion-panel-header>
+        -->
+        <table *ngIf="porters.length>0">
+            <!-- <tr>
+                <th>Porters</th>
+            </tr> -->
+            <tr *ngFor="let porter of porters; let i=index ">
                 
-                <tr *ngFor="let list of driver; let i=index">
-                    <td>{{i+1}}.</td>
-                    <td>{{list.name}}</td>
-                    <td>{{list.phn}}</td>
-                    
-                </tr>
-            </table>
-            -->
-
-          
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                   <mat-panel-title>
-                      Porter List
-                   </mat-panel-title>
-                   <mat-panel-description>
-                        we are here
-                   </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div *ngFor="let porter of porters; let i=index ">
-                    {{porter.name}}  {{porter.phn}}
-                </div>
-             
-            </mat-expansion-panel>
-</app-navbar>
+               <td>{{porter.name}}</td> 
+               <td>{{porter.phone}}</td>
+            </tr>
+         
+         </table>
+     
+       
+    <!-- </mat-expansion-panel> -->
+</app-navbar> 

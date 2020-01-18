@@ -19,6 +19,6 @@ export class MainOfficialComponent implements OnInit {
   }
   employees()
   {
-    console.log('my employees page is under construction');
+    this.router.navigate(['/employees']);
   }
 }

@@ -29,7 +29,11 @@ import { CarouselComponent } from './common/carousel/carousel.component';
 import { OfficialComponent } from './pages/official/official.component';
 import { MainOfficialComponent } from './pages/main-official/main-official.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+<<<<<<< HEAD
+import { EmployeesComponent } from './pages/employees/employees.component';
+=======
 import { MapComponent } from './common/map/map.component';
+>>>>>>> bd52bd512b98aae42964ca769a610096d2dce703
 
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -65,6 +69,7 @@ const routes: Routes = [
   { path : 'hotelcoupon', component: HotelcouponComponent},
   { path : 'official', component: OfficialComponent},
   { path : 'main-official', component: MainOfficialComponent},
+  { path : 'employees', component: EmployeesComponent},
 
 
 
@@ -86,4 +91,8 @@ export const routingComponents =
             EditProfileComponent, ChildServiceComponent,
             CheckinServiceComponent, LuggageServiceComponent, CarouselComponent, Carousel3dComponent, CabcouponComponent,
             FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent,MainOfficialComponent,
+<<<<<<< HEAD
+            EmployeesComponent ];
+=======
             MapComponent ];
+>>>>>>> bd52bd512b98aae42964ca769a610096d2dce703
