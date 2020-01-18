@@ -4,32 +4,45 @@ var notificationC = require('../controllers/notification');
 var firebase = require("firebase");
 
 exports.check = async function(){
-    let serviceRef = firebase.database().ref().child("booked_services").orderByChild("time").startAt(Date.now() - 5 * 60 * 1000);
+    let dbRef = firebase.database().ref();
+    let bookedServicesRef = dbRef.child("booked_services").orderByKey().endAt(toString(Date.now() + 15 * 60 * 1000));
+    let servicesRef = dbRef.child("services");
 
-    serviceRef.on('value', snap => {
-        let services = snap.val();
-        //console.log(snap.val());
-        if(services === null){
-            console.log("No service required in 30 minutes!");
+    try{
+        let snap = await Promise.all([bookedServicesRef.once("value"), servicesRef.once("value")]);
+
+        let bookedServices = snap[0].val();
+        let services = snap[1].val();
+
+        if(bookedServices === null){
+            console.log("No service required within 30 minutes!");
         } else{
-            let keys = Object.keys(services);
-            keys.forEach(key => {
-                let service = services[key];
+            let keys = Object.keys(bookedServices);
+            keys.forEach(async key => {
+                let service = services[bookedServices[key]];
+                let porter = null, driver = null;
                 if(service.name === "porter"){
-                    porterC.assignPorter({
+                    porter = porterC.assignPorter({
                         key: key,
                         service: service
                     });
                 }
                 if(service.name === "driver"){
-                    driverC.assignDriver({
+                    driver = driverC.assignDriver({
                         key: key,
                         service: service
                     });
                 }
-                notificationC.sendNotification(services[key])
+                try{
+                    await Promise.all(porter, driver);
+                } catch(err){
+                    console.log(err, "in service allocation");
+                }
+                notificationC.sendNotification(service)
                 console.log(key, " service updated!");
             });
         }
-    });
+    } catch(err){
+        console.log(err);
+    }
 };
