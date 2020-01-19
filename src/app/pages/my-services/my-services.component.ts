@@ -28,7 +28,10 @@ export class MyServicesComponent implements OnInit {
           this.status = result.status;
           this.myservices = result.body as string[];
         },
-         error => console.log(error)
+         error => {
+          this.status = error.status; 
+          console.log(error)
+         }
       );
   }
 

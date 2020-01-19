@@ -7,11 +7,35 @@
 
                 <img src="{{option.imgUrl}}">
                 <div>{{option.desc}}</div>
-                <button mat-button color="primary" (click)="func(option.name)">Add {{option.name}} Service</button>
+                <button mat-button color="primary" (click)="openform()" >Add {{option.name}} Service</button>
         </mat-tab>
         </mat-tab-group>
     
+   
+
+    <mat-card>
+
+        
+    <form *ngIf="aloneform" #controlForm="ngForm">
+        <div class="form-group" >
+          <label for="exampleInputEmail1">Child Name</label>
+          <input name="login2" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+          
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Age</label>
+          <input name="login3"  class="form-control" id="exampleInputPassword1" >
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" >Flight Number</label>
+            <input  name="login1" [(ngModel)]="from"  class="form-control" id="exampleInputPassword1" >
+          </div>
+        
+        <button type="submit" (click)="func('Child')" class="btn btn-primary">Submit</button>
+      </form>
+
+    </mat-card>
+      
     </body>   
-       
         
 </app-navbar>

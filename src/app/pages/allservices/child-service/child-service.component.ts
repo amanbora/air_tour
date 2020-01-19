@@ -34,6 +34,9 @@ export class ChildServiceComponent implements OnInit {
   newService: any;
   to: string;
   from: string;
+  
+
+  aloneform = false;
 
   ngOnInit() {
       this.alone.name = this.childs[0];
@@ -69,15 +72,21 @@ export class ChildServiceComponent implements OnInit {
 
     this.addservice.add(this.newService)
     .subscribe(
-      data => { console.log(data);
-                this.router.navigate(['/my-services'])
-      .then(() => {
-        window.location.reload();
-      });
+      data => { console.log('hi',data);
+                window.alert('Child-service Added');
+      //           this.router.navigate(['/my-services'])
+      // .then(() => {
+      //   window.location.reload();
+      // });
     }, error => {console.log(error)
 
     }
     );
+  }
+
+
+  openform(){
+    this.aloneform = true;
   }
 
 }

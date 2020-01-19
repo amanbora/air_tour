@@ -38,7 +38,7 @@ export class OfficialComponent implements OnInit {
 
   url = 'http://localhost:3201/official/peopleWithService';
   
-
+ 
 
 
   ngOnInit() {
@@ -46,11 +46,14 @@ export class OfficialComponent implements OnInit {
     this.getCheckInServiceUserList();
     this.getporterServiceUserList();
     this.getTaxiServiceUserList();
+    
+  
+
+  }
 
 
   
 
-  }
   config = {
     params: { name : '' }
   };

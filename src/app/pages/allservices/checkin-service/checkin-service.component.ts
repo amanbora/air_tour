@@ -3,6 +3,7 @@ import { ServiceOptionPrototype } from 'src/app/models/ServiceOptionDesc';
 import { AddserviceService } from 'src/app/services/addservice.service';
 import { ServiceProt } from 'src/app/models/Service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkin-service',
@@ -12,11 +13,13 @@ import { Router } from '@angular/router';
 export class CheckinServiceComponent implements OnInit {
   
   check = ['Web Check-In'];
+  pnr:any;
 
   web = new ServiceOptionPrototype();
   options: ServiceOptionPrototype [];
+  aloneform = false;
 
-  constructor(private addservice: AddserviceService, private router: Router) { }
+  constructor(private addservice: AddserviceService, private router: Router, private http :HttpClient) { }
 
   ngOnInit() {
       this.web.name = this.check[0];
@@ -32,10 +35,32 @@ export class CheckinServiceComponent implements OnInit {
   to: string;
   from: string;
   
+  url = 'http://localhost:3201/user/';
+  status =0;
+  openform()
+  {
+    this.aloneform =true;
+  }
+  config = {
+    params: { pnr : '' }
+  };
   func(name: any)
   {   
-    console.log(name);
-    this.user =  localStorage.getItem('userId');
+    this.config.params.pnr = this.pnr;
+    console.log(this.config.params.pnr);
+       this.http.get<any>(this.url + 'onlineCheckIn?pnr' + '=' + this.pnr, {observe: 'response'}).subscribe( result => {
+       console.log(result);
+      console.log(result, result.status);
+      this.status = result.status;
+
+      
+    },
+     error => {
+      this.status = error.status; 
+      console.log(error)
+     }
+  );
+    
 
     this.service.name = name; // interpolate
     this.service.to = this.to; // interpolate
@@ -48,6 +73,8 @@ export class CheckinServiceComponent implements OnInit {
     this.newService['services'] = [];
     this.newService['services'].push(this.service);
 
+    
+
     this.addservice.add(this.newService)
     .subscribe(
       data => { console.log(data);
@@ -56,6 +83,13 @@ export class CheckinServiceComponent implements OnInit {
         window.location.reload();
       });
     },error => {console.log(error)})
-  }
+  
+  
+
+
+ 
 
 }
+}
+
+

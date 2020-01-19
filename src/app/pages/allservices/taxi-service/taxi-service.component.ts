@@ -59,7 +59,7 @@ export class TaxiServiceComponent implements OnInit {
 
 
 
-    this.service.name = 'name'; // interpolate
+    this.service.name = name; // interpolate
     this.service.to = 'Aiport -' + this.airport + ' Terminal -' + this.terminal; // interpolate
     this.service.from = localStorage.getItem('data'); // interpolate
     this.service.time = Date.now(); // interpolate
@@ -69,11 +69,11 @@ export class TaxiServiceComponent implements OnInit {
     this.newService.services = [];
     this.newService.services.push(this.service);
 
-    console.log(this.service.to);
-    window.alert('Taxi Service Added!');
     this.addservice.add(this.newService)
     .subscribe(
       data => {
+        console.log('hi');
+        
         console.log(data);
 
         this.router.navigate(['/my-services'])

@@ -1,27 +1,25 @@
    
   .login {
     position: absolute;
-     height: 40vh;
- 
-     
-     background-color: white;
-     bottom: 27vh;
-     margin-left: 15vw;
-     width: 70vw;
-     border-radius: 25px;
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 62vh;
+    background-image: url('./../../../assets/images/back.jpg');
+    background-color: white;
+    bottom: 47vh;
+    margin-left: 15vw;
+    width: 70vw;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     .div1{
-     height: 60vh;
-     background-image: linear-gradient(#ffffff, #185a9d);
+      height: 104vh;
+     background: rgb(51,63,80);
      display: flex;
      justify-content: center;
     }
     .div2 {
      height: 40vh;
-      background-color:white;
-       border-radius: 20px 20px 0px 0px; 
-       position: relative;bottom: 29px;
+      background: rgb(51,63,80);;
+       position: relative;
     }
  
     .logindiv{
@@ -34,9 +32,10 @@
      border: solid;
      border-radius: 50%;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     background: darkorange;
     }
     .airimg{
-     width: 130px;
+      width: 234px;
   
      padding-top: 4vh;
     }
@@ -47,6 +46,8 @@
     }
 
     .guest-button{
-      margin-top: 5em;
+      margin-top: 2em;
       box-shadow: 2px 4px 10px grey;
     }
+
+    
