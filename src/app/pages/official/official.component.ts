@@ -50,10 +50,7 @@ export class OfficialComponent implements OnInit {
   
 
   }
-fun2(){
-  
-}
-  
+
 
   
 
