@@ -34,7 +34,7 @@ exports.check = async function(){
                     });
                 }
                 try{
-                    await Promise.all(porter, driver);
+                    await Promise.all([porter, driver]);
                 } catch(err){
                     console.log(err, "in service allocation");
                 }
