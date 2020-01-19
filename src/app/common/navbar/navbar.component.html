@@ -12,6 +12,8 @@
       <a mat-list-item routerLink="/center">Our Centers</a>
       <a mat-list-item routerLink="/my-services">My Services</a>
       <a mat-list-item routerLink="/user-profile">My Profile</a>
+
+      <a mat-list-item routerLink="/notification">Notify ME!</a>
       
       <a *ngIf="auth === 'true'"  mat-list-item a>
         <button mat-button (click)="logout()" type="button">Logout</button>

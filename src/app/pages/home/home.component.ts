@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,14 +13,24 @@ export class HomeComponent implements OnInit {
 
   
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog , private http:HttpClient) { }
   userId = localStorage.getItem('userId');
 
   ngOnInit() {
+   
   }
 
   openDialog() {
     this.dialog.open(DialogComponent);
+  }
+
+  sendNotify(){
+    console.log("enyererw");
+    this.http.post('http://localhost:3201/working/sendNotification',{}).subscribe(
+      data => console.log(data),
+      error => console.log(error)
+    );
+
   }
 
 }

@@ -402,6 +402,9 @@ Apache-2.0
 @firebase/webchannel-wrapper
 Apache-2.0
 
+@tomtom-international/web-sdk-maps
+SEE LICENSE IN LICENSE.txt
+
 bootstrap
 MIT
 The MIT License (MIT)

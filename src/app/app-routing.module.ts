@@ -31,6 +31,7 @@ import { MainOfficialComponent } from './pages/main-official/main-official.compo
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { EmployeesComponent } from './pages/employees/employees.component';
 import { MapComponent } from './common/map/map.component';
+import { PushNotComponent } from './common/push-not/push-not.component';
 
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -56,7 +57,7 @@ const routes: Routes = [
   { path : 'service-card', component: ServiceCardComponent , canActivate : [AuthGuardService]},
   { path : 'machine', component: MachineComponent },
   { path : 'map', component: MapComponent},
-  { path : 'carousel', component :CarouselComponent},
+  { path : 'carousel', component : CarouselComponent},
   { path : 'carousel3d', component: Carousel3dComponent},
   { path : 'coupon', component: CouponComponent},
 
@@ -67,6 +68,8 @@ const routes: Routes = [
   { path : 'official', component: OfficialComponent},
   { path : 'main-official', component: MainOfficialComponent},
   { path : 'employees', component: EmployeesComponent},
+
+  { path : 'notification', component: PushNotComponent}
 
 
 
@@ -89,4 +92,4 @@ export const routingComponents =
             CheckinServiceComponent, LuggageServiceComponent, CarouselComponent, Carousel3dComponent, CabcouponComponent,
             FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent,MainOfficialComponent,
             EmployeesComponent ,
-            MapComponent ];
+            MapComponent, PushNotComponent ];

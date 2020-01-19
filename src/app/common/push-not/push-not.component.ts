@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SwPush } from '@angular/service-worker';
 import { PushService } from 'src/app/services/push.service';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-push-not',
@@ -9,11 +10,11 @@ import { PushService } from 'src/app/services/push.service';
 })
 export class PushNotComponent implements OnInit {
 
-  constructor(swPush: SwPush, private pushService : PushService) { 
+  constructor(swPush: SwPush, private pushService : PushService, private http: HttpClient) { 
 
     if(swPush.isEnabled){
       swPush.requestSubscription({
-        serverPublicKey : 'BBqNegnX4obXx1AbF4S5QVbACTD4x4f5QHdC26se_UfwcFdl6wG_pN6DmScS3DeTIBAAbvCWO18o-5kW_XDjVqc',
+        serverPublicKey : 'BHh7Cf0pTWJlwcjOsBKKKEssBha9C_GE9Upt807SwadnMt8diCqqvjE91YVk-lk_kBCO3UliXkz3dgQPgmN5vxQ',
       })
       .then(subscription => {
         this.pushService.sendSubscription(subscription).subscribe(),
@@ -24,6 +25,7 @@ export class PushNotComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 }

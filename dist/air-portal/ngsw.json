@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1579331990784,
+  "timestamp": 1579397139585,
   "index": "/dev/pwa/index.html",
   "assetGroups": [
     {
@@ -10,14 +10,14 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main-es2015.eb3271cc724281891de1.js",
-        "/main-es5.eb3271cc724281891de1.js",
+        "/main-es2015.5f92a8adcf256fcc7aa1.js",
+        "/main-es5.5f92a8adcf256fcc7aa1.js",
         "/manifest.webmanifest",
         "/polyfills-es2015.2987770fde9daa1d8a2e.js",
         "/polyfills-es5.6696c533341b95a3d617.js",
         "/runtime-es2015.edb2fcf2778e7bf1d426.js",
         "/runtime-es5.edb2fcf2778e7bf1d426.js",
-        "/styles.921215e3f2b4944ac3df.css"
+        "/styles.227a7fd3c501046b6ef0.css"
       ],
       "patterns": []
     },
@@ -26,6 +26,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "/AIRSY_LOGO.87534320ea9dbb3978ca.png",
         "/assets/icons/icon-128x128.png",
         "/assets/icons/icon-144x144.png",
         "/assets/icons/icon-152x152.png",
@@ -47,19 +48,25 @@
         "/assets/images/img-service/taxi.jpeg",
         "/assets/images/img-service/web.jpg",
         "/assets/images/img-service/wrap.jpg",
+        "/assets/images/our centers.png",
         "/assets/images/plane.png",
+        "/assets/images/red.png",
+        "/assets/images/red2.png",
+        "/assets/images/red3.png",
         "/assets/images/user.png",
         "/glyphicons-halflings-regular.448c34a56d699c29117a.woff2",
         "/glyphicons-halflings-regular.89889688147bd7575d63.svg",
         "/glyphicons-halflings-regular.e18bbf611f2a2e43afc0.ttf",
         "/glyphicons-halflings-regular.f4769f9bdb7466be6508.eot",
-        "/glyphicons-halflings-regular.fa2772327f55d8198301.woff"
+        "/glyphicons-halflings-regular.fa2772327f55d8198301.woff",
+        "/red3.5a3ab9569f8d4e9e8189.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
+    "/AIRSY_LOGO.87534320ea9dbb3978ca.png": "7b3ed5d22a431df800a0683c4fffc58d86d69102",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -81,7 +88,11 @@
     "/assets/images/img-service/taxi.jpeg": "599dd59f06a1d7694edbbf102bf365ffae4ce8f7",
     "/assets/images/img-service/web.jpg": "8ee5d9afe9923a7d866578cfd840d75b0cb252cf",
     "/assets/images/img-service/wrap.jpg": "5d7e6d7f809649cf3f4e06366d84adb4abace0d4",
+    "/assets/images/our centers.png": "fa42bcc472b98ec5d2f8bfecff6f8fe7cfac3802",
     "/assets/images/plane.png": "b691013953be5e8df8dbbbc006881dfacb8acc5e",
+    "/assets/images/red.png": "f7142a51148ee6286b405ebb20d7f3be9f8d2ed9",
+    "/assets/images/red2.png": "b47da82521362f5a36953e384f64502a5e6588fc",
+    "/assets/images/red3.png": "21ddf24538518c8a12996388d6a18bb6d8227a74",
     "/assets/images/user.png": "78365dbfa187679e438bb13e734b26a2edbc7ef6",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/glyphicons-halflings-regular.448c34a56d699c29117a.woff2": "ca35b697d99cae4d1b60f2d60fcd37771987eb07",
@@ -89,15 +100,16 @@
     "/glyphicons-halflings-regular.e18bbf611f2a2e43afc0.ttf": "44bc1850f570972267b169ae18f1cb06b611ffa2",
     "/glyphicons-halflings-regular.f4769f9bdb7466be6508.eot": "86b6f62b7853e67d3e635f6512a5a5efc58ea3c3",
     "/glyphicons-halflings-regular.fa2772327f55d8198301.woff": "278e49a86e634da6f2a02f3b47dd9d2a8f26210f",
-    "/index.html": "d213b4cc487da055eccd85f81a8b866f608c431e",
-    "/main-es2015.eb3271cc724281891de1.js": "74cbc087c326cbe371ac2e09651e7b14a4f2a4fb",
-    "/main-es5.eb3271cc724281891de1.js": "716f0c730b717772101468fdb0364fe5c741ef54",
+    "/index.html": "c48268e60696cf68a692d5b888d8f0f4c4a7c8c4",
+    "/main-es2015.5f92a8adcf256fcc7aa1.js": "290ce337f874ef63bf5c2f884644d10e8c313f65",
+    "/main-es5.5f92a8adcf256fcc7aa1.js": "86451139076e7dbacd99663414697ed1f90d3dab",
     "/manifest.webmanifest": "70d84ecf53d0b7d2592ba0a85d455348ebe54047",
     "/polyfills-es2015.2987770fde9daa1d8a2e.js": "cf5cbfa9134716054fb479ab21362146cdf1f2ff",
     "/polyfills-es5.6696c533341b95a3d617.js": "6bff0c03e05bb347d213ad1b3674045eb892d189",
+    "/red3.5a3ab9569f8d4e9e8189.png": "21ddf24538518c8a12996388d6a18bb6d8227a74",
     "/runtime-es2015.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/runtime-es5.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "/styles.921215e3f2b4944ac3df.css": "5c60e5da3f14be1af8728a9e073ac8886f9f52ac"
+    "/styles.227a7fd3c501046b6ef0.css": "44b13daeeaef629fc460258e11fb84ccbf803717"
   },
   "navigationUrls": [
     {
