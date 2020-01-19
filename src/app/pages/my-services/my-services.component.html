@@ -12,7 +12,7 @@
             <th scope="col">To</th>
             <th scope="col">Date</th>
         </tr>
-    
+
         <tr *ngFor="let service of myservices; let i=index">
            <th *ngIf="service" scope="row">{{i+1}}.</th>
             <td *ngIf="service" >{{service.name}}</td>
