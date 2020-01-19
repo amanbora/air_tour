@@ -168,9 +168,19 @@ router.post("/addService", async (req, res) => {
         "phone": phone
       };
       servicesForOfficial.child(service.name).push(SFOObject);
-      
+
+      let sCount = await personRef.child('count').once('value');
+      sCount = sCount.val();
+      if(sCount === null) sCount = 1;
+      else sCount = sCount + 1;
+
+      personRef.child('count').set(sCount);
+      let discount = Number(sCount);
+      if(discount > 15) discount = 15;
+
       res.status(200).json({
-        "msg": "service added!"
+        "msg": "service added!",
+        "discount": discount
       });
     });
   } catch(err){
