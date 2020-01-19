@@ -26,7 +26,7 @@ export class MachineComponent implements OnInit {
     funcRecommend() {
       this.machine.recommend().then(
         data => {
-          this.mlData = JSON.stringify(data);
+          this.mlData = data;
           console.log(data);
         },
         error => {

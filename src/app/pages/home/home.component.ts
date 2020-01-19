@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   sendNotify(){
     console.log("enyererw");
-    this.http.post('http://localhost:3201/working/sendNotification',{}).subscribe(
+    this.http.post('https://quiet-anchorage-64839.herokuapp.com/working/sendNotification',{}).subscribe(
       data => console.log(data),
       error => console.log(error)
     );
