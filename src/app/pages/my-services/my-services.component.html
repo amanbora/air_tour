@@ -12,10 +12,10 @@
             <th scope="col">To</th>
             <th scope="col">Date</th>
         </tr>
-    
-        <tr *ngFor="let service of myservices; let i=index" >
+
+        <tr *ngFor="let service of myservices; let i=index">
            <th *ngIf="service" scope="row">{{i+1}}.</th>
-            <td *ngIf="service">{{service.name}}</td>
+            <td *ngIf="service" >{{service.name}}</td>
             <td *ngIf="service">{{service.from}}</td>
             <td *ngIf="service">{{service.to}}</td>
             <td *ngIf="service">{{service.time}}</td>

@@ -1,10 +1,15 @@
-<app-navbar>
+<app-navbar-official>
 
-    <button mat-raised-button (click)=userListPage() >
-        Service History
-    </button>
+ <div class="heading"> Officials Panel  </div>
+    <div>
+        <button mat-raised-button (click)=userListPage() >
+            Service History
+        </button>
+    
+        <button mat-raised-button (click)=employees() >
+            Airsy employees
+        </button>
 
-    <button mat-raised-button (click)=employees() >
-        Airsy employees
-    </button>
-</app-navbar>
+    </div>
+   
+</app-navbar-official>

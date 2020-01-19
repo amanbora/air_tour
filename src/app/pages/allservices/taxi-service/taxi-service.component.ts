@@ -69,15 +69,12 @@ export class TaxiServiceComponent implements OnInit {
     this.newService.services = [];
     this.newService.services.push(this.service);
 
-   
-   
     this.addservice.add(this.newService)
     .subscribe(
       data => {
         console.log('hi');
         
         console.log(data);
-         
 
         this.router.navigate(['/my-services'])
         .then(() => {

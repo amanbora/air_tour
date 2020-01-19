@@ -68,6 +68,8 @@ import { MapComponent } from './common/map/map.component';
 import { PushNotComponent } from './common/push-not/push-not.component';
 import { NewcouponComponent } from './common/newcoupon/newcoupon.component';
 import { PushService } from './services/push.service';
+import { NavbarOfficialComponent } from './common/navbar-official/navbar-official.component';
+import { DataComponent } from './ml-model/data/data.component';
 
 
 
@@ -109,7 +111,9 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     EmployeesComponent,
     MapComponent,
     PushNotComponent,
-    NewcouponComponent
+    NewcouponComponent,
+    NavbarOfficialComponent,
+    DataComponent
 
 
   ],

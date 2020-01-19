@@ -1,9 +1,10 @@
-<app-navbar>
+<app-navbar-official>
     <mat-tab-group  color="primary" >
 
         <mat-tab color="accent" *ngFor="let service of serviceArray" label="{{service.name}} ">
-            
-            <table >
+            <div *ngIf="service.userList.length==0"> No Users</div>
+            <table  *ngIf="service.userList.length>0">
+
 
                
                 <tr>
@@ -30,4 +31,4 @@
     
     
     </mat-tab-group>
-</app-navbar>
+</app-navbar-official>
