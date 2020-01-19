@@ -1,3 +1,8 @@
 body{
     overflow-x: hidden;
 }
+
+.mat-h2{
+    color: darkslateblue;
+    text-align: center;
+}

@@ -1,9 +1,8 @@
 .main{
   
     top: 50%;
-    /* width: 20em; */
-    text-align: center;
-    /* margin-left: 1.3em; */
+    
+    
 }
 .container{
     display: inline;
@@ -14,7 +13,7 @@
     width: 50px;
 }
 img{
-    width: 4em;
+    width: 100%;
 }
 .col-md{
     text-align: initial;

@@ -66,7 +66,9 @@ import { MainOfficialComponent } from './pages/main-official/main-official.compo
 import { EmployeesComponent } from './pages/employees/employees.component';
 import { MapComponent } from './common/map/map.component';
 import { PushNotComponent } from './common/push-not/push-not.component';
+import { NewcouponComponent } from './common/newcoupon/newcoupon.component';
 import { PushService } from './services/push.service';
+
 
 
 AngularFireModule.initializeApp(environment.firebaseConfig);
@@ -106,7 +108,8 @@ AngularFireModule.initializeApp(environment.firebaseConfig);
     MainOfficialComponent,
     EmployeesComponent,
     MapComponent,
-    PushNotComponent
+    PushNotComponent,
+    NewcouponComponent
 
 
   ],

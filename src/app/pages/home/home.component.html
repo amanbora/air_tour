@@ -3,7 +3,7 @@
 
   <body>
     <button (click)="sendNotify()">Notify</button>
-    <h1>{{userId}}</h1>
+    <!-- <h1>{{userId}}</h1> -->
 <!-- 
   <button [routerLink]="['/addJourney']" routerLinkActive="router-link-active" >Add New Journey</button> -->
   
@@ -14,8 +14,15 @@
  -->
 
  <app-carousel></app-carousel>
- <app-coupon></app-coupon>
-<app-carousel3d></app-carousel3d>
+
+ <mat-card class="mat-h2">
+   Our Services
+ </mat-card>
+
+ <app-newcoupon></app-newcoupon>
+<!-- <app-carousel3d></app-carousel3d> -->
+
+<!-- <app-service-card></app-service-card> -->
 
   </body>
   
