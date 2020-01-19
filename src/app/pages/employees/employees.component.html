@@ -1,46 +1,40 @@
 <app-navbar>
    
-    <!-- <mat-expansion-panel>
-        <mat-expansion-panel-header>
-           <mat-panel-title>
-              Driver List
-           </mat-panel-title>
-           <mat-panel-description>
-                we are here
-           </mat-panel-description>
-        </mat-expansion-panel-header> -->
-            <table *ngIf="drivers.length>0">
-            <!-- <tr>
+   
+            <table>
+            <tr>
                 <th>Drivers</th>
-            </tr> -->
+            </tr>
         <tr *ngFor="let driver of drivers; let i=index ">
             
-           <td>{{driver.name}}</td> 
+           <td>{{driver.name}}</td> &nbsp; 
            <td>{{driver.phone}}</td>
         </tr>
      
      </table>
      
-       
-    <!-- </mat-expansion-panel> -->
+
+      <form *ngIf="openform" #controlForm="ngForm">
+        
+         <div class="form-group">
+           <label for="exampleInputPNR">Name of Driver</label>
+           <input name="name" [(ngModel)]= "Driver.name" class="form-control" id="name" placeholder="name" >
+
+           <label for="exampleInputPNR">Phone</label>
+
+           <input name="name" [(ngModel)]= "Driver.phone" class="form-control" id="phone"  placeholder="phone">
+
+         </div>
+         <button type="submit" (click)="submitDriver()" class="btn btn-primary">Submit</button>
+
          
-
-
-
-    <!-- <mat-expansion-panel>
-        <mat-expansion-panel-header>
-           <mat-panel-title>
-              Porter List
-           </mat-panel-title>
-           <mat-panel-description>
-               see the list
-           </mat-panel-description>
-        </mat-expansion-panel-header>
-        -->
+       </form>
+       
+   
         <table *ngIf="porters.length>0">
-            <!-- <tr>
+            <tr>
                 <th>Porters</th>
-            </tr> -->
+            </tr>
             <tr *ngFor="let porter of porters; let i=index ">
                 
                <td>{{porter.name}}</td> 
@@ -48,6 +42,27 @@
             </tr>
          
          </table>
+
+         <form *ngIf="openform1" #controlForm="ngForm">
+        
+            <div class="form-group">
+              <label for="exampleInputPNR">Name of Porter</label>
+              <input name="name" [(ngModel)]= "Porter.name" class="form-control" id="name" placeholder="name" >
+   
+              <label for="exampleInputPNR">Phone</label>
+   
+              <input name="name" [(ngModel)]= "Porter.phone" class="form-control" id="phone"  placeholder="phone">
+   
+            </div>
+            <button type="submit" (click)="submitPorter()" class="btn btn-primary">Submit</button>
+   
+            
+          </form>
+
+         <button (click)="addDriver()" mat-raised-button> Add Driver</button>
+
+         <button (click)="addPorter()" mat-raised-button> Add Porter</button>
+
      
        
     <!-- </mat-expansion-panel> -->
