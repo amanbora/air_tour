@@ -13,13 +13,13 @@
             <th scope="col">Date</th>
         </tr>
     
-        <tr *ngFor="let service of myservices; let i=index">
-           <th scope="row">{{i+1}}.</th>
-            <td>{{service.name}}</td>
-            <td>{{service.from}}</td>
-            <td>{{service.to}}</td>
-            <td>{{service.time}}</td>
-            <button mat-button (click)="cancel(service)">Cancel</button>
+        <tr *ngFor="let service of myservices; let i=index" >
+           <th *ngIf="service" scope="row">{{i+1}}.</th>
+            <td *ngIf="service">{{service.name}}</td>
+            <td *ngIf="service">{{service.from}}</td>
+            <td *ngIf="service">{{service.to}}</td>
+            <td *ngIf="service">{{service.time}}</td>
+            <!-- <button mat-button (click)="cancel(service)">Cancel</button> -->
         </tr>
     </tbody>
     </table>

@@ -72,12 +72,12 @@ export class ChildServiceComponent implements OnInit {
 
     this.addservice.add(this.newService)
     .subscribe(
-      data => { console.log(data);
+      data => { console.log('hi',data);
                 window.alert('Child-service Added');
-                this.router.navigate(['/my-services'])
-      .then(() => {
-        window.location.reload();
-      });
+      //           this.router.navigate(['/my-services'])
+      // .then(() => {
+      //   window.location.reload();
+      // });
     }, error => {console.log(error)
 
     }

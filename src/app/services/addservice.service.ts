@@ -26,7 +26,7 @@ export class AddserviceService {
    }
 
   add(data: any) {
-    console.log(data);
+    console.log('bye',data);
     return this.http.post<any>(this.url + '/addService', data );
   }
 
