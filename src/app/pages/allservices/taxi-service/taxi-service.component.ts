@@ -70,12 +70,11 @@ export class TaxiServiceComponent implements OnInit {
     this.newService.services.push(this.service);
 
     console.log(this.service.to);
-    window.alert('Taxi Service Added!');
     this.addservice.add(this.newService)
     .subscribe(
       data => {
         console.log(data);
-
+        window.alert('Taxi Service Added!');
         this.router.navigate(['/my-services'])
         .then(() => {
           window.location.reload();

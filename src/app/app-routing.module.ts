@@ -33,6 +33,7 @@ import { EmployeesComponent } from './pages/employees/employees.component';
 import { MapComponent } from './common/map/map.component';
 import { PushNotComponent } from './common/push-not/push-not.component';
 import { NewcouponComponent } from './common/newcoupon/newcoupon.component';
+import { DataComponent } from './ml-model/data/data.component';
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
 
@@ -70,8 +71,8 @@ const routes: Routes = [
   { path : 'employees', component: EmployeesComponent},
 
   { path : 'notification', component: PushNotComponent},
-  {path : 'newcoupon', component : NewcouponComponent}
-
+  {path : 'newcoupon', component : NewcouponComponent},
+  { path: 'data', component: DataComponent }
 
 
   
