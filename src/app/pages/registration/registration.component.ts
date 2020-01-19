@@ -65,7 +65,7 @@ export class RegistrationComponent implements OnInit {
               this.firebaseService.createUser(this.phoneNumber.e164, this.verificationCode, result.user.uid).then(res => {
               localStorage.setItem('logged', 'true');
              console.log('SUCCESSFULLY DONE , PLEASE CHECK DATABASE !!!');
-             this.router.navigate(['/home']);
+             this.router.navigate(['/about-us']);
 
          })
         })

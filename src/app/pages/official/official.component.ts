@@ -1,12 +1,15 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import {NewUser} from '../../models/NewUser';
 import { HttpClient } from '@angular/common/http';
+interface newArray{
+  uid :string,
+  phone :number
+}
 
 interface NewArray{
   name : string,
-  userList : NewUser[];
+  userList :newArray[];
 }
 @Component({
   selector: 'app-official',
@@ -28,10 +31,10 @@ export class OfficialComponent implements OnInit {
 
   serviceArray : NewArray[] = [];
 
-  TaxiServiceUserList : NewUser[] = [];
-  CheckInServiceUserList: NewUser[] = [];
-  ChildServiceUserList : NewUser[]= [];
-  LuggageServiceUserList: NewUser[] = [];
+  TaxiServiceUserList : newArray[] = [];
+  CheckInServiceUserList: newArray[] = [];
+  ChildServiceUserList : newArray[]= [];
+  PorterServiceUserList: newArray[] = [];
 
   url = 'http://localhost:3201/official/peopleWithService';
   
@@ -41,20 +44,11 @@ export class OfficialComponent implements OnInit {
   ngOnInit() {
     this.getChildServiceUserList();
     this.getCheckInServiceUserList();
-    this.getLuggageServiceUserList();
+    this.getporterServiceUserList();
     this.getTaxiServiceUserList();
 
 
-    this.serviceArray.push({'name' :'Child-Service', userList :this.ChildServiceUserList});
-
-    this.serviceArray.push({'name' :'Taxi-Service', userList :this.TaxiServiceUserList});
-
-    this.serviceArray.push({'name' :'Luggage-Service', userList :this.LuggageServiceUserList});
-    
-    this.serviceArray.push({'name' :'CheckIn-Service', userList :this.CheckInServiceUserList});
-
-
-   
+  
 
   }
   config = {
@@ -63,36 +57,46 @@ export class OfficialComponent implements OnInit {
  getChildServiceUserList()
   {
     this.config.params.name ='ChildService';
-    this.http.get<NewUser[]>(this.url,this.config).subscribe(data =>{
+    this.http.get<newArray[]>(this.url,this.config).subscribe(data =>{
       console.log(data);
-      this.ChildServiceUserList = data as NewUser[];
+      this.ChildServiceUserList = data as newArray[];
+      this.serviceArray.push({'name' :'ChildService', 'userList' :this.ChildServiceUserList});
+
     },
     error => console.log(error));
   }
   getCheckInServiceUserList()
   {
     this.config.params.name ='CheckInService';
-    this.http.get<NewUser[]>(this.url,this.config).subscribe(data =>{
+    this.http.get<newArray[]>(this.url,this.config).subscribe(data =>{
       console.log(data);
-      this.CheckInServiceUserList = data;
+      this.CheckInServiceUserList = data as newArray[];
+      this.serviceArray.push({'name' :'CheckInService', 'userList' :this.CheckInServiceUserList});
+
     },
     error => console.log(error));
   }
-  getLuggageServiceUserList()
+  getporterServiceUserList()
   {
-    this.config.params.name ='LuggageService';
-    this.http.get<NewUser[]>(this.url,this.config).subscribe(data =>{
-      console.log(data);
-      this.LuggageServiceUserList = data;
+    this.config.params.name ='porter';
+    this.http.get<newArray[]>(this.url,this.config).subscribe(data =>{
+      console.log('porters',data);
+      this.PorterServiceUserList = data as newArray[];
+       
+      this.serviceArray.push({'name' :'Porter-Service', 'userList' :this.PorterServiceUserList});
+ 
     },
     error => console.log(error));
   }
   getTaxiServiceUserList()
   {
     this.config.params.name ='ChildService';
-    this.http.get<NewUser[]>(this.url,this.config).subscribe(data =>{
+    this.http.get<newArray[]>(this.url,this.config).subscribe(data =>{
       console.log(data);
-      this.TaxiServiceUserList = data;
+      this.TaxiServiceUserList = data as newArray[];
+      this.serviceArray.push({'name' :'TaxiService', 'userList' :this.TaxiServiceUserList});
+
+
     },
     error => console.log(error));
   }

@@ -1,0 +1,22 @@
+@import "@tomtom-international/web-sdk-maps";
+      
+      
+#map {
+      
+    width:360px;
+     height:360px;
+}
+
+#marker {
+    background-image: url('./../../../assets/images/red3.png');
+    background-size: cover;
+    width: 50px;
+    height: 70px;
+  }
+
+  #marker2{
+    background-image: url('./../../../assets/images/AIRSY_LOGO.png');
+    background-size: cover;
+    width: 50px;
+    height: 70px;
+  }

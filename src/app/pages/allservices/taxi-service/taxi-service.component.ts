@@ -59,7 +59,7 @@ export class TaxiServiceComponent implements OnInit {
 
 
 
-    this.service.name = name; // interpolate
+    this.service.name = 'name'; // interpolate
     this.service.to = 'Aiport -' + this.airport + ' Terminal -' + this.terminal; // interpolate
     this.service.from = localStorage.getItem('data'); // interpolate
     this.service.time = Date.now(); // interpolate

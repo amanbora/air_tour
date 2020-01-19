@@ -27,6 +27,10 @@ import { FoodcouponComponent } from './common/foodcoupon/foodcoupon.component';
 import { HotelcouponComponent } from './common/hotelcoupon/hotelcoupon.component';
 import { CarouselComponent } from './common/carousel/carousel.component';
 import { OfficialComponent } from './pages/official/official.component';
+import { MainOfficialComponent } from './pages/main-official/main-official.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { EmployeesComponent } from './pages/employees/employees.component';
+import { MapComponent } from './common/map/map.component';
 
 
 // import { OurServiceComponent } from './pages/our-service/our-service.component';
@@ -37,7 +41,7 @@ const routes: Routes = [
   { path : 'user-profile', component: UserProfileComponent, canActivate : [AuthGuardService] },
   { path : 'editProfile', component: EditProfileComponent , canActivate : [AuthGuardService]},
   { path : 'login', component: LoginComponent , canActivate : [AuthGuardService]},
-
+  { path : 'about-us', component: AboutUsComponent },
   { path : 'register', component: RegistrationComponent},
   { path : 'my-services', component: MyServicesComponent },
   { path : 'our-service', component: OurServiceComponent , canActivate : [AuthGuardService]},
@@ -51,14 +55,19 @@ const routes: Routes = [
   { path : 'child-service', component: ChildServiceComponent , canActivate : [AuthGuardService]},
   { path : 'service-card', component: ServiceCardComponent , canActivate : [AuthGuardService]},
   { path : 'machine', component: MachineComponent },
+  { path : 'map', component: MapComponent},
   { path : 'carousel', component :CarouselComponent},
   { path : 'carousel3d', component: Carousel3dComponent},
   { path : 'coupon', component: CouponComponent},
+
   { path : 'cabcoupon', component: CabcouponComponent},
   { path : 'flightcoupon', component: FlightcouponComponent},
   { path : 'foodcoupon', component: FoodcouponComponent}, 
   { path : 'hotelcoupon', component: HotelcouponComponent},
   { path : 'official', component: OfficialComponent},
+  { path : 'main-official', component: MainOfficialComponent},
+  { path : 'employees', component: EmployeesComponent},
+
 
 
   
@@ -78,4 +87,6 @@ export const routingComponents =
             FlashScreenComponent, OurCenterComponent,
             EditProfileComponent, ChildServiceComponent,
             CheckinServiceComponent, LuggageServiceComponent, CarouselComponent, Carousel3dComponent, CabcouponComponent,
-            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent ];
+            FlightcouponComponent, FoodcouponComponent, HotelcouponComponent, MachineComponent,OfficialComponent,MainOfficialComponent,
+            EmployeesComponent ,
+            MapComponent ];
