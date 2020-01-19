@@ -70,12 +70,9 @@ router.post("/serviceOver", (req, res) => {
     }
 });
 
-
-
-
 const PUBLIC_VAPID =
-  'BBqNegnX4obXx1AbF4S5QVbACTD4x4f5QHdC26se_UfwcFdl6wG_pN6DmScS3DeTIBAAbvCWO18o-5kW_XDjVqc'
-const PRIVATE_VAPID = '9KEPJNkgECmH05Wk4vZNd6u6sVGHoBC0Lc5Prho4cQg'
+  'BHh7Cf0pTWJlwcjOsBKKKEssBha9C_GE9Upt807SwadnMt8diCqqvjE91YVk-lk_kBCO3UliXkz3dgQPgmN5vxQ'
+const PRIVATE_VAPID = 'WESvZnCt0wUQYt3tgnGDixUeuVhOYTi4OVEF8OPkh8k'
 
 const fakeDatabase = []
 webpush.setVapidDetails('mailto:you@domain.com', PUBLIC_VAPID, PRIVATE_VAPID)

@@ -115,7 +115,7 @@ router.get("/searchUser", (req, res) => {
 //user_journey tracking
 router.get("/track", (req, res) => {
   let user = req.query.uid;
-  let journey = req.body.journeyId;
+  let journey = req.query.journeyId;
 
   let tracks = firebase.database().ref().child('location_track');
   let track = tracks.child(user).child(journey);
