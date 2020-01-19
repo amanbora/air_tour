@@ -1,1 +1,15 @@
-<p>data works!</p>
+<app-navbar-official>
+ 
+<div *ngFor="let im of imageUrl ">
+
+    <mat-card>
+        <img src={{im.url}} style="width: 100%; height: 20em;">
+        <h1>{{im.name}}</h1>
+
+
+    </mat-card>
+
+</div>
+
+   
+</app-navbar-official>
