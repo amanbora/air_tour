@@ -21,7 +21,7 @@ export class MapComponent implements OnInit {
   
   ngOnInit() {
 
-    let patnaInitCoordinates : Object =[85.1790303, 25.61907366];
+    // let patnaInitCoordinates : Object =[85.1790303, 25.61907366];
     const map = tt.map({
   
       key: 'OGNyVO5DeoIG8A04Xh9aZijMnTFNqpBZ',
@@ -29,7 +29,7 @@ export class MapComponent implements OnInit {
       container: 'map',
       source : 'vector',
       zoom : 10,
-      center: patnaInitCoordinates,
+      center: [85.1790303, 25.61907366],
 
     
       // style: 'tomtom://vector/1/basic-main'
@@ -38,7 +38,7 @@ export class MapComponent implements OnInit {
 
     });
     
-    const marker = new tt.Marker().setLngLat(patnaInitCoordinates).addTo(map);
+    const marker = new tt.Marker().setLngLat([85.1790303, 25.61907366]).addTo(map);
     const markerAirp = new tt.Marker().setLngLat([85.0908,25.5947]).addTo(map);
 
 
@@ -56,7 +56,7 @@ export class MapComponent implements OnInit {
           localStorage.setItem('data', latlon);
         }
   
-        console.log(typeof(patnaInitCoordinates));
+      //  console.log(typeof(patnaInitCoordinates));
   
       
   
@@ -82,7 +82,7 @@ export class MapComponent implements OnInit {
       //     carMarkerElement.innerHTML = taxi.icon;
       //     new tt.Marker({ element: carMarkerElement, offset: [0, 27] }).setLngLat(taxi.coordinates).addTo(map);
       // });
-      console.log(patnaInitCoordinates);
+     // console.log(patnaInitCoordinates);
 
     
     setTimeout(() => {

@@ -7,9 +7,39 @@
 
                 <img src="{{option.imgUrl}}">
                 <div>{{option.desc}}</div>
-                <button mat-button color="primary" (click)="func(option.name)">Add {{option.name}} Service</button>
+                <button mat-button color="primary" (click)="openform()">Add {{option.name}} Service</button>
         </mat-tab>
         </mat-tab-group>
+
+
+        <form *ngIf="aloneform" #controlForm="ngForm">
+            <div class="form-group" >
+              <label for="exampleInputName">Your Name</label>
+              <input name="login2" type="text" class="form-control" id="Name"  >
+              
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPNR">PNR</label>
+              <input name="pnr" [(ngModel)]= "pnr" class="form-control" id="pnr" >
+            </div>
+           
+            
+            <button type="submit" (click)="func('CheckIn')" class="btn btn-primary">Submit</button>
+          </form>
+
+          <div *ngIf="status == 210">
+            Already Checked In
+        </div>
+        <div *ngIf="status == 200">
+          Now you are checked in,
+          <br><h1>Would You Like to explore more ?</h1>
+      </div>
+  
+    
+        <div *ngIf="status == 300">
+            Error in checking !
+            <br>Try again later !!
+        </div>
     
     </body>   
        

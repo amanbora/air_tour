@@ -262,22 +262,27 @@ router.post("/onlineCheckin", (req, res) => {
   }
 });
 
-router.get("/check_checkIn", (req, res) => {
+router.get("/onlineCheckIn", async (req, res) => {
   let pnr = req.query.pnr;
-  let ref = firebase.database.ref().child("online_checkIn").child(pnr);
-
-  ref.on('value', snap => {
-    snap = snap.val();
-    if(snap === true){
+  let ref = firebase.database().ref().child("online_checkIn").child(pnr);
+  let response = await ref.once('value');
+  response = response.val();
+  if(response === null){
+    try{
+      ref.set(true);
       res.status(200).json({
-        "msg": "You are checked in!"
+        "msg": "You were successfully checked in!"
       });
-    } else{
+    } catch(err){
       res.status(300).json({
-        "msg": "You are not checked in!"
+        "msg": "You could not be checked in"
       });
     }
-  })
+  } else{
+    res.status(210).json({
+      "msg": "You were already checked in."
+    });
+  }
 });
 
 module.exports = router;
